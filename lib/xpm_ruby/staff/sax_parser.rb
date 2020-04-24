@@ -56,4 +56,3 @@ module XpmRuby
     end
   end
 end
-
