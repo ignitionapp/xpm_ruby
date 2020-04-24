@@ -13,7 +13,17 @@ module XpmRuby
     end
 
     def get(endpoint:)
-      Faraday.new("https://#{@api_url}/v3/#{endpoint}", headers: { "Authorization" => @basic_auth }).get
+      Faraday.new(url(endpoint: endpoint), headers: headers).get
+    end
+
+    private
+
+    def headers
+      { "Authorization" => @basic_auth }
+    end
+
+    def url(endpoint:)
+      "https://#{@api_url}/v3/#{endpoint}"
     end
   end
 end
