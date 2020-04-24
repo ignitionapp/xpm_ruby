@@ -8,8 +8,7 @@ module XpmRuby
 
       xit "lists staff" do
         expect(
-          Staff
-            .list(api_key: api_key, account_key: account_key)
+          Staff.list(api_key: api_key, account_key: account_key)
         ).to include(
           Staff.build(
             name: "Dev Testing",
