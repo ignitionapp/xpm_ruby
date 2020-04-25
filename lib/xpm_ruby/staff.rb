@@ -8,19 +8,18 @@ module XpmRuby
   module Staff
     extend self
 
-    class Error < StandardError; end
-    class Unauthorized < Error; end
+    class Error < Error; end
 
     def build(**args)
       Models::Staff.new(args)
     end
 
-    def list(api_key:, account_key:)
+    def list(api_key:, account_key:, api_url:)
       key = Base64.strict_encode64("#{api_key}:#{account_key}")
 
       response = Faraday
         .new(
-          url: "https://api.workflowmax.com/v3",
+          url: "https://#{api_url}/v3",
           headers: { "Authorization" => "Basic #{key}" })
         .get("staff.api/list")
 
