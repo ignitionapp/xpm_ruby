@@ -27,6 +27,8 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency("faraday", "~> 1")
   spec.add_runtime_dependency("ox", "~> 2.13")
+  spec.add_runtime_dependency("dry-types", "~> 1.4")
+  spec.add_runtime_dependency("dry-struct", "~> 1.3")
 
   spec.add_development_dependency("bundler", "~> 2.0")
   spec.add_development_dependency("rake", ">= 12.3.3")
