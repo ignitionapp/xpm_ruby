@@ -1,5 +1,3 @@
-require "faraday"
-require "base64"
 require "ox"
 
 require_relative "models/staff"
@@ -15,13 +13,9 @@ module XpmRuby
     end
 
     def list(api_key:, account_key:, api_url:)
-      key = Base64.strict_encode64("#{api_key}:#{account_key}")
-
-      response = Faraday
-        .new(
-          url: "https://#{api_url}/v3",
-          headers: { "Authorization" => "Basic #{key}" })
-        .get("staff.api/list")
+      response = Connection
+        .new(api_key: api_key, account_key: account_key, api_url: api_url)
+        .get(endpoint: "staff.api/list")
 
       case response.status
       when 401
