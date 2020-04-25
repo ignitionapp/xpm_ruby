@@ -2,20 +2,17 @@ require "faraday"
 require "base64"
 require "ox"
 
-require_relative "types/staff"
+require_relative "models/staff"
 
 module XpmRuby
   module Staff
     extend self
 
     class Error < StandardError; end
-    class TypeError < Error; end
     class Unauthorized < Error; end
 
     def build(**args)
-      Types::Staff.new(args)
-    rescue Dry::Struct::Error => error
-      raise TypeError.new(error.message)
+      Models::Staff.new(args)
     end
 
     def list(api_key:, account_key:)
@@ -38,7 +35,7 @@ module XpmRuby
         case hash["Response"]["Status"]
         when "OK"
           hash["Response"]["StaffList"]["Staff"].map do |staff|
-            build(
+            Models::Staff.new(
               uuid: staff["UUID"],
               name: staff["Name"],
               email: staff["Email"],
