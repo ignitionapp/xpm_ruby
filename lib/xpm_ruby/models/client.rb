@@ -5,6 +5,37 @@
 
 :name, :is_primary, :salutation, :addressee, :phone, :mobile, :email, :position
 
+:billing_client_uuid, :first_name, :last_name, :other_name, :date_of_birth
+:job_manager_uuid, :tax_number, :company_number, :business_number, :business_structure
+
+  <BillingClientUUID /> <!-- optional UUID of billing client -->
+
+  <!-- The following fields are only applicable if the Practice Management module is enabled -->
+
+  <JobManagerUUID />  <!-- optional - UUID of staff member -->
+  <TaxNumber /> 
+  <CompanyNumber /> 
+  <BusinessNumber /> 
+  <BusinessStructure />   <!-- Name of Business Structure (as per Admin) -->
+  <BalanceMonth />  <!-- e.g. Jan, 1, Feb, 2, Mar, 3 etc  -->
+  <PrepareGST />   <!-- Yes or No -->
+  <GSTRegistered />   <!-- Yes or No -->
+  <GSTPeriod />  <!-- 1, 2, 6 -->
+  <GSTBasis />  <!-- Invoice, Payment, Hybrid  -->
+  <ProvisionalTaxBasis />  <!-- Standard Option, Estimate Option, Ratio Option  -->
+  <ProvisionalTaxRatio /> 
+
+  <!-- The following fields apply to NZ clients only -->
+  <SignedTaxAuthority />  <!-- Yes or No -->
+  <TaxAgent />  <!-- Name of Tax Agent (as per Admin) -->
+  <AgencyStatus />  <!-- With EOT, Without EOT, Unlinked -->
+  <ReturnType />  <!-- IR3, IR3NR, IR4, IR6, IR7, IR9, PTS  -->
+
+  <!-- The following fields apply to AU clients only -->
+  <PrepareActivityStatement />  <!-- Yes or No -->
+  <PrepareTaxReturn />  <!-- Yes or No -->
+
+
 <Client>
   <Name>Bloggs Electrical Ltd</Name>
   <Email></Email>  <!-- optional -->   
