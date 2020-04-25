@@ -11,7 +11,7 @@ module XpmRuby
         @phone = phone
         @mobile = mobile
         @address = address
-        @payroll_code
+        @payroll_code = payroll_code
       end
 
       def ==(other)
