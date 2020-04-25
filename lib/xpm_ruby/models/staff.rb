@@ -1,6 +1,6 @@
 module XpmRuby
-  module Staff
-    class Model
+  module Models
+    class Staff
       attr_accessor :uuid, :name, :email, :phone, :mobile, :address, :payroll_code
 
       def initialize(uuid: nil, name: nil, email: nil, phone: nil, mobile: nil,
