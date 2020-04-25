@@ -4,4 +4,5 @@ module XpmRuby
 end
 
 require "xpm_ruby/version"
+require "xpm_ruby/connection"
 require "xpm_ruby/staff"
