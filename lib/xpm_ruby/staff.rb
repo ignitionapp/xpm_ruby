@@ -21,16 +21,17 @@ module XpmRuby
       response = Faraday
         .new(
           url: "https://api.workflowmax.com/v3",
-          headers: {
-            "Authorization" => "Basic #{key}" })
+          headers: { "Authorization" => "Basic #{key}" })
         .get("staff.api/list")
-
-      hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
 
       case response.status
       when 401
+        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
+
         raise Unauthorized.new(hash["html"]["head"]["title"])
       when 200
+        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
+
         case hash["Response"]["Status"]
         when "OK"
           hash["Response"]["StaffList"]["Staff"].map do |staff|
