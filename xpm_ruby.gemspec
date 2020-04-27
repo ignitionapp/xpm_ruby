@@ -25,16 +25,18 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency("faraday", "~> 1")
-  spec.add_runtime_dependency("ox", "~> 2.13")
+  spec.add_development_dependency("bundler")
+  spec.add_development_dependency("rake")
+  spec.add_development_dependency("rspec")
 
-  spec.add_development_dependency("bundler", "~> 2.0")
-  spec.add_development_dependency("rake", ">= 12.3.3")
-  spec.add_development_dependency("rspec", "~> 3.0")
-
-  spec.add_development_dependency("rubocop", "0.77.0")
+  spec.add_development_dependency("rubocop")
   spec.add_development_dependency("rubocop-rspec")
 
   spec.add_development_dependency("byebug", "~> 11")
   spec.add_development_dependency("pry-byebug", "~> 3")
+
+  spec.add_runtime_dependency("faraday", "~> 1")
+  spec.add_runtime_dependency("ox", "~> 2.13")
+
+  spec.add_development_dependency("vcr")
 end
