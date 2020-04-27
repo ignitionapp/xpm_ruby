@@ -5,8 +5,8 @@ module XpmRuby
     subject(:service) { described_class }
 
     describe ".current" do
-      let(:api_key) { "12C9DCD68EDF471CB17C764C70A01FAA" }
-      let(:account_key) { "4FA62AC06CCB47A38D28B86EF25E97DC" }
+      let(:api_key) { "TEST" }
+      let(:account_key) { "TEST" }
       let(:api_url) { "api.workflowmax.com" }
 
       around(:each) do |example|

@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Basic MTJDOURDRDY4RURGNDcxQ0IxN0M3NjRDNzBBMDFGQUE6NEZBNjJBQzA2Q0NCNDdBMzhEMjhCODZFRjI1RTk3REM=
+      - Basic TEST=
       User-Agent:
       - Faraday v1.0.1
   response:
