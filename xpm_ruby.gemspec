@@ -32,5 +32,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("rubocop", "0.77.0")
   spec.add_development_dependency("rubocop-rspec")
 
-  spec.add_runtime_dependency("faraday")
+  spec.add_development_dependency("byebug", "~> 11")
+  spec.add_development_dependency("pry-byebug", "~> 3")
+
+  spec.add_runtime_dependency("faraday", "~> 1")
+  spec.add_runtime_dependency("ox", "~> 2.13")
 end
