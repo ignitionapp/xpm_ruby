@@ -12,10 +12,8 @@ module XpmRuby
       Models::Staff.new(args)
     end
 
-    def list(api_key:, account_key:, api_url:)
-      response = Connection
-        .new(api_key: api_key, account_key: account_key, api_url: api_url)
-        .get(endpoint: "staff.api/list")
+    def list(connection:)
+      response = connection.get(endpoint: "staff.api/list")
 
       case response.status
       when 401

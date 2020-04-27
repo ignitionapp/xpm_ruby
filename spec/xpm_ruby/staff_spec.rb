@@ -29,7 +29,8 @@ module XpmRuby
         end
 
         it "lists staff" do
-          staff_list = service.list(api_key: api_key, account_key: account_key, api_url: api_url)
+          connection = XpmRuby::Connection.new(api_key: api_key, account_key: account_key, api_url: api_url)
+          staff_list = service.list(connection: connection)
 
           staff = staff_list.last
 
