@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.workflowmax.com/v3/job.api/current
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic MTJDOURDRDY4RURGNDcxQ0IxN0M3NjRDNzBBMDFGQUE6NEZBNjJBQzA2Q0NCNDdBMzhEMjhCODZFRjI1RTk3REM=
+      User-Agent:
+      - Faraday v1.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      access-control-allow-origin:
+      - "*"
+      cache-control:
+      - private
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Mon, 27 Apr 2020 06:50:18 GMT
+      server:
+      - Microsoft-IIS/10.0
+      vary:
+      - Accept-Encoding
+      x-aspnet-version:
+      - 4.0.30319
+      x-aspnetmvc-version:
+      - '4.0'
+      content-length:
+      - '669'
+      connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: <Response api-method="Current"><Status>OK</Status><Jobs><Job><ID>J000001</ID><UUID>f6273477-e0d6-4122-b3ff-8373f285aaa7</UUID><Name>Internal
+        Time</Name><Description>Use this job to record your internal and non-billable
+        time for activities such as annual leave, sick leave, professional development,
+        staff meetings etc</Description><Client><UUID>55426e7e-426e-4767-a1c6-881598689460</UUID><Name>Practice
+        Ignition</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2020-04-20T00:00:00</StartDate><DueDate>2021-04-20T00:00:00</DueDate><Assigned><Staff><UUID>1cc99c1e-8cf7-4248-ab84-3e11126facbc</UUID><Name>Tony
+        Breckner</Name></Staff></Assigned></Job><Job><ID>J000002</ID><UUID>cf698ae8-e995-4d51-bb36-585634796c9f</UUID><Name>Setup
+        and Conversion Steps</Name><Description></Description><Client><UUID>55426e7e-426e-4767-a1c6-881598689460</UUID><Name>Practice
+        Ignition</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2020-04-21T00:00:00</StartDate><DueDate>2020-05-05T00:00:00</DueDate><Assigned><Staff><UUID>1cc99c1e-8cf7-4248-ab84-3e11126facbc</UUID><Name>Tony
+        Breckner</Name></Staff></Assigned></Job></Jobs></Response>
+    http_version: null
+  recorded_at: Mon, 27 Apr 2020 06:50:19 GMT
+recorded_with: VCR 5.1.0
