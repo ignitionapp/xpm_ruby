@@ -15,14 +15,10 @@ module XpmRuby
       Models::Client.new(args)
     end
 
-    def list(api_key:, account_key:)
-      key = Base64.strict_encode64("#{api_key}:#{account_key}")
-
-      response = Faraday
-        .new(
-          url: "https://api.workflowmax.com/v3",
-          headers: { "Authorization" => "Basic #{key}" })
-        .get("staff.api/list")
+    def add(api_key:, account_key:)
+      response = Connection
+        .new(api_key: api_key, account_key: account_key, api_url: api_url)
+        .get(endpoint: "client.api/add")
 
       case response.status
       when 401
@@ -34,8 +30,8 @@ module XpmRuby
 
         case hash["Response"]["Status"]
         when "OK"
-          hash["Response"]["StaffList"]["Staff"].map do |staff|
-            Models::Staff.new(
+          hash["Response"]["Clients"]["Client"].map do |client|
+            Models::Client.new(
               uuid: staff["UUID"],
               name: staff["Name"],
               email: staff["Email"],

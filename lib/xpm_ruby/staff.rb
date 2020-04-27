@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-require "faraday"
-require "base64"
-=======
->>>>>>> 9655211ed0a4752d21e701d6f1be0566a1f4ec3b
 require "ox"
 
 require_relative "models/staff"
