@@ -28,20 +28,13 @@ module XpmRuby
         case hash["Response"]["Status"]
         when "OK"
           hash["Response"]["Jobs"]["Job"].map do |job|
-
-            begin
-              completed_date = Date.parse(job["CompletedDate"])
-            rescue ArgumentError, TypeError
-              completed_date = nil
-            end
-
             Models::Job.new(
               uuid: job["UUID"],
               name: job["Name"],
               description: job["Description"],
-              start_date: Date.parse(job["StartDate"]),
-              due_date: Date.parse(job["DueDate"]),
-              completed_date: completed_date,
+              start_date: job["StartDate"],
+              due_date: job["DueDate"],
+              completed_date: job["CompletedDate"],
               state: job["State"])
           end
         when "ERROR"

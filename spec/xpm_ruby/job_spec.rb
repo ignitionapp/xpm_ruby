@@ -26,8 +26,8 @@ module XpmRuby
         expect(first_job.uuid).to eql("f6273477-e0d6-4122-b3ff-8373f285aaa7")
         expect(first_job.description).to eql("Use this job to record your internal and non-billable time for activities such as annual leave, sick leave, professional development, staff meetings etc")
         expect(first_job.state).to eql("Planned")
-        expect(first_job.start_date).to eql(Date.parse("2020-04-20T00:00:00"))
-        expect(first_job.due_date).to eql(Date.parse("2021-04-20T00:00:00"))
+        expect(first_job.start_date).to eql("2020-04-20T00:00:00")
+        expect(first_job.due_date).to eql("2021-04-20T00:00:00")
         expect(first_job.completed_date).to be_nil
       end
     end
