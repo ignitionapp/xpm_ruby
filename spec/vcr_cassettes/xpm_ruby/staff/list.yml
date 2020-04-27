@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.workflowmax.com/v3/staff.api/list
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic TEST
+      User-Agent:
+      - Faraday v1.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      access-control-allow-origin:
+      - "*"
+      cache-control:
+      - private
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Mon, 27 Apr 2020 02:07:18 GMT
+      server:
+      - Microsoft-IIS/10.0
+      vary:
+      - Accept-Encoding
+      x-aspnet-version:
+      - 4.0.30319
+      x-aspnetmvc-version:
+      - '4.0'
+      content-length:
+      - '369'
+      connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: <Response api-method="List"><Status>OK</Status><StaffList><Staff><UUID>aa93a24c-0633-4885-b104-7b4e43cc702e</UUID><Name>Jane Doe</Name><Email>jane@test.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>1cc99c1e-8cf7-4248-ab84-3e11126facbc</UUID><Name>John Doe</Name><Email>john@test.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff></StaffList></Response>
+    http_version: null
+  recorded_at: Mon, 27 Apr 2020 02:07:19 GMT
+recorded_with: VCR 5.1.0
