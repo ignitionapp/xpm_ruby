@@ -15,7 +15,7 @@ module XpmRuby
         end
       end
 
-      it "lists templates" do
+      it "lists current jobs" do
         current_jobs = service.current(api_key: api_key, account_key: account_key, api_url: api_url)
 
         expect(current_jobs.length).to eq(2)
