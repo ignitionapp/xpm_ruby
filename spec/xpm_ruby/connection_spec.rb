@@ -25,6 +25,21 @@ module XpmRuby
 
         connection.get(endpoint: "staff.api/list")
       end
+
+      context "with bad credentials" do
+        around(:each) do |example|
+          VCR.use_cassette("xpm_ruby/connection/get") do
+            example.run
+          end
+        end
+
+        it "should return an error response" do
+          connection = service.new(api_key: api_key, api_url: api_url, account_key: account_key)
+
+          response = connection.get(endpoint: "staff.api/list")
+          expect(response.status).to eq(401)
+        end
+      end
     end
   end
 end

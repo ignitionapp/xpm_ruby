@@ -5,18 +5,6 @@ module XpmRuby
     subject(:service) { described_class }
 
     describe ".list" do
-      context "when keys invalid" do
-        let(:api_key) { "" }
-        let(:account_key) { "" }
-        let(:api_url) { "api.workflowmax.com" }
-
-        xit "raises unauthorized error" do
-          expect do
-            Staff.list(api_key: api_key, account_key: account_key, api_url: api_url)
-          end.to raise_error(Unauthorized)
-        end
-      end
-
       context "when keys valid" do
         let(:api_key) { "TEST" }
         let(:account_key) { "TEST" }
