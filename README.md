@@ -36,7 +36,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 There are a few extra steps you need when writing VCR spec to avoid checking in sensitive data.
 1. When writing a new VCR spec, you need to use the real api_key and account_key initially to hit the server
 1. After you have generated the cassette, change the api_key and account_key in your spec BEFORE CHECKING IT IN
-1. Open up the cassette and ensure you have updated the Basic auth code as well (also before checking it in)
+1. Open up the cassette and ensure you have updated the Basic auth code as well (also before checking it in) as you can extrapolate the account and api keys from this.
 ```
 headers:
       Authorization:
