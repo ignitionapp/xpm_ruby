@@ -67,8 +67,12 @@ module XpmRuby
 
     it "adds client" do
       expect(
-        Client.add(api_key: api_key, account_key: account_key, api_url: api_url)
-      ).to include(client)
+        Client.add(
+          api_key: api_key,
+          account_key: account_key,
+          api_url: api_url,
+          client: client)
+      ).to eql(client)
     end
   end
 end
