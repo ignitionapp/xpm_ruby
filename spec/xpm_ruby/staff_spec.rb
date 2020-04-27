@@ -3,6 +3,7 @@ require "spec_helper"
 module XpmRuby
   RSpec.describe(Staff) do
     subject(:service) { described_class }
+
     describe ".list" do
       context "when keys invalid" do
         let(:api_key) { "" }
