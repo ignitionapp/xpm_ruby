@@ -6,3 +6,4 @@ end
 require "xpm_ruby/version"
 require "xpm_ruby/connection"
 require "xpm_ruby/staff"
+require "xpm_ruby/client"

@@ -16,6 +16,10 @@ module XpmRuby
       Faraday.new(url(endpoint: endpoint), headers: headers).get
     end
 
+    def post(endpoint:, body:)
+      Faraday.new(url(endpoint: endpoint), headers: headers).post(body)
+    end
+
     private
 
     def headers
