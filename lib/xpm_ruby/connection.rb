@@ -12,8 +12,26 @@ module XpmRuby
       @basic_auth = "Basic " + Base64.strict_encode64("#{api_key}:#{account_key}")
     end
 
-    def get(endpoint:)
-      Faraday.new(url(endpoint: endpoint), headers: headers).get
+    def get(endpoint:, element_name:)
+      response = Faraday.new(url(endpoint: endpoint), headers: headers).get
+
+      case response.status
+      when 401
+        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
+
+        raise Unauthorized.new(hash["html"]["head"]["title"])
+      when 200
+        xml = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
+
+        case xml["Response"]["Status"]
+        when "OK"
+          xml["Response"][element_name]
+        when "ERROR"
+          raise Error.new(response["ErrorDescription"])
+        end
+      else
+        raise Error.new(response.status)
+      end
     end
 
     private

@@ -13,35 +13,19 @@ module XpmRuby
     end
 
     def list(api_key:, account_key:, api_url:)
-      response = Connection
+      Connection
         .new(api_key: api_key, account_key: account_key, api_url: api_url)
-        .get(endpoint: "staff.api/list")
-
-      case response.status
-      when 401
-        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
-
-        raise Unauthorized.new(hash["html"]["head"]["title"])
-      when 200
-        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
-
-        case hash["Response"]["Status"]
-        when "OK"
-          hash["Response"]["StaffList"]["Staff"].map do |staff|
-            Models::Staff.new(
-              uuid: staff["UUID"],
-              name: staff["Name"],
-              email: staff["Email"],
-              phone: staff["Phone"],
-              mobile: staff["Mobile"],
-              address: staff["Address"],
-              payroll_code: staff["PayrollCode"])
-          end
-        when "ERROR"
-          raise Error.new(response["ErrorDescription"])
+        .get(endpoint: "staff.api/list", element_name: "StaffList")
+        .map do |staff|
+          Models::Staff.new(
+            uuid: staff["UUID"],
+            name: staff["Name"],
+            email: staff["Email"],
+            phone: staff["Phone"],
+            mobile: staff["Mobile"],
+            address: staff["Address"],
+            payroll_code: staff["PayrollCode"])
         end
-      else
-        raise Error.new(response.status)
       end
     end
   end
