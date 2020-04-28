@@ -19,7 +19,7 @@ module XpmRuby
 
     def post(endpoint:, data:)
       faraday_connection = Faraday.new(url)
-      puts headers.merge(content_type: "application/xml")
+      puts(headers.merge(content_type: "application/xml"))
       faraday_connection.post(endpoint, data, headers.merge(content_type: "application/xml"))
     end
 
