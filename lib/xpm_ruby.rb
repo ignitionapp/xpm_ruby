@@ -3,6 +3,8 @@ module XpmRuby
   class Unauthorized < Error; end
 end
 
+require "nokogiri"
+
 require "xpm_ruby/version"
 require "xpm_ruby/connection"
 require "xpm_ruby/staff"

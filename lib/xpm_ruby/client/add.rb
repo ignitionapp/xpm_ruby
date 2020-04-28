@@ -72,8 +72,6 @@ module XpmRuby
       extend self
 
       def call(api_key:, account_key:, api_url:, client:)
-        require "nokogiri"
-
         builder = ::Nokogiri::XML::Builder.new do |xml|
           xml.client {
             xml.name {
