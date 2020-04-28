@@ -72,11 +72,19 @@ module XpmRuby
       extend self
 
       def call(api_key:, account_key:, api_url:, client:)
-        xml = "" # use XML builder
+        require "nokogiri"
+
+        builder = ::Nokogiri::XML::Builder.new do |xml|
+          xml.client {
+            xml.name {
+              xml.text(client.name)
+            }
+          }
+        end
 
         response = Connection
           .new(api_key: api_key, account_key: account_key, api_url: api_url)
-          .post(endpoint: "client.api/add", body: xml)
+          .post(endpoint: "client.api/add", data: builder.doc.root.to_xml)
 
         case response.status
         when 401
@@ -89,13 +97,10 @@ module XpmRuby
           case hash["Response"]["Status"]
           when "OK"
             hash["Response"]["Clients"]["Client"].map do |client|
-              # Models::Client.new(
-              #   uuid: client["UUID"],
-              #   name: client["Name"])
-
-              Models::Client.new(
+              Get::Client.new(
                 uuid: client["UUID"],
-                name: client["Name"])
+                name: client["Name"],
+                email: client["Email"])
             end
           when "ERROR"
             raise Error.new(response["ErrorDescription"])

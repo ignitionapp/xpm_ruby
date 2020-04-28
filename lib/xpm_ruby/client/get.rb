@@ -116,14 +116,18 @@
 # </Response>
 
 module XpmRuby
-  module Models
-    class Client
-      attr_accessor :uuid, :name, :email
+  module Client
+    module Get
+      extend self
 
-      def initialize(uuid:, name:, email: nil)
-        @uuid = uuid
-        @name = name
-        @email = email
+      class Client
+        attr_accessor :uuid, :name, :email
+
+        def initialize(uuid:, name:, email: nil)
+          @uuid = uuid
+          @name = name
+          @email = email
+        end
       end
     end
   end

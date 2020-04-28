@@ -2,8 +2,7 @@ require "faraday"
 require "base64"
 require "ox"
 
-require_relative "models/client"
-
+require_relative "client/get"
 require_relative "client/add"
 
 module XpmRuby
@@ -44,19 +43,7 @@ module XpmRuby
       PTS = "PTS"
     end
 
-    module Contact
-      extend self
-
-      def build(**args)
-        Models::Client::Contact.new(args)
-      end
-    end
-
     class Error < StandardError; end
     class Unauthorized < Error; end
-
-    def build(**args)
-      Models::Client.new(args)
-    end
   end
 end

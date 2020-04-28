@@ -9,7 +9,7 @@ module XpmRuby
         let(:api_url) { "api.workflowmax.com" }
 
         let(:client) do
-          Client::Add.build(
+          Client::Add::Client.new(
             name: "Acmer Pty Ltd",
             email: "someone@example.com",
             address: "1 Address Place",
@@ -30,7 +30,7 @@ module XpmRuby
             is_prospect: false,
             account_manager_uuid: nil,
             contacts: [
-              Client::Contact.build(
+              Client::Add::Client::Contact.new(
                 name: "Someone else",
                 is_primary: true,
                 salutation: "MR",
@@ -64,12 +64,11 @@ module XpmRuby
         end
 
         it "adds client" do
-          client =
-            Client::Add.call(
-              api_key: api_key,
-              account_key: account_key,
-              api_url: api_url,
-              client: client)
+          created_client = Client::Add.call(
+            api_key: api_key,
+            account_key: account_key,
+            api_url: api_url,
+            client: client)
 
           expect(created_client.uuid).to be_present
           expect(created_client.name).to client.name

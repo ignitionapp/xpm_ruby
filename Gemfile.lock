@@ -3,6 +3,7 @@ PATH
   specs:
     xpm_ruby (0.1.0)
       faraday (~> 1)
+      nokogiri
       ox (~> 2.13)
 
 GEM
@@ -16,7 +17,10 @@ GEM
       multipart-post (>= 1.2, < 3)
     jaro_winkler (1.5.4)
     method_source (1.0.0)
+    mini_portile2 (2.4.0)
     multipart-post (2.1.1)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
     ox (2.13.2)
     parallel (1.19.1)
     parser (2.7.1.1)
