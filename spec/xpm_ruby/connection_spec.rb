@@ -32,17 +32,9 @@ module XpmRuby
       let(:account_key) { "TEST" }
       let(:api_url) { "api.workflowmax.com" }
 
-      let(:xml_string) {
-        """
-        <Job>
-            <Name>Brochure Design</Name>
-            <Description>Detailed description of the job</Description>
-            <ClientUUID>e349fc1b-d92d-4ba2-b9fc-69fdd516e2a2</ClientUUID>
-            <StartDate>20291023</StartDate>
-            <DueDate>20291028</DueDate>
-        </Job>
-        """
-      }
+      let(:xml_string) do
+        "<Job><Name>Brochure Design</Name><Description>Detailed description of the job</Description><ClientUUID>e349fc1b-d92d-4ba2-b9fc-69fdd516e2a2</ClientUUID><StartDate>20291023</StartDate><DueDate>20291028</DueDate></Job>"
+      end
 
       around(:each) do |example|
         VCR.use_cassette("xpm_ruby/connection/post") do
