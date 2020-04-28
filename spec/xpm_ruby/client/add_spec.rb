@@ -3,6 +3,12 @@ require "spec_helper"
 module XpmRuby
   module Client
     RSpec.describe(Add) do
+      around(:each) do |example|
+        VCR.use_cassette("xpm_ruby/client/add") do
+          example.run
+        end
+      end
+
       describe ".call" do
         let(:api_key) { "" }
         let(:account_key) { "" }
@@ -70,8 +76,8 @@ module XpmRuby
             api_url: api_url,
             client: client)
 
-          expect(created_client.uuid).to be_present
-          expect(created_client.name).to client.name
+          expect(created_client.uuid).not_to be_nil
+          expect(created_client.name).to eql(client.name)
         end
       end
     end

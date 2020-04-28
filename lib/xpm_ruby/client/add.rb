@@ -73,8 +73,8 @@ module XpmRuby
 
       def call(api_key:, account_key:, api_url:, client:)
         builder = ::Nokogiri::XML::Builder.new do |xml|
-          xml.client {
-            xml.name {
+          xml.Client {
+            xml.Name {
               xml.text(client.name)
             }
           }
@@ -94,12 +94,10 @@ module XpmRuby
 
           case hash["Response"]["Status"]
           when "OK"
-            hash["Response"]["Clients"]["Client"].map do |client|
-              Get::Client.new(
-                uuid: client["UUID"],
-                name: client["Name"],
-                email: client["Email"])
-            end
+            Get::Client.new(
+              uuid: hash["Response"]["Client"]["UUID"],
+              name: hash["Response"]["Client"]["Name"],
+              email: hash["Response"]["Client"]["Email"])
           when "ERROR"
             raise Error.new(response["ErrorDescription"])
           end
@@ -134,7 +132,8 @@ module XpmRuby
                       provisional_tax_basis: nil, provisional_tax_ratio: nil,
                       signed_tax_authority: nil, tax_agent: nil, agency_status: nil,
                       return_type: nil, prepare_activity_statement: nil, prepare_tax_return: nil)
-          @name =  email
+          @name =  name
+          @email = email
           @address = address
           @city = city
           @region = region
