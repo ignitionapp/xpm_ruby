@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.workflowmax.com/v3/job.api/add
+    body:
+      encoding: UTF-8
+      string: "\n        <Job>\n            <Name>Brochure Design</Name>\n            <Description>Detailed
+        description of the job</Description>\n            <ClientUUID>e349fc1b-d92d-4ba2-b9fc-69fdd516e2a2</ClientUUID>\n
+        \           <StartDate>20291023</StartDate>\n            <DueDate>20291028</DueDate>\n
+        \       </Job>\n        "
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Basic TEST=
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      access-control-allow-origin:
+      - "*"
+      cache-control:
+      - private
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Tue, 28 Apr 2020 01:01:38 GMT
+      server:
+      - Microsoft-IIS/10.0
+      vary:
+      - Accept-Encoding
+      x-aspnet-version:
+      - 4.0.30319
+      x-aspnetmvc-version:
+      - '4.0'
+      content-length:
+      - '432'
+      connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: <Response api-method="Add"><Status>OK</Status><Job><ID>J000027</ID><UUID>09d0978b-23c2-4356-b180-a230e9cf95a7</UUID><Name>Brochure
+        Design</Name><Description>Detailed description of the job</Description><Client><UUID>e349fc1b-d92d-4ba2-b9fc-69fdd516e2a2</UUID><Name>ABC
+        Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><Assigned
+        /><Tasks /><Milestones /><Notes /></Job></Response>
+    http_version: null
+  recorded_at: Tue, 28 Apr 2020 01:01:38 GMT
+recorded_with: VCR 5.1.0
