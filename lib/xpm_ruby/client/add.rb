@@ -41,7 +41,6 @@
 #   <OtherName />   <!-- optional, for individuals only -->
 #   <DateOfBirth />   <!-- optional, for individuals only -->
 
-
 #   <JobManagerUUID />  <!-- optional - UUID of staff member -->
 #   <TaxNumber />
 #   <CompanyNumber />
@@ -73,11 +72,11 @@ module XpmRuby
 
       def call(api_key:, account_key:, api_url:, client:)
         builder = ::Nokogiri::XML::Builder.new do |xml|
-          xml.Client {
-            xml.Name {
+          xml.Client do
+            xml.Name do
               xml.text(client.name)
-            }
-          }
+            end
+          end
         end
 
         response = Connection
@@ -118,6 +117,7 @@ module XpmRuby
           :signed_tax_authority, :tax_agent, :agency_status, :return_type,
           :prepare_activity_statement, :prepare_tax_return
 
+        # rubocop:disable Metrics/AbcSize
         def initialize(name:, email: nil,
                       address: nil, city: nil, region: nil, post_code: nil, country: nil,
                       postal_address: nil, postal_city: nil, postal_region: nil,
@@ -176,6 +176,7 @@ module XpmRuby
           @prepare_activity_statement = prepare_activity_statement
           @prepare_tax_return = prepare_tax_return
         end
+        # rubocop:enable Metrics/AbcSize
 
         class AccountManager
           attr_reader :uuid, :name
@@ -208,7 +209,7 @@ module XpmRuby
             name == other.name &&
             cost_markup == other.cost_markup &&
             payment_term == other.payment_term &&
-            payment_day = other.payment_day
+            payment_day == other.payment_day
           end
 
           def eql?(other)
