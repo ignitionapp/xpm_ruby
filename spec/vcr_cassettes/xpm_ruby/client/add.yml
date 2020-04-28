@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.workflowmax.com/v3/client.api/add
+    body:
+      encoding: UTF-8
+      string: |-
+        <Client>
+          <Name>Acmer Pty Ltd</Name>
+        </Client>
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Basic
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      access-control-allow-origin:
+      - "*"
+      cache-control:
+      - private
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Tue, 28 Apr 2020 01:52:47 GMT
+      server:
+      - Microsoft-IIS/10.0
+      vary:
+      - Accept-Encoding
+      x-aspnet-version:
+      - 4.0.30319
+      x-aspnetmvc-version:
+      - '4.0'
+      content-length:
+      - '449'
+      connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: <Response api-method="Add"><Status>OK</Status><Client><UUID>9f868ba7-437c-4574-9a17-8c6f4890545b</UUID><Name>Acmer
+        Pty Ltd</Name><Address></Address><City></City><Region></Region><PostCode></PostCode><Country></Country><PostalAddress></PostalAddress><PostalCity></PostalCity><PostalRegion></PostalRegion><PostalPostCode></PostalPostCode><PostalCountry></PostalCountry><Phone></Phone><Fax></Fax><Website></Website><ReferralSource></ReferralSource><ExportCode></ExportCode><IsProspect>No</IsProspect><IsArchived>No</IsArchived><IsDeleted>No</IsDeleted><Contacts
+        /><Notes /><Groups /><Relationships /></Client></Response>
+    http_version: null
+  recorded_at: Tue, 28 Apr 2020 01:52:48 GMT
+recorded_with: VCR 5.1.0
