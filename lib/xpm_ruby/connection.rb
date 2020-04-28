@@ -12,13 +12,15 @@ module XpmRuby
       @basic_auth = "Basic " + Base64.strict_encode64("#{api_key}:#{account_key}")
     end
 
-    def get(endpoint:)
-      Faraday.new(url(endpoint: endpoint), headers: headers).get
+    def get(endpoint:, params: nil)
+      faraday_connection = Faraday.new(url)
+      faraday_connection.get(endpoint, params, headers)
     end
 
     def post(endpoint:, data:)
-      faraday_connection = Faraday.new("https://#{@api_url}/v3/")
-      faraday_connection.post(endpoint, data, headers)
+      faraday_connection = Faraday.new(url)
+      puts(headers.merge(content_type: "application/xml"))
+      faraday_connection.post(endpoint, data, headers.merge(content_type: "application/xml"))
     end
 
     private
@@ -27,8 +29,8 @@ module XpmRuby
       { "Authorization" => @basic_auth }
     end
 
-    def url(endpoint:)
-      "https://#{@api_url}/v3/#{endpoint}"
+    def url
+      "https://#{@api_url}/v3/"
     end
   end
 end

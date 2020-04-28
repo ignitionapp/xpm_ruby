@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.workflowmax.com/v3/staff.api/list
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic TEST=
+      User-Agent:
+      - Faraday v1.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      access-control-allow-origin:
+      - "*"
+      cache-control:
+      - private
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Tue, 28 Apr 2020 01:27:12 GMT
+      server:
+      - Microsoft-IIS/10.0
+      vary:
+      - Accept-Encoding
+      x-aspnet-version:
+      - 4.0.30319
+      x-aspnetmvc-version:
+      - '4.0'
+      content-length:
+      - '801'
+      connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: <Response api-method="List"><Status>OK</Status><StaffList><Staff><UUID>8c79202e-caf8-4a12-a3d7-ac338e50741f</UUID><Name>Dev
+        Testing</Name><Email>dev@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>2fd3a292-eeeb-4dea-9deb-0b0d3e2a8e4e</UUID><Name>Ed
+        Minn</Name><Email>luis+edminn@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>54b0dace-1e82-4403-8b87-2d5874db28e6</UUID><Name>Jana
+        Paulech</Name><Email>jana@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>3be259b2-68f8-4bce-8dc5-4d7004d41f66</UUID><Name>Nick
+        Dainty</Name><Email>nick@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>79ec70c2-4956-4239-8448-8484ddd03f25</UUID><Name>Nick
+        Dainty</Name><Email>nick+xpmtest2@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>e71b8196-9033-40f0-ba5e-f689ecf881cf</UUID><Name>Patrick
+        Frigo</Name><Email>patrick.frigo@xero.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>1f0585b0-1b53-4fd0-b97d-3e7e8c20b5bc</UUID><Name>Patty
+        Igneous</Name><Email>luis@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>6bbd3326-1a23-4bb2-bcbe-ffa51bd76625</UUID><Name>Some
+        User</Name><Email>some_user@pattyrocks.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>7d33e725-02f5-4676-976e-ea63f7bed6c3</UUID><Name>Test</Name><Email>chris@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>6e73ba03-d7f3-49ec-b5be-39843aa7fc46</UUID><Name>test</Name><Email>adammikulas@gmail.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff></StaffList></Response>
+    http_version: null
+  recorded_at: Tue, 28 Apr 2020 01:27:13 GMT
+recorded_with: VCR 5.1.0
