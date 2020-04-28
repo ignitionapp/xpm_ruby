@@ -3,6 +3,7 @@ require_relative "models/client"
 module XpmRuby
   module Client
     extend self
+
     module GstPeriod
       ONE = "1"
       TWO = "2"
@@ -37,16 +38,16 @@ module XpmRuby
       PTS = "PTS"
     end
 
-    def build(**args)
-      Models::Client.new(args)
-    end
-
     module Contact
       extend self
 
       def build(**args)
         Models::Client::Contact.new(args)
       end
+    end
+
+    def build(**args)
+      Models::Client.new(args)
     end
 
     def add(api_key:, account_key:, api_url:, client:)
