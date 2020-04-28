@@ -1,7 +1,5 @@
 require "ox"
 
-require_relative "models/job"
-
 module XpmRuby
   module Job
     extend self
@@ -27,16 +25,8 @@ module XpmRuby
 
         case hash["Response"]["Status"]
         when "OK"
-          hash["Response"]["Jobs"]["Job"].map do |job|
-            Models::Job.new(
-              uuid: job["UUID"],
-              name: job["Name"],
-              description: job["Description"],
-              start_date: job["StartDate"],
-              due_date: job["DueDate"],
-              completed_date: job["CompletedDate"],
-              state: job["State"])
-          end
+          transformed_hash = hash.deep_transform_keys(&:underscore)
+          transformed_hash["response"]["jobs"]["job"]
         when "ERROR"
           raise Error.new(response["ErrorDescription"])
         end

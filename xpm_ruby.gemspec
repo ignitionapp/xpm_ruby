@@ -39,4 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency("ox", "~> 2.13")
 
   spec.add_development_dependency("vcr")
+
+  spec.add_runtime_dependency("activesupport")
 end
