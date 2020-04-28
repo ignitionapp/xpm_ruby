@@ -16,6 +16,11 @@ module XpmRuby
       Faraday.new(url(endpoint: endpoint), headers: headers).get
     end
 
+    def post(endpoint:, data:)
+      faraday_connection = Faraday.new("https://#{@api_url}/v3/")
+      faraday_connection.post(endpoint, data, headers)
+    end
+
     private
 
     def headers
