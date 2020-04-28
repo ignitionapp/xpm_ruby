@@ -12,9 +12,9 @@ module XpmRuby
       Models::Template.new(args)
     end
 
-    def list(api_key:, account_key:, api_url:)
+    def list(access_token:, xero_tenant_id:)
       response = Connection
-        .new(api_key: api_key, account_key: account_key, api_url: api_url)
+        .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
         .get(endpoint: "template.api/list")
 
       case response.status
