@@ -1,7 +1,5 @@
 require "ox"
 
-require_relative "models/staff"
-
 module XpmRuby
   module Staff
     extend self
@@ -27,16 +25,7 @@ module XpmRuby
 
         case hash["Response"]["Status"]
         when "OK"
-          hash["Response"]["StaffList"]["Staff"].map do |staff|
-            Models::Staff.new(
-              uuid: staff["UUID"],
-              name: staff["Name"],
-              email: staff["Email"],
-              phone: staff["Phone"],
-              mobile: staff["Mobile"],
-              address: staff["Address"],
-              payroll_code: staff["PayrollCode"])
-          end
+          hash["Response"]["StaffList"]["Staff"]
         when "ERROR"
           raise Error.new(response["ErrorDescription"])
         end
