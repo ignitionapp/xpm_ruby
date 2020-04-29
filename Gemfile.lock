@@ -4,7 +4,7 @@ PATH
     xpm_ruby (0.1.0)
       activesupport
       builder
-      faraday (~> 1)
+      faraday
       ox (~> 2.13)
 
 GEM
