@@ -47,6 +47,9 @@ Layout/HeredocIndentation:
 Layout/LeadingCommentSpace:
   Enabled: true
 
+Layout/LineLength:
+  Enabled: false
+
 Layout/MultilineArrayBraceLayout:
   Enabled: false
 
@@ -111,9 +114,6 @@ Metrics/PerceivedComplexity:
   Enabled: true
   Max: 10
 
-Metrics/LineLength:
-  Enabled: false
-
 Metrics/MethodLength:
   Enabled: true
   Max: 50
@@ -157,18 +157,6 @@ Naming/MethodParameterName:
   Enabled: false
 
 Naming/VariableNumber:
-  Enabled: false
-
-Performance/Count:
-  Enabled: false
-
-Performance/Casecmp:
-  Enabled: false
-
-Performance/TimesMap:
-  Enabled: false
-
-Performance/RegexpMatch:
   Enabled: false
 
 RSpec/AnyInstance:
@@ -463,4 +451,7 @@ Style/SymbolProc:
   Enabled: true
 
 Style/ZeroLengthPredicate:
+  Enabled: false
+
+Style/MutableConstant:
   Enabled: false

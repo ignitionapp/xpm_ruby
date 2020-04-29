@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xero.com/practicemanager/3.0/template.api/list
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODgxMTc2NDQsImV4cCI6MTU4ODExOTQ0NCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODA1MTE0MywieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjQzMGI0ZmVmMWI0NjQ2MGZiMTgwOWNmNmQ5OWJhODIxIiwianRpIjoiMmI3NGQxZDZhMzcxNDlhN2VjNjkwNmM2NGM0MDFlMjEiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.HhzdzozbWidNt8ugO43wPpJhh1H_52khXAxzfwiyXn4r9eBO2qFrYNbVHliDzQrWNurTWnnWttWomCOjfaXpJ0h5m85r6H2h0_nUvd6OnNDEl6yD5Lfqfk1TxbxkEOu2UlJq8pFgeq4dLP9QUpjmJG2cff4bGu809uGDO-lARX1MhZOCUzVCJWdOClZlPivu-zwp8vMDItGCrt-HY8v874X8PNhqiX9aSwZIRzuyNfd71ok0VbGvLeoAxkY-Ph4NdAs-Gvn21S_6-9dIPohtxthqPxDJA3FOJBbQ_OL4y35EkaN3IlNp8J3WILIbjz541OHFCd6nBPGHuByGNMZslg
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-daylimit-remaining:
+      - '4993'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - b39cac4b-26ce-4fea-a65e-89804077699d
+      content-length:
+      - '819'
+      akamai-age-ms:
+      - '1588118029828'
+      expires:
+      - Tue, 28 Apr 2020 23:53:49 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 28 Apr 2020 23:53:49 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="List"><Status>OK</Status><Templates><Template><ID>1254074</ID><Name>Activity
+        Statement</Name></Template><Template><ID>1254068</ID><Name>Annual Accounts</Name></Template><Template><ID>1254069</ID><Name>ASIC
+        Annual Review</Name></Template><Template><ID>1254071</ID><Name>Consulting</Name></Template><Template><ID>1254072</ID><Name>FBT
+        Nil Return</Name></Template><Template><ID>1254073</ID><Name>FBT Return</Name></Template><Template><ID>1254070</ID><Name>SMSF
+        Annual Accounts</Name></Template><Template><ID>1254075</ID><Name>Tax Return
+        - Company NIL</Name></Template><Template><ID>1254076</ID><Name>Tax Return
+        - Individual</Name></Template><Template><ID>1254077</ID><Name>Xero Consulting</Name></Template><Template><ID>1254078</ID><Name>Xero
+        Setup/Conversion</Name></Template></Templates></Response>
+    http_version: null
+  recorded_at: Tue, 28 Apr 2020 23:53:49 GMT
+recorded_with: VCR 5.1.0

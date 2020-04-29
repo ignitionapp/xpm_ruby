@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xero.com/practicemanager/3.0/client.api/add
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Client>
+          <Name>Acmer Pty Ltd</Name>
+        </Client>
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODgxMzA0NzQsImV4cCI6MTU4ODEzMjI3NCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODEzMDQ2NCwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjI5ZTUzOGU0NDBlMTQ3MTZiZjNiMmNkY2QwMWQ5NjFhIiwianRpIjoiOTBmZWVhYzIzNGMwOGVhMzlmYTY1ZGZkZTZhMzI5YmUiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.LVkwLJ1lIjssKoO0tDFZFDV8n0pSEYqYs92E_c4uXwlkJNUZaJJ53PAxlobe9RjpboX1qMnq4ZDrbC6LH2w9ay7PISje-9T_fbGk7YrUKDqVJ_JsfuQruTSfqhrnRw3l_s8uP42HGCV-VoC9rBhiNzxydSvBU0nxAkOSGjuZvSQg75XJhhmTM-uO9bdo4q_V_9tZUgnv7UBVzirrcF6wntYPH2eTSguYON4dxo5FG60BnGa7rKgJjSB9PeJPosoOpHkauLOeWS955tu7ki4_1ANZk0v55MILjyb37vDT4e8fPSbmgr0yHSCXJ56qd0VTkSylFOqEgetLw3QD2WfMGQ
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-daylimit-remaining:
+      - '4989'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - 2fe46aa7-08b1-4084-b7c8-29ef8a69d9a4
+      content-length:
+      - '634'
+      expires:
+      - Wed, 29 Apr 2020 03:22:00 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Wed, 29 Apr 2020 03:22:00 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="Add"><Status>OK</Status><Client><ID>25698662</ID><Name>Acmer
+        Pty Ltd</Name><Address></Address><City></City><Region></Region><PostCode></PostCode><Country></Country><PostalAddress></PostalAddress><PostalCity></PostalCity><PostalRegion></PostalRegion><PostalPostCode></PostalPostCode><PostalCountry></PostalCountry><Phone></Phone><Fax></Fax><Website></Website><ReferralSource></ReferralSource><ExportCode></ExportCode><IsProspect>No</IsProspect><IsArchived>No</IsArchived><IsDeleted>No</IsDeleted><Contacts
+        /><Notes /><Groups /><Relationships /><UUID>39a02ce2-f877-4d40-a5a7-d7355e88025b</UUID></Client></Response>
+    http_version: null
+  recorded_at: Wed, 29 Apr 2020 03:22:00 GMT
+recorded_with: VCR 5.1.0

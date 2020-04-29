@@ -3,17 +3,16 @@ require "base64"
 
 module XpmRuby
   class Connection
-    attr_accessor :api_url, :account_key, :api_key, :basic_auth
+    attr_accessor :xero_tenant_id, :authorization
 
-    def initialize(account_key:, api_key:, api_url:)
-      @api_url = api_url
-      @account_key = account_key
-      @api_key = api_key
-      @basic_auth = "Basic " + Base64.strict_encode64("#{api_key}:#{account_key}")
+    def initialize(access_token:, xero_tenant_id:)
+      @xero_tenant_id = xero_tenant_id
+      @authorization = "Bearer " + access_token
     end
 
-    def get(endpoint:, element_name:)
-      response = Faraday.new(url(endpoint: endpoint), headers: headers).get
+    def get(endpoint:, params: nil)
+      faraday_connection = Faraday.new(url)
+      response = faraday_connection.get(endpoint, params, headers)
 
       case response.status
       when 401
@@ -25,7 +24,30 @@ module XpmRuby
 
         case xml["Response"]["Status"]
         when "OK"
-          xml["Response"][element_name]
+          xml["Response"]
+        when "ERROR"
+          raise Error.new(response["ErrorDescription"])
+        end
+      else
+        raise Error.new(response.status)
+      end
+    end
+
+    def post(endpoint:, data:)
+      faraday_connection = Faraday.new(url)
+      response = faraday_connection.post(endpoint, data, headers)
+
+      case response.status
+      when 401
+        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
+
+        raise Unauthorized.new(hash["html"]["head"]["title"])
+      when 200
+        xml = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
+
+        case xml["Response"]["Status"]
+        when "OK"
+          xml["Response"]
         when "ERROR"
           raise Error.new(response["ErrorDescription"])
         end
@@ -37,11 +59,11 @@ module XpmRuby
     private
 
     def headers
-      { "Authorization" => @basic_auth }
+      { "Authorization" => @authorization, "xero-tenant-id" => @xero_tenant_id, "content_type" => "application/xml" }
     end
 
-    def url(endpoint:)
-      "https://#{@api_url}/v3/#{endpoint}"
+    def url
+      "https://api.xero.com/practicemanager/3.0/"
     end
   end
 end

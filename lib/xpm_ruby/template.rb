@@ -1,19 +1,19 @@
 require "ox"
 
 module XpmRuby
-  module Staff
+  module Template
     extend self
 
     class Error < Error; end
 
     def build(**args)
-      Models::Staff.new(args)
+      Models::Template.new(args)
     end
 
     def list(access_token:, xero_tenant_id:)
       Connection
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
-        .get(endpoint: "staff.api/list")["StaffList"]["Staff"]
+        .get(endpoint: "template.api/list")["Templates"]["Template"]
     end
   end
 end
