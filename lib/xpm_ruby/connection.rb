@@ -23,7 +23,7 @@ module XpmRuby
     private
 
     def headers
-      { "Authorization" => @authorization, "xero-tenant-id" => @xero_tenant_id, "content_type" => "application/xml"}
+      { "Authorization" => @authorization, "xero-tenant-id" => @xero_tenant_id, "content_type" => "application/xml" }
     end
 
     def url

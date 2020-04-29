@@ -24,8 +24,8 @@ module XpmRuby
         puts first_job.inspect
 
         expect(first_job.name).to eql("(Sample) Bookkeeping Monthly - Basic")
-        #expect(first_job.id).to eql("f6273477-e0d6-4122-b3ff-8373f285aaa7")
-        #expect(first_job.description).to eql("Use this job to record your internal and non-billable time for activities such as annual leave, sick leave, professional development, staff meetings etc")
+        # expect(first_job.id).to eql("f6273477-e0d6-4122-b3ff-8373f285aaa7")
+        # expect(first_job.description).to eql("Use this job to record your internal and non-billable time for activities such as annual leave, sick leave, professional development, staff meetings etc")
         expect(first_job.state).to eql("Planned")
         expect(first_job.start_date).to eql("2019-11-01T00:00:00")
         expect(first_job.due_date).to eql("2019-11-07T00:00:00")

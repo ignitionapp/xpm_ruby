@@ -12,7 +12,7 @@ module XpmRuby
       Models::Job.new(args)
     end
 
-    def current(access_token: access_token, xero_tenant_id: xero_tenant_id)
+    def current(access_token:, xero_tenant_id:)
       response = Connection
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
         .get(endpoint: "job.api/current")

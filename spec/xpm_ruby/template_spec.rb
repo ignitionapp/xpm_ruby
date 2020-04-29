@@ -22,7 +22,7 @@ module XpmRuby
         template = template_list.first
 
         expect(template.name).to eql("Activity Statement")
-        #expect(template.uuid).to eql("d5dd52a0-edc1-4b03-94e7-931aa34ab35c")
+        # expect(template.uuid).to eql("d5dd52a0-edc1-4b03-94e7-931aa34ab35c")
       end
     end
   end

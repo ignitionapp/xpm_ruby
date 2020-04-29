@@ -34,7 +34,7 @@ module XpmRuby
 
           expect(staff.name).to eql("test")
           expect(staff.email).to eql("adammikulas@gmail.com")
-          #expect(staff.uuid).to eql("1cc99c1e-8cf7-4248-ab84-3e11126facbc")
+          # expect(staff.uuid).to eql("1cc99c1e-8cf7-4248-ab84-3e11126facbc")
         end
       end
     end
