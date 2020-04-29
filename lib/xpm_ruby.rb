@@ -3,7 +3,9 @@ module XpmRuby
   class Unauthorized < Error; end
 end
 
-require "nokogiri"
+require "active_support"
+require "active_support/core_ext"
+require "builder"
 
 require "xpm_ruby/client"
 require "xpm_ruby/connection"

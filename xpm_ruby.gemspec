@@ -36,8 +36,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("pry-byebug", "~> 3")
 
   spec.add_runtime_dependency("faraday", "~> 1")
-  spec.add_runtime_dependency("nokogiri")
   spec.add_runtime_dependency("ox", "~> 2.13")
 
   spec.add_development_dependency("vcr")
+
+  spec.add_runtime_dependency("activesupport")
+  spec.add_runtime_dependency("builder")
 end
