@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     xpm_ruby (0.1.0)
-      faraday (~> 1)
+      faraday
       nokogiri
       ox (~> 2.13)
 
