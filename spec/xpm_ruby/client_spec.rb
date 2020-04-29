@@ -73,7 +73,7 @@ module XpmRuby
           xero_tenant_id: xero_tenant_id,
           client: client)
 
-        #expect(created_client.uuid).not_to be_nil
+        # expect(created_client.uuid).not_to be_nil
         expect(created_client.name).to eql(client.name)
       end
     end
