@@ -1,7 +1,5 @@
 require "ox"
 
-require_relative "models/template"
-
 module XpmRuby
   module Template
     extend self
@@ -27,11 +25,7 @@ module XpmRuby
 
         case hash["Response"]["Status"]
         when "OK"
-          hash["Response"]["Templates"]["Template"].map do |template|
-            Models::Template.new(
-              uuid: template["UUID"],
-              name: template["Name"])
-          end
+          hash["Response"]["Templates"]["Template"]
         when "ERROR"
           raise Error.new(response["ErrorDescription"])
         end
