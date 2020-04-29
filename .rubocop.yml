@@ -452,3 +452,6 @@ Style/SymbolProc:
 
 Style/ZeroLengthPredicate:
   Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
