@@ -2,49 +2,57 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.workflowmax.com/v3/job.api/add
+    uri: https://api.xero.com/practicemanager/3.0/job.api/add
     body:
       encoding: UTF-8
       string: "<Job><Name>Brochure Design</Name><Description>Detailed description
-        of the job</Description><ClientUUID>e349fc1b-d92d-4ba2-b9fc-69fdd516e2a2</ClientUUID><StartDate>20291023</StartDate><DueDate>20291028</DueDate></Job>"
+        of the job</Description><ClientID>24097642</ClientID><StartDate>20291023</StartDate><DueDate>20291028</DueDate></Job>"
     headers:
       User-Agent:
       - Faraday v1.0.1
       Authorization:
-      - Basic TEST=
-      Content-Type:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODgxMTUyMTQsImV4cCI6MTU4ODExNzAxNCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODA1MTE0MywieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjQzMGI0ZmVmMWI0NjQ2MGZiMTgwOWNmNmQ5OWJhODIxIiwianRpIjoiMmI3NGQxZDZhMzcxNDlhN2VjNjkwNmM2NGM0MDFlMjEiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.EJ5_dU4efS9e2w68A63GQaVWghmcIONEOfkB4Wp0IGNwTbNU441x3vSAMdRY5MShT1jk9cTR-207OKClFJAuwWZbODQcs2bV9YDj5PH9cCtNCULFOClQCn7zfUonkMdZ9FiL4RjJ6xXbWOmfD-vYhQRLbAkKDcZad8HcPIzPyKvyHFuxTDk7FKs-OI3sUPQUqQrBKAcmD2C8PR8al7PNn0kwrug1a2_R0z74Sygg1iKJlShMLMBbaDfq_7zxbMvGrLvW1vLMlJDhxD-sR4_T-B3n6_VDFybFfShQqtkoJwk4-fAqc0S8N0Vmx_kRLqzVEIE8NiouqnTvt6i8Bvc5PQ
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
       - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
   response:
     status:
       code: 200
       message: OK
     headers:
-      access-control-allow-origin:
-      - "*"
-      cache-control:
-      - private
       content-type:
       - text/xml; charset=utf-8
-      date:
-      - Tue, 28 Apr 2020 02:16:27 GMT
       server:
-      - Microsoft-IIS/10.0
-      vary:
-      - Accept-Encoding
-      x-aspnet-version:
-      - 4.0.30319
-      x-aspnetmvc-version:
-      - '4.0'
+      - Kestrel
+      x-daylimit-remaining:
+      - '4996'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - e81ba109-9c33-4457-853b-6d1a17406718
       content-length:
-      - '434'
+      - '441'
+      expires:
+      - Tue, 28 Apr 2020 23:28:07 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 28 Apr 2020 23:28:07 GMT
       connection:
       - keep-alive
+      x-client-tls-ver:
+      - tls1.3
     body:
-      encoding: ASCII-8BIT
-      string: <Response api-method="Add"><Status>OK</Status><Job><ID>J000028</ID><UUID>a979d2ef-0085-4f2b-b0dc-274847e1044c</UUID><Name>Brochure
-        Design</Name><Description>Detailed description of the job</Description><Client><UUID>e349fc1b-d92d-4ba2-b9fc-69fdd516e2a2</UUID><Name>ABC
-        Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><Assigned
+      encoding: UTF-8
+      string: <Response api-method="Add"><Status>OK</Status><Job><ID>J000029</ID><Name>Brochure
+        Design</Name><Description>Detailed description of the job</Description><Client><ID>24097642</ID><Name>ABC
+        Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><InternalID>44346180</InternalID><Assigned
         /><Tasks /><Milestones /><Notes /></Job></Response>
     http_version: null
-  recorded_at: Tue, 28 Apr 2020 02:16:29 GMT
+  recorded_at: Tue, 28 Apr 2020 23:28:07 GMT
 recorded_with: VCR 5.1.0

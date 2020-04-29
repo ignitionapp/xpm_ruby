@@ -18,9 +18,8 @@ module XpmRuby
       end
 
       context "when keys valid" do
-        let(:api_key) { "TEST" }
-        let(:account_key) { "TEST" }
-        let(:api_url) { "api.workflowmax.com" }
+        let(:xero_tenant_id) { "XERO_TENANT_ID" }
+        let(:access_token) { "XERO_ACCESS_TOKEN" }
 
         around(:each) do |example|
           VCR.use_cassette("xpm_ruby/staff/list") do
@@ -29,13 +28,13 @@ module XpmRuby
         end
 
         it "lists staff" do
-          staff_list = service.list(api_key: api_key, account_key: account_key, api_url: api_url)
+          staff_list = service.list(access_token: access_token, xero_tenant_id: xero_tenant_id)
 
           staff = staff_list.last
 
-          expect(staff.name).to eql("John Doe")
-          expect(staff.email).to eql("john@test.com")
-          expect(staff.uuid).to eql("1cc99c1e-8cf7-4248-ab84-3e11126facbc")
+          expect(staff.name).to eql("test")
+          expect(staff.email).to eql("adammikulas@gmail.com")
+          # expect(staff.uuid).to eql("1cc99c1e-8cf7-4248-ab84-3e11126facbc")
         end
       end
     end

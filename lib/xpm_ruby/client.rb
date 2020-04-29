@@ -50,7 +50,7 @@ module XpmRuby
       Models::Client.new(args)
     end
 
-    def add(api_key:, account_key:, api_url:, client:)
+    def add(access_token:, xero_tenant_id:, client:)
       builder = ::Nokogiri::XML::Builder.new do |xml|
         xml.Client do
           xml.Name do
@@ -60,7 +60,7 @@ module XpmRuby
       end
 
       response = Connection
-        .new(api_key: api_key, account_key: account_key, api_url: api_url)
+        .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
         .post(endpoint: "client.api/add", data: builder.doc.root.to_xml)
 
       case response.status

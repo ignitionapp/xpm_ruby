@@ -2,51 +2,59 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.workflowmax.com/v3/staff.api/list
+    uri: https://api.xero.com/practicemanager/3.0/staff.api/list
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      Authorization:
-      - Basic TEST=
       User-Agent:
       - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODgxMTUyMTQsImV4cCI6MTU4ODExNzAxNCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODA1MTE0MywieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjQzMGI0ZmVmMWI0NjQ2MGZiMTgwOWNmNmQ5OWJhODIxIiwianRpIjoiMmI3NGQxZDZhMzcxNDlhN2VjNjkwNmM2NGM0MDFlMjEiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.EJ5_dU4efS9e2w68A63GQaVWghmcIONEOfkB4Wp0IGNwTbNU441x3vSAMdRY5MShT1jk9cTR-207OKClFJAuwWZbODQcs2bV9YDj5PH9cCtNCULFOClQCn7zfUonkMdZ9FiL4RjJ6xXbWOmfD-vYhQRLbAkKDcZad8HcPIzPyKvyHFuxTDk7FKs-OI3sUPQUqQrBKAcmD2C8PR8al7PNn0kwrug1a2_R0z74Sygg1iKJlShMLMBbaDfq_7zxbMvGrLvW1vLMlJDhxD-sR4_T-B3n6_VDFybFfShQqtkoJwk4-fAqc0S8N0Vmx_kRLqzVEIE8NiouqnTvt6i8Bvc5PQ
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
+      - application/xml
   response:
     status:
       code: 200
       message: OK
     headers:
-      access-control-allow-origin:
-      - "*"
-      cache-control:
-      - private
       content-type:
       - text/xml; charset=utf-8
-      date:
-      - Tue, 28 Apr 2020 01:27:12 GMT
       server:
-      - Microsoft-IIS/10.0
-      vary:
-      - Accept-Encoding
-      x-aspnet-version:
-      - 4.0.30319
-      x-aspnetmvc-version:
-      - '4.0'
+      - Kestrel
+      x-daylimit-remaining:
+      - '4999'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - f2154beb-32f3-47aa-8a0a-e327cf7ebb9f
       content-length:
-      - '801'
+      - '1794'
+      expires:
+      - Tue, 28 Apr 2020 23:17:54 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 28 Apr 2020 23:17:54 GMT
       connection:
       - keep-alive
+      x-client-tls-ver:
+      - tls1.3
     body:
-      encoding: ASCII-8BIT
-      string: <Response api-method="List"><Status>OK</Status><StaffList><Staff><UUID>8c79202e-caf8-4a12-a3d7-ac338e50741f</UUID><Name>Dev
-        Testing</Name><Email>dev@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>2fd3a292-eeeb-4dea-9deb-0b0d3e2a8e4e</UUID><Name>Ed
-        Minn</Name><Email>luis+edminn@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>54b0dace-1e82-4403-8b87-2d5874db28e6</UUID><Name>Jana
-        Paulech</Name><Email>jana@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>3be259b2-68f8-4bce-8dc5-4d7004d41f66</UUID><Name>Nick
-        Dainty</Name><Email>nick@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>79ec70c2-4956-4239-8448-8484ddd03f25</UUID><Name>Nick
-        Dainty</Name><Email>nick+xpmtest2@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>e71b8196-9033-40f0-ba5e-f689ecf881cf</UUID><Name>Patrick
-        Frigo</Name><Email>patrick.frigo@xero.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>1f0585b0-1b53-4fd0-b97d-3e7e8c20b5bc</UUID><Name>Patty
-        Igneous</Name><Email>luis@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>6bbd3326-1a23-4bb2-bcbe-ffa51bd76625</UUID><Name>Some
-        User</Name><Email>some_user@pattyrocks.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>7d33e725-02f5-4676-976e-ea63f7bed6c3</UUID><Name>Test</Name><Email>chris@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><UUID>6e73ba03-d7f3-49ec-b5be-39843aa7fc46</UUID><Name>test</Name><Email>adammikulas@gmail.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff></StaffList></Response>
+      encoding: UTF-8
+      string: <Response api-method="List"><Status>OK</Status><StaffList><Staff><ID>859230</ID><Name>Dev
+        Testing</Name><Email>dev@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><ID>859317</ID><Name>Ed
+        Minn</Name><Email>luis+edminn@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><ID>858949</ID><Name>Jana
+        Paulech</Name><Email>jana@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><ID>859231</ID><Name>Nick
+        Dainty</Name><Email>nick@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><ID>863967</ID><Name>Nick
+        Dainty</Name><Email>nick+xpmtest2@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><ID>858948</ID><Name>Patrick
+        Frigo</Name><Email>patrick.frigo@xero.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><ID>859319</ID><Name>Patty
+        Igneous</Name><Email>luis@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><ID>859318</ID><Name>Some
+        User</Name><Email>some_user@pattyrocks.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><ID>863927</ID><Name>Test</Name><Email>chris@practiceignition.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff><Staff><ID>866437</ID><Name>test</Name><Email>adammikulas@gmail.com</Email><Phone></Phone><Mobile></Mobile><Address></Address><PayrollCode></PayrollCode></Staff></StaffList></Response>
     http_version: null
-  recorded_at: Tue, 28 Apr 2020 01:27:13 GMT
+  recorded_at: Tue, 28 Apr 2020 23:17:54 GMT
 recorded_with: VCR 5.1.0

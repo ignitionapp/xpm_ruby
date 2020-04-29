@@ -2,51 +2,102 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.workflowmax.com/v3/job.api/current
+    uri: https://api.xero.com/practicemanager/3.0/job.api/current
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      Authorization:
-      - Basic TEST=
       User-Agent:
       - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODgxMTUyMTQsImV4cCI6MTU4ODExNzAxNCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODA1MTE0MywieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjQzMGI0ZmVmMWI0NjQ2MGZiMTgwOWNmNmQ5OWJhODIxIiwianRpIjoiMmI3NGQxZDZhMzcxNDlhN2VjNjkwNmM2NGM0MDFlMjEiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.EJ5_dU4efS9e2w68A63GQaVWghmcIONEOfkB4Wp0IGNwTbNU441x3vSAMdRY5MShT1jk9cTR-207OKClFJAuwWZbODQcs2bV9YDj5PH9cCtNCULFOClQCn7zfUonkMdZ9FiL4RjJ6xXbWOmfD-vYhQRLbAkKDcZad8HcPIzPyKvyHFuxTDk7FKs-OI3sUPQUqQrBKAcmD2C8PR8al7PNn0kwrug1a2_R0z74Sygg1iKJlShMLMBbaDfq_7zxbMvGrLvW1vLMlJDhxD-sR4_T-B3n6_VDFybFfShQqtkoJwk4-fAqc0S8N0Vmx_kRLqzVEIE8NiouqnTvt6i8Bvc5PQ
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
+      - application/xml
   response:
     status:
       code: 200
       message: OK
     headers:
-      access-control-allow-origin:
-      - "*"
-      cache-control:
-      - private
       content-type:
       - text/xml; charset=utf-8
-      date:
-      - Mon, 27 Apr 2020 06:50:18 GMT
       server:
-      - Microsoft-IIS/10.0
-      vary:
-      - Accept-Encoding
-      x-aspnet-version:
-      - 4.0.30319
-      x-aspnetmvc-version:
-      - '4.0'
+      - Kestrel
+      x-daylimit-remaining:
+      - '4995'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - b6f1355d-d2c2-4a7d-86bd-792ebfa6c10f
       content-length:
-      - '669'
+      - '13749'
+      expires:
+      - Tue, 28 Apr 2020 23:39:29 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 28 Apr 2020 23:39:29 GMT
       connection:
       - keep-alive
+      x-client-tls-ver:
+      - tls1.3
     body:
-      encoding: ASCII-8BIT
-      string: <Response api-method="Current"><Status>OK</Status><Jobs><Job><ID>J000001</ID><UUID>f6273477-e0d6-4122-b3ff-8373f285aaa7</UUID><Name>Internal
-        Time</Name><Description>Use this job to record your internal and non-billable
-        time for activities such as annual leave, sick leave, professional development,
-        staff meetings etc</Description><Client><UUID>55426e7e-426e-4767-a1c6-881598689460</UUID><Name>Practice
-        Ignition</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2020-04-20T00:00:00</StartDate><DueDate>2021-04-20T00:00:00</DueDate><Assigned><Staff><UUID>1cc99c1e-8cf7-4248-ab84-3e11126facbc</UUID><Name>Tony
-        Breckner</Name></Staff></Assigned></Job><Job><ID>J000002</ID><UUID>cf698ae8-e995-4d51-bb36-585634796c9f</UUID><Name>Setup
-        and Conversion Steps</Name><Description></Description><Client><UUID>55426e7e-426e-4767-a1c6-881598689460</UUID><Name>Practice
-        Ignition</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2020-04-21T00:00:00</StartDate><DueDate>2020-05-05T00:00:00</DueDate><Assigned><Staff><UUID>1cc99c1e-8cf7-4248-ab84-3e11126facbc</UUID><Name>Tony
-        Breckner</Name></Staff></Assigned></Job></Jobs></Response>
+      encoding: UTF-8
+      string: |-
+        <Response api-method="Current"><Status>OK</Status><Jobs><Job><ID>J000014</ID><Name>(Sample) Bookkeeping Monthly - Basic</Name><Description>28 November, 2019
+        https://demo.practiceignition.com/proposals/23531
+        (Sample) Bookkeeping Monthly - Basic
+
+        ---------------
+
+        28 November, 2019
+        https://demo.practiceignition.com/proposals/23530
+        (Sample) Bookkeeping Monthly - Basic</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber>23531</ClientOrderNumber><State>Planned</State><StartDate>2019-11-01T00:00:00</StartDate><DueDate>2019-11-07T00:00:00</DueDate><InternalID>40615371</InternalID><Manager><ID>859317</ID><Name>Ed Minn</Name></Manager><Assigned><Staff><ID>859317</ID><Name>Ed Minn</Name></Staff></Assigned></Job><Job><ID>J000013</ID><Name>(Sample) Bookkeeping Monthly - Basic</Name><Description>28 November, 2019
+        https://demo.practiceignition.com/proposals/23530
+        (Sample) Bookkeeping Monthly - Basic</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber>23531</ClientOrderNumber><State>Planned</State><StartDate>2019-11-08T00:00:00</StartDate><DueDate>2019-11-14T00:00:00</DueDate><InternalID>40615370</InternalID><Manager><ID>859317</ID><Name>Ed Minn</Name></Manager><Assigned><Staff><ID>859317</ID><Name>Ed Minn</Name></Staff></Assigned></Job><Job><ID>J000016</ID><Name>(Sample) Bookkeeping Monthly - Basic</Name><Description>28 November, 2019
+        https://demo.practiceignition.com/proposals/23530
+        (Sample) Bookkeeping Monthly - Basic</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber>23531</ClientOrderNumber><State>Planned</State><StartDate>2019-11-15T00:00:00</StartDate><DueDate>2019-11-21T00:00:00</DueDate><InternalID>40615382</InternalID><Manager><ID>859317</ID><Name>Ed Minn</Name></Manager><Assigned><Staff><ID>859317</ID><Name>Ed Minn</Name></Staff></Assigned></Job><Job><ID>J000015</ID><Name>(Sample) Bookkeeping Monthly - Basic</Name><Description>28 November, 2019
+        https://demo.practiceignition.com/proposals/23530
+        (Sample) Bookkeeping Monthly - Basic</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber>23531</ClientOrderNumber><State>Planned</State><StartDate>2019-11-22T00:00:00</StartDate><DueDate>2019-11-28T00:00:00</DueDate><InternalID>40615373</InternalID><Manager><ID>859317</ID><Name>Ed Minn</Name></Manager><Assigned><Staff><ID>859317</ID><Name>Ed Minn</Name></Staff></Assigned></Job><Job><ID>J000012</ID><Name>(Sample) Client Review Quarterly</Name><Description>27 November, 2019
+        https://demo.practiceignition.com/proposals/23499
+        (Sample) Client Review Quarterly
+
+        ---------------
+
+        27 November, 2019
+        https://demo.practiceignition.com/proposals/23498
+        (Sample) Client Review Quarterly</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber>23499</ClientOrderNumber><State>Planned</State><StartDate>2020-01-01T00:00:00</StartDate><DueDate>2020-01-07T00:00:00</DueDate><InternalID>40590048</InternalID><Manager><ID>859317</ID><Name>Ed Minn</Name></Manager><Assigned><Staff><ID>859317</ID><Name>Ed Minn</Name></Staff></Assigned></Job><Job><ID>J000022</ID><Name>Brochure Design</Name><Description>Detailed description of the job</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><InternalID>44305753</InternalID><Assigned /></Job><Job><ID>J000023</ID><Name>Brochure Design</Name><Description>Detailed description of the job</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><InternalID>44306866</InternalID><Assigned /></Job><Job><ID>J000024</ID><Name>Brochure Design</Name><Description>Detailed description of the job</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><InternalID>44309157</InternalID><Assigned /></Job><Job><ID>J000025</ID><Name>Brochure Design</Name><Description>Detailed description of the job</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><InternalID>44309165</InternalID><Assigned /></Job><Job><ID>J000026</ID><Name>Brochure Design</Name><Description>Detailed description of the job</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><InternalID>44310517</InternalID><Assigned /></Job><Job><ID>J000027</ID><Name>Brochure Design</Name><Description>Detailed description of the job</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><InternalID>44310566</InternalID><Assigned /></Job><Job><ID>J000028</ID><Name>Brochure Design</Name><Description>Detailed description of the job</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><InternalID>44313368</InternalID><Assigned /></Job><Job><ID>J000029</ID><Name>Brochure Design</Name><Description>Detailed description of the job</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><InternalID>44346180</InternalID><Assigned /></Job><Job><ID>J000003</ID><Name>(Sample) Annual Accounts and Tax Return</Name><Description>15 October, 2019
+        https://pi-review-pr-10033.herokuapp.com/proposals/1
+        (Sample) Annual Accounts and Tax Return</Description><Client><ID>23526538</ID><Name>Client 6</Name></Client><ClientOrderNumber>1</ClientOrderNumber><State>Planned</State><StartDate>2020-01-01T00:00:00</StartDate><DueDate>2020-12-31T00:00:00</DueDate><InternalID>39501788</InternalID><Assigned /></Job><Job><ID>J000004</ID><Name>(Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Name><Description>07 November, 2019
+        http://localhost:3000/proposals/4
+        (Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Description><Client><ID>23864530</ID><Name>Ian Example Client</Name></Client><ClientOrderNumber>4</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>40150666</InternalID><Assigned /></Job><Job><ID>J000005</ID><Name>(Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Name><Description>11 November, 2019
+        http://localhost:3000/proposals/6
+        (Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Description><Client><ID>23864530</ID><Name>Ian Example Client</Name></Client><ClientOrderNumber>6</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>40229141</InternalID><Assigned /></Job><Job><ID>J000006</ID><Name>(Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Name><Description>11 November, 2019
+        http://localhost:3000/proposals/7
+        (Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Description><Client><ID>23864530</ID><Name>Ian Example Client</Name></Client><ClientOrderNumber>7</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>40232745</InternalID><Assigned /></Job><Job><ID>J000007</ID><Name>(Sample) Annual Accounts and Tax Return</Name><Description>11 November, 2019
+        http://localhost:3000/proposals/8
+        (Sample) Annual Accounts and Tax Return</Description><Client><ID>23864530</ID><Name>Ian Example Client</Name></Client><ClientOrderNumber>8</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>40233555</InternalID><Assigned /></Job><Job><ID>J000008</ID><Name>(Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Name><Description>11 November, 2019
+        http://localhost:3000/proposals/9
+        (Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Description><Client><ID>23864530</ID><Name>Ian Example Client</Name></Client><ClientOrderNumber>9</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>40233593</InternalID><Assigned /></Job><Job><ID>J000009</ID><Name>(Sample) Bookkeeping Monthly - Basic</Name><Description>12 November, 2019
+        http://localhost:3000/proposals/10
+        (Sample) Bookkeeping Monthly - Basic</Description><Client><ID>23864530</ID><Name>Ian Example Client</Name></Client><ClientOrderNumber>10</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>40306029</InternalID><Assigned /></Job><Job><ID>J000010</ID><Name>(Sample) Ledger Conversion, Setup and Training - (Sample) Client Review Quarterly</Name><Description>12 November, 2019
+        http://localhost:3000/proposals/11
+        (Sample) Ledger Conversion, Setup and Training - (Sample) Client Review Quarterly</Description><Client><ID>23864530</ID><Name>Ian Example Client</Name></Client><ClientOrderNumber>11</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>40306035</InternalID><Assigned /></Job><Job><ID>J000011</ID><Name>(Sample) Annual Accounts and Tax Return</Name><Description>14 November, 2019
+        http://localhost:3000/proposals/13
+        (Sample) Annual Accounts and Tax Return</Description><Client><ID>23864530</ID><Name>Ian Example Client</Name></Client><ClientOrderNumber>13</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>40317608</InternalID><Assigned /></Job><Job><ID>J000017</ID><Name>(Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Name><Description>07 January, 2020
+        http://localhost:3000/proposals/191
+        (Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Description><Client><ID>23864530</ID><Name>Ian Example Client</Name></Client><ClientOrderNumber>191</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>41443427</InternalID><Assigned /></Job><Job><ID>J000001</ID><Name>Internal Time</Name><Description>Use this job to record your internal and non-billable time for activities such as annual leave, sick leave, professional development, staff meetings etc</Description><Client><ID>23403717</ID><Name>Practice Ignition - XPM Product &amp; Development Testing Account</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2019-09-30T00:00:00</StartDate><DueDate>2020-09-30T00:00:00</DueDate><InternalID>39186188</InternalID><Assigned><Staff><ID>858948</ID><Name>Patrick Frigo</Name></Staff></Assigned></Job><Job><ID>J000002</ID><Name>Setup and Conversion Steps</Name><Description></Description><Client><ID>23403717</ID><Name>Practice Ignition - XPM Product &amp; Development Testing Account</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2019-10-01T00:00:00</StartDate><DueDate>2019-10-15T00:00:00</DueDate><InternalID>39186189</InternalID><Assigned><Staff><ID>858948</ID><Name>Patrick Frigo</Name></Staff></Assigned></Job><Job><ID>J000018</ID><Name>(Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Name><Description>20 January, 2020
+        http://localhost:3000/proposals/194
+        (Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Description><Client><ID>23702571</ID><Name>Space Ranger</Name></Client><ClientOrderNumber>194</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>41684984</InternalID><Assigned /></Job><Job><ID>J000019</ID><Name>(Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Name><Description>20 January, 2020
+        http://localhost:3000/proposals/193
+        (Sample) Addon &lt;&lt;  integration_name  &gt;&gt;, Setup and Training</Description><Client><ID>23702571</ID><Name>Space Ranger</Name></Client><ClientOrderNumber>193</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>41695592</InternalID><Assigned /></Job><Job><ID>J000020</ID><Name>(Sample) Annual Accounts and Tax Return</Name><Description>14 February, 2020
+        http://localhost:3000/proposals/189
+        (Sample) Annual Accounts and Tax Return</Description><Client><ID>23702571</ID><Name>Space Ranger</Name></Client><ClientOrderNumber>189</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>42339558</InternalID><Assigned /></Job><Job><ID>J000021</ID><Name>service 1</Name><Description>24 March, 2020
+        http://localhost:3000/proposals/17
+        service 1</Description><Client><ID>23702571</ID><Name>Space Ranger</Name></Client><ClientOrderNumber>17</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-06-30T00:00:00</DueDate><InternalID>43375546</InternalID><Assigned /></Job></Jobs></Response>
     http_version: null
-  recorded_at: Mon, 27 Apr 2020 06:50:19 GMT
+  recorded_at: Tue, 28 Apr 2020 23:39:29 GMT
 recorded_with: VCR 5.1.0
