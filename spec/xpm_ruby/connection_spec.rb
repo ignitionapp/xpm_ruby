@@ -18,9 +18,7 @@ module XpmRuby
         connection = service.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
         response = connection.get(endpoint: "staff.api/list")
 
-        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
-
-        expect(hash["Response"]["Status"]).to eq("OK")
+        expect(response["Status"]).to eq("OK")
       end
     end
 
@@ -39,9 +37,7 @@ module XpmRuby
         connection = service.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
         response = connection.post(endpoint: "job.api/add", data: xml_string)
 
-        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
-
-        expect(hash["Response"]["Status"]).to eq("OK")
+        expect(response["Status"]).to eq("OK")
       end
     end
   end
