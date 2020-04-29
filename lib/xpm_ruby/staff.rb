@@ -11,9 +11,11 @@ module XpmRuby
     end
 
     def list(access_token:, xero_tenant_id:)
-      Connection
+      response = Connection
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
-        .get(endpoint: "staff.api/list")["StaffList"]["Staff"]
+        .get(endpoint: "staff.api/list")
+
+      response["StaffList"]["Staff"]
     end
   end
 end
