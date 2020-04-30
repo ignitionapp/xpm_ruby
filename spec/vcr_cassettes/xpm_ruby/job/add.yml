@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xero.com/practicemanager/3.0/job.api/add
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Job>
+          <Name>Joe Bloggs</Name>
+          <Description>New Job</Description>
+          <ClientID>24097642</ClientID>
+          <StartDate>20091023</StartDate>
+          <DueDate>20091023</DueDate>
+        </Job>
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODgyMDg3MjksImV4cCI6MTU4ODIxMDUyOSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODIwODU3NSwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjZmYWRiYTVmYWI3NTQ0NDliNjkwMGE1NzI3OGVlMjc5IiwianRpIjoiZmU2MjUyNzNhNmEwMTI4YjI2N2IxYmI1YWQzMGVkODgiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.iL5C3Lcc1KuxTcIMUNUdKfqRoB13flB46dyQ2fUcQesF_lloofR9qWzt1uijc91qQPnkyrgb_Kv2aGvR3YvXXM1naK2Wy87wfAJwonkAGm6IcIIeukgvvJMt3bNZvow-lrk2eb9Wfcz7xt_nJSqL9lr8YV9T5f56IWJzZJzwAiNYz4F1lmqzKMwX5fUU9gYHucgIgQAwDaD3AGPdB-AC71ZNw2Zwsshebv89CbSbpw7rGU9gEhHnI7PjXXYwRn430Zh9k0ruD7IQWNRMh26oS_PR4zIEFDGBn5xBdnm9jLWl9juQUkn0OPQvAwkEuM54AXSWaAgyeasdOtDNjD8JMA
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-daylimit-remaining:
+      - '4997'
+      x-minlimit-remaining:
+      - '58'
+      xero-correlation-id:
+      - 04e383a3-f80a-4076-b4fa-c5ac40eca5c8
+      content-length:
+      - '412'
+      expires:
+      - Thu, 30 Apr 2020 01:14:38 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Thu, 30 Apr 2020 01:14:38 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="Add"><Status>OK</Status><Job><ID>J000031</ID><Name>Joe
+        Bloggs</Name><Description>New Job</Description><Client><ID>24097642</ID><Name>ABC
+        Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2009-10-23T00:00:00</StartDate><DueDate>2009-10-23T00:00:00</DueDate><InternalID>44385850</InternalID><Assigned
+        /><Tasks /><Milestones /><Notes /></Job></Response>
+    http_version: null
+  recorded_at: Thu, 30 Apr 2020 01:14:38 GMT
+recorded_with: VCR 5.1.0
