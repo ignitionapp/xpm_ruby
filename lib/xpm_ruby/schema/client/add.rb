@@ -33,7 +33,7 @@ module XpmRuby
               Phone?: Types::Coercible::String,
               Mobile?: Types::Coercible::String,
               Email?: Types::String,
-              Position?: Types::String,
+              Position?: Types::String
             ).with_key_transform(&:to_sym)
           ).with_key_transform(&:to_sym)
         ),
