@@ -17,5 +17,15 @@ module XpmRuby
 
       response["Jobs"]["Job"]
     end
+
+    def add(access_token:, xero_tenant_id:, job:)
+      validated_job = XpmRuby::Schema::Job::Add[job]
+
+      response = Connection
+        .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+        .post(endpoint: "job.api/add", data: validated_job.to_xml(root: "Job"))
+
+      response["Job"]
+    end
   end
 end
