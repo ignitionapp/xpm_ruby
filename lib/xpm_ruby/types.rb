@@ -2,6 +2,6 @@ require "dry-types"
 
 module XpmRuby
   module Types
-    include Dry::Types.module
+    include Dry.Types()
   end
 end
