@@ -12,7 +12,7 @@ module XpmRuby
         it "should coerce the types" do
           hash = { "Name" => "Joe Bloggs", "Description" => "New Job", "ClientID" => 1234, "StartDate" => 20091023, "DueDate" => 20091023 }
           add = Job::Add[hash]
-          expect(add["ClientID"]).to eql("1234")
+          expect(add[:ClientID]).to eql("1234")
         end
       end
 
