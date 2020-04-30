@@ -19,7 +19,7 @@ module XpmRuby
     end
 
     def add(access_token:, xero_tenant_id:, job:)
-      validated_job = XpmRuby::Schema::Job::Add[job]
+      validated_job = Schema::Job::Add[job]
 
       response = Connection
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
