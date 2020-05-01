@@ -1,8 +1,8 @@
 # XpmRuby
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/xpm_ruby`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem is used to access Xero's XPM api.
 
-TODO: Delete this and the text above, and describe your gem
+You will need to install and manage the access_tokens with Oauth 2.0.
 
 ## Installation
 
@@ -31,22 +31,17 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Testing
+Rspec is used for testing
 
-### Testing with VCR
-There are a few extra steps you need when writing VCR spec to avoid checking in sensitive data.
-1. When writing a new VCR spec, you need to use the real api_key and account_key initially to hit the server
-1. After you have generated the cassette, change the api_key and account_key in your spec BEFORE CHECKING IT IN
-1. Open up the cassette and ensure you have updated the Basic auth code as well (also before checking it in) as you can extrapolate the account and api keys from this.
-```
-headers:
-      Authorization:
-      - Basic TEST
-```
-1. If needed you can also alter the body.string of the response
+`bundle exec rspec`
+
+In addition, rubocop is installed to check formatting and code quality
+
+`bundle exec rubocop`
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/xpm_ruby.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ignitionapp/xpm_ruby.
 
 
 ## License
