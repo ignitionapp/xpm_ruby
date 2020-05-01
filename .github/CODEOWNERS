@@ -1,2 +1,2 @@
-/lib/ @back-end
-/spec/ @back-end
+/lib/ @ignitionapp/back-end
+/spec/ @ignitionapp/back-end
