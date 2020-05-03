@@ -14,6 +14,7 @@ module XpmRuby
       faraday_connection = Faraday.new(url)
       response = faraday_connection.get(endpoint, params, headers)
       handle_response(response)
+
     end
 
     def post(endpoint:, data:)
@@ -41,9 +42,14 @@ module XpmRuby
     def handle_response(response)
       case response.status
       when 401
-        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
+        detail = JSON.parse(response.body)["Detail"]
 
-        raise Unauthorized.new(hash["html"]["head"]["title"])
+        case detail
+        when /TokenExpired: token expired/
+          raise AccessTokenExpired.new(detail)
+        else
+          raise Unauthorized.new(detail)
+        end
       when 200
         xml = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
 
