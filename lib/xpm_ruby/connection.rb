@@ -14,7 +14,6 @@ module XpmRuby
       faraday_connection = Faraday.new(url)
       response = faraday_connection.get(endpoint, params, headers)
       handle_response(response)
-
     end
 
     def post(endpoint:, data:)
