@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xero.com/practicemanager/3.0/staff.api/list
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer invalid
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
+      - application/xml
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      server:
+      - Kestrel
+      www-authenticate:
+      - Bearer error=invalid_token
+      xero-correlation-id:
+      - 61f11bc2-48ef-483e-9be3-40cc3e38af98
+      content-length:
+      - '153'
+      expires:
+      - Thu, 30 Apr 2020 00:54:44 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Thu, 30 Apr 2020 00:54:44 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: '{"Type":null,"Title":"Unauthorized","Status":401,"Detail":"AuthenticationUnsuccessful","Instance":"61f11bc2-48ef-483e-9be3-40cc3e38af98","Extensions":{}}'
+    http_version: null
+  recorded_at: Thu, 30 Apr 2020 00:54:44 GMT
+recorded_with: VCR 5.1.0
