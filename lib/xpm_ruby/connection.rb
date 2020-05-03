@@ -19,8 +19,6 @@ module XpmRuby
         detail = JSON.parse(response.body)["Detail"]
 
         case detail
-        when /AuthenticationUnsuccessful/
-          raise AccessTokenRejected.new(detail)
         when /TokenExpired: token expired/
           raise AccessTokenExpired.new(detail)
         else

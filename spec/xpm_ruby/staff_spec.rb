@@ -19,14 +19,14 @@ module XpmRuby
         end
       end
 
-      context "when access token rejected" do
-        let(:access_token) { "rejected" }
+      context "when access token unauthorized" do
+        let(:access_token) { "unauthorized" }
 
         it "raises access token expired exception" do
-          VCR.use_cassette("xpm_ruby/staff/list/access_token_rejected") do
+          VCR.use_cassette("xpm_ruby/staff/list/access_token_unauthorized") do
             expect do
               Staff.list(access_token: access_token, xero_tenant_id: xero_tenant_id)
-            end.to raise_error(XpmRuby::AccessTokenRejected)
+            end.to raise_error(XpmRuby::Unauthorized)
           end
         end
       end
