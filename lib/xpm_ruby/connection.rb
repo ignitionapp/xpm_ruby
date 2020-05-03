@@ -22,6 +22,12 @@ module XpmRuby
       handle_response(response)
     end
 
+    def put(endpoint:, data:)
+      faraday_connection = Faraday.new(url)
+      response = faraday_connection.put(endpoint, data, headers)
+      handle_response(response)
+    end
+
     private
 
     def headers
