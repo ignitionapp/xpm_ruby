@@ -13,47 +13,13 @@ module XpmRuby
     def get(endpoint:, params: nil)
       faraday_connection = Faraday.new(url)
       response = faraday_connection.get(endpoint, params, headers)
-
-      case response.status
-      when 401
-        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
-
-        raise Unauthorized.new(hash["html"]["head"]["title"])
-      when 200
-        xml = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
-
-        case xml["Response"]["Status"]
-        when "OK"
-          xml["Response"]
-        when "ERROR"
-          raise Error.new(response["ErrorDescription"])
-        end
-      else
-        raise Error.new(response.status)
-      end
+      handle_response(response)
     end
 
     def post(endpoint:, data:)
       faraday_connection = Faraday.new(url)
       response = faraday_connection.post(endpoint, data, headers)
-
-      case response.status
-      when 401
-        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
-
-        raise Unauthorized.new(hash["html"]["head"]["title"])
-      when 200
-        xml = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
-
-        case xml["Response"]["Status"]
-        when "OK"
-          xml["Response"]
-        when "ERROR"
-          raise Error.new(response["ErrorDescription"])
-        end
-      else
-        raise Error.new(response.status)
-      end
+      handle_response(response)
     end
 
     private
@@ -64,6 +30,26 @@ module XpmRuby
 
     def url
       "https://api.xero.com/practicemanager/3.0/"
+    end
+
+    def handle_response(response)
+      case response.status
+      when 401
+        hash = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
+
+        raise Unauthorized.new(hash["html"]["head"]["title"])
+      when 200
+        xml = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
+
+        case xml["Response"]["Status"]
+        when "OK"
+          xml["Response"]
+        when "ERROR"
+          raise Error.new(response["ErrorDescription"])
+        end
+      else
+        raise Error.new(response.status)
+      end
     end
   end
 end
