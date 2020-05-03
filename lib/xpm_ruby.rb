@@ -1,6 +1,7 @@
 module XpmRuby
   class Error < StandardError; end
   class Unauthorized < Error; end
+  class AccessTokenExpired < Unauthorized; end
 end
 
 require "active_support"
