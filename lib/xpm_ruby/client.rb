@@ -11,5 +11,15 @@ module XpmRuby
 
       response["Client"]
     end
+
+    def update(access_token:, xero_tenant_id:, client:)
+      validated_client = Schema::Client::Update[client]
+
+      response = Connection
+        .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+        .put(endpoint: "client.api/update", data: validated_client.to_xml(root: "Client"))
+
+      response["Client"]
+    end
   end
 end
