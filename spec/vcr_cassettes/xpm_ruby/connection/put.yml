@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.xero.com/practicemanager/3.0/job.api/update
+    body:
+      encoding: UTF-8
+      string: "<Job><ID>J000029</ID><Name>Brochure Design UPDATED</Name><Description>Detailed
+        description of the job</Description><ClientID>24097642</ClientID><StartDate>20291023</StartDate><DueDate>20291028</DueDate></Job>"
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg1NDg0NjAsImV4cCI6MTU4ODU1MDI2MCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODU0ODQ1MSwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjJjODBmMmNhNmU3OTQyYWNiZTBiYTk1NzY0Nzk1NGFhIiwianRpIjoiZTQ5ZWUxODYzNTMzZGQwNDgxOGU0ODM3NTI2N2RjNDIiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.mR6KQeDBi30hNt_turDOgeq9FN3xuJGoaTlcbetP4vRjy-HhkHpUfbWk6oUqU7M1-u_xKwWh2N3saH7xJTbE5T4lnj5FJLLz_GXL3uokhD9Z4TFk7ZjwjrOlg-Y0fvLwYc_DC-BG0m58clYPZnWSBxRtlVvIe7tSEGj0aH5ka9uRpfUTgWznrB-XokRoP2KtHNqY-oP2MqY-qmaX_1tzc3wzYxpAEu8X4anCSqCZan8Qx7q0RvdG8nvnrWWIRNAlZflT3t7oVJR3wNh2QIb85g8i0T92_Fn73zU4p-r7xd0VsWP4npX8DQpBsJNqt03Du3OwiwNyrzS2B6UskYsiEQ
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9999'
+      x-daylimit-remaining:
+      - '4999'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - 50048c9e-944d-46a1-bb0a-a38effdaf21a
+      content-length:
+      - '452'
+      expires:
+      - Sun, 03 May 2020 23:28:08 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Sun, 03 May 2020 23:28:08 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="Update"><Status>OK</Status><Job><ID>J000029</ID><Name>Brochure
+        Design UPDATED</Name><Description>Detailed description of the job</Description><Client><ID>24097642</ID><Name>ABC
+        Co</Name></Client><ClientOrderNumber></ClientOrderNumber><State>Planned</State><StartDate>2029-10-23T00:00:00</StartDate><DueDate>2029-10-28T00:00:00</DueDate><InternalID>44346180</InternalID><Assigned
+        /><Tasks /><Milestones /><Notes /></Job></Response>
+    http_version: null
+  recorded_at: Sun, 03 May 2020 23:28:08 GMT
+recorded_with: VCR 5.1.0
