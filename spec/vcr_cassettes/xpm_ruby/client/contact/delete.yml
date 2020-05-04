@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.xero.com/practicemanager/3.0/client.api/contact/14574323
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg1Njg5NzgsImV4cCI6MTU4ODU3MDc3OCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODU2ODk2OSwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6Ijg2YmJlZDQxYzEyOTQ1ZTQ4NWJlMmZmZmMwZDcxODU1IiwianRpIjoiNDAwNTYxZTliYmNjYWQwYjk3OTRiMjIxYTNkM2RmMzciLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.gVMav9yD4reWzAUS0KRM517b2rBAb1hkunkayEoE1plaI9NaV5mTG4SoGS04_Cq4_MhsLBYIwXauKHbgw8gpN17jpTf-JkG6eGDbvuItIXGEyvp4LRlIrJnJkpCcXZtuv8ASzmuEputYI85CpwJa-yXNZgkmQcZxsu7oGhGSR0zKRS1aVWuEEToNPCDL-y5n0Bd29RMdJXW4AFkITfIUiKUugF6Q2DvqBATVRl2jTq6mRdlexPnFuBk06DtVTukhDlc_z8M20rrg7BYDESQDNM1gnRGTMF4tVgTbC3Mjpqj-q8DeBp34I7biQWYrs9bM7rlz5BJz8f7jMOocbKNvzA
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9999'
+      x-daylimit-remaining:
+      - '4983'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - fc3f4eb9-a9e0-456c-8c02-28e9f5aec8c5
+      content-length:
+      - '266'
+      expires:
+      - Mon, 04 May 2020 05:10:25 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Mon, 04 May 2020 05:10:25 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="Contact"><Status>OK</Status><Contact><ID>14574323</ID><Name>some
+        guy person</Name><Mobile></Mobile><Email></Email><Phone></Phone><Position></Position><Salutation></Salutation><Addressee></Addressee><IsPrimary>No</IsPrimary></Contact></Response>
+    http_version: null
+  recorded_at: Mon, 04 May 2020 05:10:25 GMT
+recorded_with: VCR 5.1.0

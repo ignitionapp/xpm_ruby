@@ -28,6 +28,12 @@ module XpmRuby
       handle_response(response)
     end
 
+    def delete(endpoint:, id:)
+      faraday_connection = Faraday.new(url)
+      response = faraday_connection.delete("#{endpoint}/#{id}", nil, headers)
+      handle_response(response)
+    end
+
     private
 
     def headers
