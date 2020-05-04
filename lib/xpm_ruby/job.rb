@@ -29,7 +29,7 @@ module XpmRuby
 
       response = Connection
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
-        .post(endpoint: "job.api/add", data: validated_job.to_xml(root: "Job"))
+        .put(endpoint: "job.api/update", data: validated_job.to_xml(root: "Job"))
 
       response["Job"]
     end
