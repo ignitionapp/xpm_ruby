@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.xero.com/practicemanager/3.0/client.api/update
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Client>
+          <ID>25655881</ID>
+          <Name>Acmer Pty Ltd</Name>
+        </Client>
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer "access_token"
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9999'
+      x-daylimit-remaining:
+      - '4978'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - b8d8cbed-eebb-4a1b-ad08-7268a2995dd4
+      content-length:
+      - '1025'
+      expires:
+      - Mon, 04 May 2020 06:09:44 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Mon, 04 May 2020 06:09:44 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="Update"><Status>OK</Status><Client><ID>25655881</ID><Name>Acmer
+        Pty Ltd</Name><Address></Address><City></City><Region></Region><PostCode></PostCode><Country></Country><PostalAddress></PostalAddress><PostalCity></PostalCity><PostalRegion></PostalRegion><PostalPostCode></PostalPostCode><PostalCountry></PostalCountry><Phone></Phone><Fax></Fax><Website></Website><ReferralSource></ReferralSource><ExportCode></ExportCode><IsProspect>No</IsProspect><IsArchived>No</IsArchived><IsDeleted>No</IsDeleted><TaxNumber></TaxNumber><CompanyNumber></CompanyNumber><BusinessNumber></BusinessNumber><BranchNumber>1</BranchNumber><GSTRegistered>No</GSTRegistered><PrepareGST>No</PrepareGST><SignedTaxAuthority>No</SignedTaxAuthority><AgencyStatus>Unlinked</AgencyStatus><PrepareActivityStatement>No</PrepareActivityStatement><PrepareTaxReturn>No</PrepareTaxReturn><ActiveAtoClient>No</ActiveAtoClient><Contacts
+        /><Notes /><Groups /><Relationships /><UUID>9f868ba7-437c-4574-9a17-8c6f4890545b</UUID></Client></Response>
+    http_version: null
+  recorded_at: Mon, 04 May 2020 06:09:44 GMT
+recorded_with: VCR 5.1.0
