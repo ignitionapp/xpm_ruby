@@ -14,6 +14,7 @@ require "xpm_ruby/job"
 
 require "xpm_ruby/schema/client/add"
 require "xpm_ruby/schema/job/add"
+require "xpm_ruby/schema/job/update"
 
 require "xpm_ruby/staff"
 require "xpm_ruby/template"
