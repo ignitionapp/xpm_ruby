@@ -9,6 +9,7 @@ require "active_support/core_ext"
 require "builder"
 
 require "xpm_ruby/client"
+require "xpm_ruby/client/contact"
 require "xpm_ruby/connection"
 require "xpm_ruby/job"
 
