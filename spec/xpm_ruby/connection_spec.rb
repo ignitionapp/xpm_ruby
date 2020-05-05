@@ -35,7 +35,6 @@ module XpmRuby
           end
         end
       end
-
     end
 
     describe "#post" do
@@ -43,12 +42,34 @@ module XpmRuby
         "<Job><Name>Brochure Design</Name><Description>Detailed description of the job</Description><ClientID>24097642</ClientID><StartDate>20291023</StartDate><DueDate>20291028</DueDate></Job>"
       end
 
-      it "should post to Faraday with the right endpoint, data and headers" do
-        VCR.use_cassette("xpm_ruby/connection/post") do
-          connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
-          response = connection.post(endpoint: "job.api/add", data: xml_string)
 
-          expect(response["Status"]).to eq("OK")
+      context "with a valid tenant id and access token" do
+        it "should post to Faraday with the right endpoint, data and headers" do
+          VCR.use_cassette("xpm_ruby/connection/post") do
+            connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+            response = connection.post(endpoint: "job.api/add", data: xml_string)
+
+            expect(response["Status"]).to eq("OK")
+          end
+        end
+      end
+
+      context "with an invalid xero_tenant_id" do
+        it "should raise an error" do
+          VCR.use_cassette("xpm_ruby/connection/post/bad_tenant") do
+            connection = Connection.new(access_token: access_token, xero_tenant_id: "bad_tenant")
+
+            expect { connection.post(endpoint: "job.api/add", data: xml_string) }.to raise_error(XpmRuby::Unauthorized, /AuthenticationUnsuccessful/)
+          end
+        end
+      end
+
+      context "with an invalid access_token" do
+        it "should raise an error" do
+          VCR.use_cassette("xpm_ruby/connection/post/bad_token") do
+            connection = Connection.new(access_token: "bad_token", xero_tenant_id: xero_tenant_id)
+            expect { connection.post(endpoint: "job.api/add", data: xml_string) }.to raise_error(XpmRuby::Unauthorized, /AuthenticationUnsuccessful/)
+          end
         end
       end
     end
