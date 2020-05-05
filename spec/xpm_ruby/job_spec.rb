@@ -72,5 +72,28 @@ module XpmRuby
         expect(updated_job["DueDate"]).to eql("2009-10-23T00:00:00")
       end
     end
+
+    describe ".get" do
+      let(:xero_tenant_id) { "XERO_TENANT_ID" }
+      let(:access_token) { "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg2MzQ0MTUsImV4cCI6MTU4ODYzNjIxNSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODYzNDQwNSwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjZkNjc2ZGM5ZDFjZDRlMmU5YTExMjEyMTI1ZjYzMzg2IiwianRpIjoiMzk5MGMyZGRjNzQzNTIyZjA3ZjRkNWIwODA2NzA1YWEiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.DKgxE5ynBtFTFvVPUWD8PDMIHmmh5V722gDGkHxN19BZ6WQcuPLoDI-MMma449gCvZ5D8Q95YtyVDqmjOtRni_PzOjMUQ7hNe05dp_YCKMiAwbDKlBC0O0sDNULawxXtqAVrcDuRG7MJ6I4Oru8qFl-KIyYTGRjuHsVezUjJo8tadlUMWr6Vy8Lkjq3lqBPWmraJtgAB81J2omWe4Ipeku7r2-7Gfvabp54WA9iwEvm-FQhNqi9QjOpRgv1eMFlit9qJQZckCEQoIn5fysVlyCm969MfjSLGCoQEiZrx68lv73AHbQhAPhY1PZD8v3ZaoOePu1nR2SeLh5GMGItWlA" }
+      let(:job_id) { "J000014" }
+
+      around(:each) do |example|
+        VCR.use_cassette("xpm_ruby/job/get") do
+          example.run
+        end
+      end
+
+      it "gets the job details" do
+        job = Job.get(access_token: access_token, xero_tenant_id: xero_tenant_id, job_id: job_id)
+
+        expect(job["Name"]).to eql("(Sample) Bookkeeping Monthly - Basic")
+        expect(job["ID"]).to eql("J000014")
+        expect(job["State"]).to eql("Planned")
+        expect(job["StartDate"]).to eql("2019-11-01T00:00:00")
+        expect(job["DueDate"]).to eql("2019-11-07T00:00:00")
+        expect(job["CompletedDate"]).to be_nil
+      end
+    end
   end
 end
