@@ -21,5 +21,15 @@ module XpmRuby
 
       response["Client"]
     end
+
+    def list(access_token:, xero_tenant_id:, detailed: true, modified_since: nil)
+      response = Connection
+        .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+        .get(
+          endpoint: "client.api/list",
+          params: { detailed: detailed, modified_since: modified_since })
+
+      response["Clients"]["Client"]
+    end
   end
 end
