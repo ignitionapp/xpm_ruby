@@ -62,7 +62,7 @@ module XpmRuby
         when "OK"
           xml["Response"]
         when "ERROR"
-          raise Error.new(response["ErrorDescription"])
+          raise Error.new(xml["Response"]["ErrorDescription"])
         end
       else
         raise Error.new(response.status)
