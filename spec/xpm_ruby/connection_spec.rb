@@ -42,7 +42,6 @@ module XpmRuby
         "<Job><Name>Brochure Design</Name><Description>Detailed description of the job</Description><ClientID>24097642</ClientID><StartDate>20291023</StartDate><DueDate>20291028</DueDate></Job>"
       end
 
-
       context "with a valid tenant id and access token" do
         it "should post to Faraday with the right endpoint, data and headers" do
           VCR.use_cassette("xpm_ruby/connection/post") do
@@ -79,34 +78,66 @@ module XpmRuby
         "<Job><ID>J000029</ID><Name>Brochure Design UPDATED</Name><Description>Detailed description of the job</Description><ClientID>24097642</ClientID><StartDate>20291023</StartDate><DueDate>20291028</DueDate></Job>"
       end
 
-      around(:each) do |example|
-        VCR.use_cassette("xpm_ruby/connection/put") do
-          example.run
+      context "with a valid tenant id and access token" do
+        it "should post to Faraday with the right endpoint, data and headers" do
+          VCR.use_cassette("xpm_ruby/connection/put") do
+            connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+            response = connection.put(endpoint: "job.api/update", data: xml_string)
+
+            expect(response["Status"]).to eq("OK")
+          end
         end
       end
 
-      it "should post to Faraday with the right endpoint, data and headers" do
-        connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
-        response = connection.put(endpoint: "job.api/update", data: xml_string)
+      context "with an invalid xero_tenant_id" do
+        it "should raise an error" do
+          VCR.use_cassette("xpm_ruby/connection/put/bad_tenant") do
+            connection = Connection.new(access_token: access_token, xero_tenant_id: "bad_tenant")
 
-        expect(response["Status"]).to eq("OK")
+            expect { connection.put(endpoint: "job.api/update", data: xml_string) }.to raise_error(XpmRuby::Unauthorized, /AuthenticationUnsuccessful/)
+          end
+        end
+      end
+
+      context "with an invalid access_token" do
+        it "should raise an error" do
+          VCR.use_cassette("xpm_ruby/connection/put/bad_token") do
+            connection = Connection.new(access_token: "bad_token", xero_tenant_id: xero_tenant_id)
+            expect { connection.put(endpoint: "job.api/update", data: xml_string) }.to raise_error(XpmRuby::Unauthorized, /AuthenticationUnsuccessful/)
+          end
+        end
       end
     end
 
     describe "#delete" do
       let(:contact_id) { "14574323" }
 
-      around(:each) do |example|
+      it "should delete to Faraday with the right endpoint" do
         VCR.use_cassette("xpm_ruby/connection/delete") do
-          example.run
+          connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+          response = connection.delete(endpoint: "client.api/contact", id: contact_id)
+
+          expect(response["Status"]).to eq("OK")
         end
       end
 
-      it "should delete to Faraday with the right endpoint" do
-        connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
-        response = connection.delete(endpoint: "client.api/contact", id: contact_id)
+      context "with an invalid xero_tenant_id" do
+        it "should raise an error" do
+          VCR.use_cassette("xpm_ruby/connection/delete/bad_tenant") do
+            connection = Connection.new(access_token: access_token, xero_tenant_id: "bad_tenant")
 
-        expect(response["Status"]).to eq("OK")
+            expect { connection.delete(endpoint: "client.api/contact", id: contact_id) }.to raise_error(XpmRuby::Unauthorized, /AuthenticationUnsuccessful/)
+          end
+        end
+      end
+
+      context "with an invalid access_token" do
+        it "should raise an error" do
+          VCR.use_cassette("xpm_ruby/connection/delete/bad_token") do
+            connection = Connection.new(access_token: "bad_token", xero_tenant_id: xero_tenant_id)
+            expect { connection.delete(endpoint: "client.api/contact", id: contact_id) }.to raise_error(XpmRuby::Unauthorized, /AuthenticationUnsuccessful/)
+          end
+        end
       end
     end
   end
