@@ -95,5 +95,22 @@ module XpmRuby
         expect(job["CompletedDate"]).to be_nil
       end
     end
+
+    describe ".state" do
+      let(:xero_tenant_id) { "0791dc22-8611-4c1c-8df7-1c5453d0795b" }
+      let(:access_token) { "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg2NDI1OTUsImV4cCI6MTU4ODY0NDM5NSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODY0MjU3NiwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjQxZjgwYTEyNDliMjQ1NDFiNTAxOThhODY4ZThiMWJkIiwianRpIjoiY2MxZGQ5ZGU4YWY4NzQ4ZGJjMWQ0MjFhMzI2ZDc0ZmMiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.reMALI71PnDhbv90cfx9HxYM3GWBgAkB66d-6FUZEILLcqQYvqoKrfQRonDDFR-4jjIfYPtsQnN6Db7kH-iN2kEhvESnj9OD1rWuNp0v4slrwZjZ1TpYev2iHLTKh9zzAZhF8WPGqj9DtVzQQgK20bwiPMLVcku652vJKWvIV73xNrCeeze2dgQRGONy-hsRVm5Z6bgDChQhIAClj7G9vwOtFJEthh7qrLp3N7HadS91Q3EE48inYE3wSrxHshiaPIr8lbj4tvtj0qQUk9g4NNSyrT2G2-M9V9kSNi6eZoWWTecxm-FyjE8U-tnSlLmYpWINxOM9hlGMawNCkzvFmA" }
+      let(:job) { { "ID" => "J000031", "State" => "COMPLETED" } }
+
+      around(:each) do |example|
+        VCR.use_cassette("xpm_ruby/job/state") do
+          example.run
+        end
+      end
+
+      it "sets the state on the job" do
+        response = Job.state(access_token: access_token, xero_tenant_id: xero_tenant_id, job: job)
+        expect(response).to eq("OK")
+      end
+    end
   end
 end
