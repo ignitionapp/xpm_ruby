@@ -95,5 +95,31 @@ module XpmRuby
         expect(job["CompletedDate"]).to be_nil
       end
     end
+
+    describe ".state" do
+      let(:xero_tenant_id) { "XERO_TENANT_ID" }
+      let(:access_token) { "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg2NDczMjIsImV4cCI6MTU4ODY0OTEyMiwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODY0NzMxNCwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjJjODE3OTIzZWI3NTQ5Nzk4ODZkNmQyNzNlMDIxOWY4IiwianRpIjoiNjBhZjYyMDJmOGFlZmYzOGUyODgxZmE3MWUyYTEzODciLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.ihigSPTTvjVFeOya1Pv5abPXgpNufswAXnDRm0tWvJYEejkJjG3V0TK2EkPE3L14zI0IfN_hPmT8rWBxKZo9yf_0p2apLIRFWzR4PCqJBMhrvT4ZMvwqb2jyeezODK68scAxImT2si3hU7C6hFOWxUEp6SlkWOxrIO-upNsV6NZrE7HCeAYzLz-mA8490Dkctwxp2OZNke1BW5OT9kqj7dBhWZRjesVOcpr5WgCTSVUnhgWzpV7R35NQl4TQoFxAAT_siAD8AWQCpcuebsLrFhvmxH6sX-Vwt8Gyc_90nxq_o0tmed6Gtv_HOd0lJRD3_251yZfGG14PWIFbpsEIHw" }
+
+      context "when the job state is successful" do
+        let(:job) { { "ID" => "J000031", "State" => "COMPLETED" } }
+
+        it "sets the state on the job" do
+          VCR.use_cassette("xpm_ruby/job/state/success") do
+            response = Job.state(access_token: access_token, xero_tenant_id: xero_tenant_id, job: job)
+            expect(response).to eq("OK")
+          end
+        end
+      end
+
+      context "when it is not successful" do
+        let(:job) { { "ID" => "J000031", "State" => "NONEXISTENT" } }
+
+        it "reports the error" do
+          VCR.use_cassette("xpm_ruby/job/state/fail") do
+            expect { Job.state(access_token: access_token, xero_tenant_id: xero_tenant_id, job: job) }.to raise_error(XpmRuby::Error, /Invalid state code/)
+          end
+        end
+      end
+    end
   end
 end

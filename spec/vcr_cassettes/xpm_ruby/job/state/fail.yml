@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.xero.com/practicemanager/3.0/job.api/state
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Job>
+          <ID>J000031</ID>
+          <State>NONEXISTENT</State>
+        </Job>
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg2NDczMjIsImV4cCI6MTU4ODY0OTEyMiwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODY0NzMxNCwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjJjODE3OTIzZWI3NTQ5Nzk4ODZkNmQyNzNlMDIxOWY4IiwianRpIjoiNjBhZjYyMDJmOGFlZmYzOGUyODgxZmE3MWUyYTEzODciLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.ihigSPTTvjVFeOya1Pv5abPXgpNufswAXnDRm0tWvJYEejkJjG3V0TK2EkPE3L14zI0IfN_hPmT8rWBxKZo9yf_0p2apLIRFWzR4PCqJBMhrvT4ZMvwqb2jyeezODK68scAxImT2si3hU7C6hFOWxUEp6SlkWOxrIO-upNsV6NZrE7HCeAYzLz-mA8490Dkctwxp2OZNke1BW5OT9kqj7dBhWZRjesVOcpr5WgCTSVUnhgWzpV7R35NQl4TQoFxAAT_siAD8AWQCpcuebsLrFhvmxH6sX-Vwt8Gyc_90nxq_o0tmed6Gtv_HOd0lJRD3_251yZfGG14PWIFbpsEIHw
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9998'
+      x-daylimit-remaining:
+      - '4993'
+      x-minlimit-remaining:
+      - '58'
+      xero-correlation-id:
+      - efb60254-fc34-468c-9912-29deaacd6082
+      content-length:
+      - '117'
+      expires:
+      - Tue, 05 May 2020 02:56:10 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 05 May 2020 02:56:10 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="State"><Status>ERROR</Status><ErrorDescription>Invalid
+        state code</ErrorDescription></Response>
+    http_version: null
+  recorded_at: Tue, 05 May 2020 02:56:10 GMT
+recorded_with: VCR 5.1.0
