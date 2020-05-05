@@ -4,10 +4,7 @@ module XpmRuby
   module Schema
     module Client
       module Contact
-        Add = Types::Hash.schema(
-          Client: Types::Hash.schema(
-            ID: Types::Coercible::String
-          ).with_key_transform(&:to_sym),
+        Update = Types::Hash.schema(
           Name?: Types::String,
           IsPrimary?: Types::String,
           Salutation?: Types::String,

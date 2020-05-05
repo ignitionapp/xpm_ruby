@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.xero.com/practicemanager/3.0/client.api/contact/15412877
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Contact>
+          <Name>Acmer Pty Ltd Updated 3</Name>
+        </Contact>
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg2NTE2MDQsImV4cCI6MTU4ODY1MzQwNCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODY1MTU5NCwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjczZDY2ZjdmOWQ4YjRiY2Q4NWU5ODQzMmU4ODk0YmVlIiwianRpIjoiZDg2MzY1MzNjZTc3ZmFkNmRkYWI4MGU4MmU3MjZkYzgiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.TNC9ssv-In26RmeEqa_FrJe7oAOcPQuRDY8A3HSK0D_oSa8h-Y6nvs8cuF9YOShXO3rfoc9G2GAYmEXGusav7cDyA9KktFOD94BsitGsK3lJLe8IumWE1aysaiH7DPJVo6LDQciakqusx-aAJaurIxMqnXxBcGzrwnR2SEdwLuv5kwphT4izrKpFoskfhONbbkZpYLB2Zg6zD8VkAYIoENPqOW7j_h1BW7NvbRz0LKhZCXOxWVHw-5ND-x5Cy1Pn4niqSftF59sTcqOg8TE3ibTePO_44FFIr8KMy_AlbkPlsdzbW-GN7OLx7nVQ5mh5p_k0EGxBzfmseKxTkuSoDg
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9999'
+      x-daylimit-remaining:
+      - '4985'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - 1905d74e-32f4-49db-874e-91e08c9938e0
+      content-length:
+      - '274'
+      expires:
+      - Tue, 05 May 2020 04:33:24 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 05 May 2020 04:33:24 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="Contact"><Status>OK</Status><Contact><ID>15412877</ID><Name>Acmer
+        Pty Ltd Updated 3</Name><Mobile></Mobile><Email></Email><Phone></Phone><Position></Position><Salutation></Salutation><Addressee></Addressee><IsPrimary>No</IsPrimary></Contact></Response>
+    http_version: null
+  recorded_at: Tue, 05 May 2020 04:33:24 GMT
+recorded_with: VCR 5.1.0
