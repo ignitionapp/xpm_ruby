@@ -121,5 +121,32 @@ module XpmRuby
         end
       end
     end
+
+    describe ".delete" do
+      let(:xero_tenant_id) { "XERO_TENANT_ID" }
+      let(:access_token) { "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg2NTc4MDIsImV4cCI6MTU4ODY1OTYwMiwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODY1Nzc5MywieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjQxY2U2ODQwYjA1MDRjOWJhNTJlMjZkMmZkZmExMmZhIiwianRpIjoiN2IzYzk1NDc0NDRmNDU3ZDVhNDRiYjEyOGI1M2NiNmYiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.jaYj-iBvzvS0WZXmTOsWPc_KJe0M3Xfrpbvfbn_fb925hwknvv31uup2NCVZWIh8MTBCFmVGu2c2KTqKXjnaEvoReRfRIhNpsqK-dReysgL3KTMrBKouS8a8VjMrOMxso0Q-xp3v6M0CfAf6C4WUiBWkVrMnNd-20aaY9Wv_4vkpa5r4muerm8FZyxHFD6-pOgiZRiEI2OgOT1wceI-ONLI5NhyFtv3eoCCr5ubFRlX5odOT8R-xI2jkePUaBPoGMitKdwZaDkVWEnweUdd7SO-OzD5ErcqARnjCBH3gQFNBKhLQh5XsalugQ9embc2wuOKO9UMj70gkz4oVQbCmcQ" }
+
+      context "with a valid job id" do
+        let(:job) { { "ID" => "J000031" } }
+
+        it "updates a job" do
+          VCR.use_cassette("xpm_ruby/job/delete") do
+            response = Job.delete(access_token: access_token, xero_tenant_id: xero_tenant_id, job: job)
+
+            expect(response).to eq("OK")
+          end
+        end
+      end
+
+      context "with an invalid job id" do
+        let(:job) { { "ID" => "none" } }
+
+        it "returns an error" do
+          VCR.use_cassette("xpm_ruby/job/delete/error") do
+            expect { Job.delete(access_token: access_token, xero_tenant_id: xero_tenant_id, job: job) }.to raise_error(XpmRuby::Error, /Invalid job identifier/)
+          end
+        end
+      end
+    end
   end
 end

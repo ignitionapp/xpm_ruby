@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xero.com/practicemanager/3.0/job.api/delete
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Job>
+          <ID>J000031</ID>
+        </Job>
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg2NTc4MDIsImV4cCI6MTU4ODY1OTYwMiwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODY1Nzc5MywieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjQxY2U2ODQwYjA1MDRjOWJhNTJlMjZkMmZkZmExMmZhIiwianRpIjoiN2IzYzk1NDc0NDRmNDU3ZDVhNDRiYjEyOGI1M2NiNmYiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.jaYj-iBvzvS0WZXmTOsWPc_KJe0M3Xfrpbvfbn_fb925hwknvv31uup2NCVZWIh8MTBCFmVGu2c2KTqKXjnaEvoReRfRIhNpsqK-dReysgL3KTMrBKouS8a8VjMrOMxso0Q-xp3v6M0CfAf6C4WUiBWkVrMnNd-20aaY9Wv_4vkpa5r4muerm8FZyxHFD6-pOgiZRiEI2OgOT1wceI-ONLI5NhyFtv3eoCCr5ubFRlX5odOT8R-xI2jkePUaBPoGMitKdwZaDkVWEnweUdd7SO-OzD5ErcqARnjCBH3gQFNBKhLQh5XsalugQ9embc2wuOKO9UMj70gkz4oVQbCmcQ
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9999'
+      x-daylimit-remaining:
+      - '4984'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - 96cc210d-f392-4448-befb-5f1c792ed82b
+      content-length:
+      - '60'
+      expires:
+      - Tue, 05 May 2020 05:50:50 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 05 May 2020 05:50:50 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="Delete"><Status>OK</Status></Response>
+    http_version: null
+  recorded_at: Tue, 05 May 2020 05:50:50 GMT
+recorded_with: VCR 5.1.0
