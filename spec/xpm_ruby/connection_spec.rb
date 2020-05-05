@@ -22,7 +22,7 @@ module XpmRuby
           VCR.use_cassette("xpm_ruby/connection/get/bad_tenant") do
             connection = Connection.new(access_token: access_token, xero_tenant_id: "bad_tenant")
 
-            expect { connection.get(endpoint: "staff.api/list") }.to raise_error(XpmRuby::Unauthorized, /AuthenticationUnsuccessful/)
+            expect { connection.get(endpoint: "staff.api/list") }.to raise_error(XpmRuby::Forbidden, /AuthenticationUnsuccessful/)
           end
         end
       end
@@ -58,7 +58,7 @@ module XpmRuby
           VCR.use_cassette("xpm_ruby/connection/post/bad_tenant") do
             connection = Connection.new(access_token: access_token, xero_tenant_id: "bad_tenant")
 
-            expect { connection.post(endpoint: "job.api/add", data: xml_string) }.to raise_error(XpmRuby::Unauthorized, /AuthenticationUnsuccessful/)
+            expect { connection.post(endpoint: "job.api/add", data: xml_string) }.to raise_error(XpmRuby::Forbidden, /AuthenticationUnsuccessful/)
           end
         end
       end
@@ -94,7 +94,7 @@ module XpmRuby
           VCR.use_cassette("xpm_ruby/connection/put/bad_tenant") do
             connection = Connection.new(access_token: access_token, xero_tenant_id: "bad_tenant")
 
-            expect { connection.put(endpoint: "job.api/update", data: xml_string) }.to raise_error(XpmRuby::Unauthorized, /AuthenticationUnsuccessful/)
+            expect { connection.put(endpoint: "job.api/update", data: xml_string) }.to raise_error(XpmRuby::Forbidden, /AuthenticationUnsuccessful/)
           end
         end
       end
@@ -126,7 +126,7 @@ module XpmRuby
           VCR.use_cassette("xpm_ruby/connection/delete/bad_tenant") do
             connection = Connection.new(access_token: access_token, xero_tenant_id: "bad_tenant")
 
-            expect { connection.delete(endpoint: "client.api/contact", id: contact_id) }.to raise_error(XpmRuby::Unauthorized, /AuthenticationUnsuccessful/)
+            expect { connection.delete(endpoint: "client.api/contact", id: contact_id) }.to raise_error(XpmRuby::Forbidden, /AuthenticationUnsuccessful/)
           end
         end
       end
