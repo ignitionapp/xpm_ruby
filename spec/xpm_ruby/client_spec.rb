@@ -49,7 +49,7 @@ module XpmRuby
               access_token: access_token,
               xero_tenant_id: xero_tenant_id)
 
-            expect(clients.count).to eql(12)
+            expect(clients.count).to eq(12)
           end
         end
       end
