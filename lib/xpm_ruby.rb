@@ -19,6 +19,7 @@ require "xpm_ruby/schema/client/update"
 require "xpm_ruby/schema/client/contact/add"
 require "xpm_ruby/schema/client/contact/update"
 require "xpm_ruby/schema/job/add"
+require "xpm_ruby/schema/job/delete"
 require "xpm_ruby/schema/job/state"
 require "xpm_ruby/schema/job/update"
 
