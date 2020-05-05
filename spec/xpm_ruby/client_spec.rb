@@ -38,19 +38,19 @@ module XpmRuby
           expect(updated_client["Name"]).to eql(client["Name"])
         end
       end
+    end
 
-      describe ".list" do
-        let(:xero_tenant_id) { "0791dc22-8611-4c1c-8df7-1c5453d0795b" }
-        let(:access_token) { "token" }
+    describe ".list" do
+      let(:xero_tenant_id) { "0791dc22-8611-4c1c-8df7-1c5453d0795b" }
+      let(:access_token) { "token" }
 
-        it "list client" do
-          VCR.use_cassette("xpm_ruby/client/list") do
-            clients = Client.list(
-              access_token: access_token,
-              xero_tenant_id: xero_tenant_id)
+      it "list client" do
+        VCR.use_cassette("xpm_ruby/client/list") do
+          clients = Client.list(
+            access_token: access_token,
+            xero_tenant_id: xero_tenant_id)
 
-            expect(clients.count).to eq(12)
-          end
+          expect(clients.count).to eq(12)
         end
       end
     end
