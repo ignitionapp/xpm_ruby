@@ -55,6 +55,9 @@ module XpmRuby
         else
           raise Unauthorized.new(detail)
         end
+      when 403 # this can happen with a bad xero_tenant_id
+        detail = JSON.parse(response.body)["Detail"]
+        raise Forbidden.new(detail)
       when 200
         xml = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
 

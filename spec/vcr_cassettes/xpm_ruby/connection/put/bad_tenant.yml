@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.xero.com/practicemanager/3.0/job.api/update
+    body:
+      encoding: UTF-8
+      string: "<Job><ID>J000029</ID><Name>Brochure Design UPDATED</Name><Description>Detailed
+        description of the job</Description><ClientID>24097642</ClientID><StartDate>20291023</StartDate><DueDate>20291028</DueDate></Job>"
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg2NTA2MjEsImV4cCI6MTU4ODY1MjQyMSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODY1MDYwOSwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjJjODE3OTIzZWI3NTQ5Nzk4ODZkNmQyNzNlMDIxOWY4IiwianRpIjoiNGM0NmJmZDA5NjFlYWZhNmFmZjQ1M2M1NjQ0NWEyZGEiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.Zsak1BIzRocLPjWb62uVgNaWO3U3o1LKtWrzO2Sj3AoSg-y1Rk5bKxp9PzaAEtE2qmyMQTDGlPHV0jzcqnZOqbbWdLAqyLVDQEeW7nh-9ZWVHmuJ9GG7DKzvHv7Sau_R3i_TlRRcdnQmYdhvZlqg-eUeZXGdzJnFWDk121SuV3dMJV0fJsfg3sfdr7DmbBoWCn-hdcSo2CuYA-IdnIFvlaX2lfZ06i391kYF0YGbWcZ_BX6cUWKMYBuoT_dBZL0wN_6q5KLCgRrLFqgXoR8Eao-h6bXEPTHgx0rW14cVeSrVOeobmJjqnsEd2LyDyn5zWaoie2Xezt5KBtNPtPGr7g
+      xero-tenant-id:
+      - bad_tenant
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      content-type:
+      - application/json
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9999'
+      xero-correlation-id:
+      - a959a763-cd16-471d-ba2c-9bdcfc2543d3
+      content-length:
+      - '150'
+      expires:
+      - Tue, 05 May 2020 04:09:28 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 05 May 2020 04:09:28 GMT
+      connection:
+      - close
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: '{"Type":null,"Title":"Forbidden","Status":403,"Detail":"AuthenticationUnsuccessful","Instance":"a959a763-cd16-471d-ba2c-9bdcfc2543d3","Extensions":{}}'
+    http_version: null
+  recorded_at: Tue, 05 May 2020 04:09:28 GMT
+recorded_with: VCR 5.1.0
