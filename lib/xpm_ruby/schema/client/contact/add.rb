@@ -6,7 +6,7 @@ module XpmRuby
       module Contact
         Add = Types::Hash.schema(
           Client: Types::Hash.schema(
-            Id: Types::String
+            ID: Types::Coercible::String
           ).with_key_transform(&:to_sym),
           Name?: Types::String,
           IsPrimary?: Types::Bool,
@@ -15,7 +15,7 @@ module XpmRuby
           Mobile?: Types::String,
           Email?: Types::String,
           Phone?: Types::String,
-          Position?: Types::String,
+          Position?: Types::String
         ).with_key_transform(&:to_sym)
       end
     end
