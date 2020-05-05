@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xero.com/practicemanager/3.0/job.api/get/J000014
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg2MzQ0MTUsImV4cCI6MTU4ODYzNjIxNSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODYzNDQwNSwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjZkNjc2ZGM5ZDFjZDRlMmU5YTExMjEyMTI1ZjYzMzg2IiwianRpIjoiMzk5MGMyZGRjNzQzNTIyZjA3ZjRkNWIwODA2NzA1YWEiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.DKgxE5ynBtFTFvVPUWD8PDMIHmmh5V722gDGkHxN19BZ6WQcuPLoDI-MMma449gCvZ5D8Q95YtyVDqmjOtRni_PzOjMUQ7hNe05dp_YCKMiAwbDKlBC0O0sDNULawxXtqAVrcDuRG7MJ6I4Oru8qFl-KIyYTGRjuHsVezUjJo8tadlUMWr6Vy8Lkjq3lqBPWmraJtgAB81J2omWe4Ipeku7r2-7Gfvabp54WA9iwEvm-FQhNqi9QjOpRgv1eMFlit9qJQZckCEQoIn5fysVlyCm969MfjSLGCoQEiZrx68lv73AHbQhAPhY1PZD8v3ZaoOePu1nR2SeLh5GMGItWlA
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9999'
+      x-daylimit-remaining:
+      - '4999'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - 7baa6c6a-9b30-4390-acac-8f4c1169c978
+      content-length:
+      - '776'
+      expires:
+      - Mon, 04 May 2020 23:21:25 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Mon, 04 May 2020 23:21:25 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: |-
+        <Response api-method="Get"><Status>OK</Status><Job><ID>J000014</ID><Name>(Sample) Bookkeeping Monthly - Basic</Name><Description>28 November, 2019
+        https://demo.practiceignition.com/proposals/23531
+        (Sample) Bookkeeping Monthly - Basic
+
+        ---------------
+
+        28 November, 2019
+        https://demo.practiceignition.com/proposals/23530
+        (Sample) Bookkeeping Monthly - Basic</Description><Client><ID>24097642</ID><Name>ABC Co</Name></Client><ClientOrderNumber>23531</ClientOrderNumber><State>Planned</State><StartDate>2019-11-01T00:00:00</StartDate><DueDate>2019-11-07T00:00:00</DueDate><InternalID>40615371</InternalID><Manager><ID>859317</ID><Name>Ed Minn</Name></Manager><Assigned><Staff><ID>859317</ID><Name>Ed Minn</Name></Staff></Assigned><Tasks /><Milestones /><Notes /></Job></Response>
+    http_version: null
+  recorded_at: Mon, 04 May 2020 23:21:25 GMT
+recorded_with: VCR 5.1.0
