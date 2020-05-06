@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.xero.com/practicemanager/3.0/job.api/assign
+    body:
+      encoding: UTF-8
+      string: <Job><ID>J000032</ID><add id="859230"/> </Job>
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg3MjUwNzUsImV4cCI6MTU4ODcyNjg3NSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODcyNTA2NiwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6ImJjY2UxMTczMDYzMDQyMGNiMzlhODg3ZmFmZGZjNGFkIiwianRpIjoiMTE3M2I2MDhjOGYwZDkzZTQwNmZhNjQ5ZTA2MDk1YjEiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.GTTldfkds492bIybQqAZgIRtGJU8AfcIMBOhkSwORAbe4qpYBXjgScsZgv_M5bkRnytimH3ERfPMYpcUAbcyW36V2FhWNEQ0gJKqSh3VkwpUOzBHfHvfk5KMcqkYTYd4XslZ19Dr1t8rCdLQ66hfHHQM6ynLmxy34oNBn9WZHk0qb4iQYtZQTHRuAiCkPH0zk2NCbepUyUxAOEfXt_319AruPorSpn_F-xt0gDSN5hRPxOE1x-ttuJIA3wIP4T0ZIyQ3ciJBvFOZY3iSCyXwfneRkv37tm7UpQJTPbj3fYXA4ufDLGG6uwb22A50Xc0bgVDiIfa08-KHYbpOGO8aFQ
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9999'
+      x-daylimit-remaining:
+      - '4996'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - 6b770da1-6fc9-422e-9906-768465685b47
+      content-length:
+      - '823'
+      expires:
+      - Wed, 06 May 2020 00:33:56 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Wed, 06 May 2020 00:33:56 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: |-
+        <Response api-method="Assign"><Status>OK</Status><Job><ID>J000032</ID><Name>Accounting services - Basic Company/Trust Annual Accounting Services</Name><Description>01 May, 2020
+        https://demo.practiceignition.com/proposals/27447
+        Accounting services - Basic Company/Trust Annual Accounting Services
+
+        ---------------
+
+        30 April, 2020
+        https://demo.practiceignition.com/proposals/27413
+        Accounting services - Basic Company/Trust Annual Accounting Services</Description><Client><ID>23702571</ID><Name>Space Ranger</Name></Client><ClientOrderNumber>27447</ClientOrderNumber><State>Planned</State><StartDate>2019-07-01T00:00:00</StartDate><DueDate>2020-05-09T00:00:00</DueDate><InternalID>44395039</InternalID><Assigned><Staff><ID>859230</ID><Name>Dev Testing</Name></Staff></Assigned><Tasks /><Milestones /><Notes /></Job></Response>
+    http_version: null
+  recorded_at: Wed, 06 May 2020 00:33:56 GMT
+recorded_with: VCR 5.1.0
