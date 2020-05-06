@@ -251,5 +251,42 @@ module XpmRuby
         end
       end
     end
+
+    describe ".applytemplate" do
+      let(:xero_tenant_id) { "XERO_TENANT_ID" }
+      let(:access_token) { "token" }
+
+      context "with valid job and template" do
+        let(:job) { { "ID" => "J000032", "TemplateID" => 1254078, "TaskMode" => "AddNew" } }
+
+        it "applies the template to a job" do
+          VCR.use_cassette("xpm_ruby/job/applytemplate") do
+            applied_job = Job.applytemplate(access_token: access_token, xero_tenant_id: xero_tenant_id, job: job)
+
+            expect(applied_job["ID"]).to eql(job["ID"])
+          end
+        end
+      end
+
+      context "with invalid job" do
+        let(:job) { { "ID" => "none", "TemplateID" => 1254078, "TaskMode" => "AddNew" } }
+
+        it "throws invalid job error" do
+          VCR.use_cassette("xpm_ruby/job/applytemplate/invalidjob") do
+            expect { Job.applytemplate(access_token: access_token, xero_tenant_id: xero_tenant_id, job: job) }.to raise_error(XpmRuby::Error, /Invalid job identifier/)
+          end
+        end
+      end
+
+      context "with invalid template" do
+        let(:job) { { "ID" => "J000032", "TemplateID" => 1000, "TaskMode" => "AddNew" } }
+
+        it "throws invalid job error" do
+          VCR.use_cassette("xpm_ruby/job/applytemplate/invalidtemplate") do
+            expect { Job.applytemplate(access_token: access_token, xero_tenant_id: xero_tenant_id, job: job) }.to raise_error(XpmRuby::Error, /Invalid job template identifier/)
+          end
+        end
+      end
+    end
   end
 end
