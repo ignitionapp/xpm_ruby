@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xero.com/practicemanager/3.0/client.api/list?detailed=true&modifiedsince=2020-05-05T06%3A24%3A31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer token
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9999'
+      x-daylimit-remaining:
+      - '4973'
+      x-minlimit-remaining:
+      - '58'
+      xero-correlation-id:
+      - a9d5d271-2916-436c-b785-e12db4f0600e
+      content-length:
+      - '1271'
+      expires:
+      - Tue, 05 May 2020 06:47:51 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 05 May 2020 06:47:51 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="List"><Status>OK</Status><Clients><Client><ID>25655881</ID><Name>Updated2
+        Person Name</Name><Address></Address><City></City><Region></Region><PostCode></PostCode><Country></Country><PostalAddress></PostalAddress><PostalCity></PostalCity><PostalRegion></PostalRegion><PostalPostCode></PostalPostCode><PostalCountry></PostalCountry><Phone></Phone><Fax></Fax><Website></Website><ReferralSource></ReferralSource><ExportCode></ExportCode><IsProspect>No</IsProspect><IsArchived>No</IsArchived><IsDeleted>No</IsDeleted><TaxNumber></TaxNumber><CompanyNumber></CompanyNumber><BusinessNumber></BusinessNumber><BranchNumber>1</BranchNumber><GSTRegistered>No</GSTRegistered><PrepareGST>No</PrepareGST><SignedTaxAuthority>No</SignedTaxAuthority><AgencyStatus>Unlinked</AgencyStatus><PrepareActivityStatement>No</PrepareActivityStatement><PrepareTaxReturn>No</PrepareTaxReturn><ActiveAtoClient>No</ActiveAtoClient><Contacts><Contact><ID>15412877</ID><Name>Acmer
+        Pty Ltd Updated 3</Name><Mobile></Mobile><Email></Email><Phone></Phone><Position></Position><Salutation></Salutation><Addressee></Addressee><IsPrimary>No</IsPrimary></Contact></Contacts><Notes
+        /><Groups /><Relationships /><UUID>9f868ba7-437c-4574-9a17-8c6f4890545b</UUID></Client></Clients></Response>
+    http_version: null
+  recorded_at: Tue, 05 May 2020 06:47:51 GMT
+recorded_with: VCR 5.1.0

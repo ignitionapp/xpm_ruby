@@ -27,7 +27,9 @@ module XpmRuby
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
         .get(
           endpoint: "client.api/list",
-          params: { detailed: detailed, modified_since: modified_since })
+          params: {
+            "detailed" => detailed,
+            "modifiedsince" => modified_since }.compact)
 
       response["Clients"]["Client"]
     end
