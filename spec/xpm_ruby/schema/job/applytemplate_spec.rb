@@ -19,7 +19,7 @@ module XpmRuby
       context "with an invalid Applytemplate schema" do
         it "should raise an error" do
           hash = { "TemplateID" => 1234, "TaskMode" => "AddNew" }
-          expect { Job::Update[hash] }.to raise_error(Dry::Types::ConstraintError, /ID is missing in Hash input/)
+          expect { Job::Applytemplate[hash] }.to raise_error(Dry::Types::ConstraintError, /ID is missing in Hash input/)
         end
       end
     end
