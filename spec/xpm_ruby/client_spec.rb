@@ -71,26 +71,34 @@ module XpmRuby
 
       context "when detailed false" do
         it "list clients without details" do
-          VCR.use_cassette("xpm_ruby/client/list/with_detailed_false") do
+          VCR.use_cassette("xpm_ruby/client/list/when_detailed_false") do
             clients = Client.list(
               access_token: access_token,
               xero_tenant_id: xero_tenant_id,
               detailed: false)
 
-            expect(clients.count).to eq(12)
+            clients.each do |client|
+              expect(client).not_to have_key("Notes")
+              expect(client).not_to have_key("Groups")
+              expect(client).not_to have_key("Relationships")
+            end
           end
         end
       end
 
       context "when detailed true" do
         it "list clients with details" do
-          VCR.use_cassette("xpm_ruby/client/list/with_detailed_true") do
+          VCR.use_cassette("xpm_ruby/client/list/when_detailed_true") do
             clients = Client.list(
               access_token: access_token,
               xero_tenant_id: xero_tenant_id,
               detailed: true)
 
-            expect(clients.count).to eq(12)
+            clients.each do |client|
+              expect(client).to have_key("Notes")
+              expect(client).to have_key("Groups")
+              expect(client).to have_key("Relationships")
+            end
           end
         end
       end
