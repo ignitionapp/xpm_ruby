@@ -153,29 +153,84 @@ module XpmRuby
       let(:xero_tenant_id) { "0791dc22-8611-4c1c-8df7-1c5453d0795b" }
       let(:access_token) { "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg3MjUwNzUsImV4cCI6MTU4ODcyNjg3NSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODcyNTA2NiwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6ImJjY2UxMTczMDYzMDQyMGNiMzlhODg3ZmFmZGZjNGFkIiwianRpIjoiMTE3M2I2MDhjOGYwZDkzZTQwNmZhNjQ5ZTA2MDk1YjEiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.GTTldfkds492bIybQqAZgIRtGJU8AfcIMBOhkSwORAbe4qpYBXjgScsZgv_M5bkRnytimH3ERfPMYpcUAbcyW36V2FhWNEQ0gJKqSh3VkwpUOzBHfHvfk5KMcqkYTYd4XslZ19Dr1t8rCdLQ66hfHHQM6ynLmxy34oNBn9WZHk0qb4iQYtZQTHRuAiCkPH0zk2NCbepUyUxAOEfXt_319AruPorSpn_F-xt0gDSN5hRPxOE1x-ttuJIA3wIP4T0ZIyQ3ciJBvFOZY3iSCyXwfneRkv37tm7UpQJTPbj3fYXA4ufDLGG6uwb22A50Xc0bgVDiIfa08-KHYbpOGO8aFQ" }
 
-      context "with a valid job id and staff id" do
-        let(:job_xml) { '<Job><ID>J000032</ID><add id="859230"/> </Job>' }
+      context "add and remove staff" do
+        context "with a valid job id and staff id" do
+          let(:job_xml) { '<Job><ID>J000032</ID><add id="859230" /> </Job>' }
 
-        it "updates a job" do
-          VCR.use_cassette("xpm_ruby/job/assign") do
-            response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
+          it "updates a job" do
+            VCR.use_cassette("xpm_ruby/job/assign") do
+              response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
 
-            expect(response).to eq("OK")
+              expect(response).to eq("OK")
+            end
+          end
+        end
+
+        context "remove with a valid job id and staff id" do
+          let(:job_xml) { '<Job><ID>J000032</ID><remove id="859230" /> </Job>' }
+
+          it "updates a job" do
+            VCR.use_cassette("xpm_ruby/job/assign/remove") do
+              response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
+
+              expect(response).to eq("OK")
+            end
           end
         end
       end
 
-      context "remove with a valid job id and staff id" do
-        let(:job_xml) { '<Job><ID>J000032</ID><remove id="859230"/> </Job>' }
+      context "add and remove manager" do
+        context "with a valid job id and staff id" do
+          let(:job_xml) { '<Job><ID>J000032</ID><add-manager id="859230" /> </Job>' }
 
-        it "updates a job" do
-          VCR.use_cassette("xpm_ruby/job/assign/remove") do
-            response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
+          it "updates a job" do
+            VCR.use_cassette("xpm_ruby/job/assign/manager") do
+              response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
 
-            expect(response).to eq("OK")
+              expect(response).to eq("OK")
+            end
+          end
+        end
+
+        context "remove with a valid job id and staff id" do
+          let(:job_xml) { "<Job><ID>J000032</ID><remove-manager /> </Job>" }
+
+          it "updates a job" do
+            VCR.use_cassette("xpm_ruby/job/assign/removemanager") do
+              response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
+
+              expect(response).to eq("OK")
+            end
           end
         end
       end
+
+      context "add and remove partner" do
+        context "with a valid job id and staff id" do
+          let(:job_xml) { '<Job><ID>J000032</ID><add-partner id="859230" /> </Job>' }
+
+          it "updates a job" do
+            VCR.use_cassette("xpm_ruby/job/assign/partner") do
+              response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
+
+              expect(response).to eq("OK")
+            end
+          end
+        end
+
+        context "remove with a valid job id and staff id" do
+          let(:job_xml) { "<Job><ID>J000032</ID><remove-partner /> </Job>" }
+
+          it "updates a job" do
+            VCR.use_cassette("xpm_ruby/job/assign/removepartner") do
+              response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
+
+              expect(response).to eq("OK")
+            end
+          end
+        end
+      end
+
 
       context "with an invalid job id" do
         let(:job_xml) { '<Job><ID>none</ID><add id="859230"/> </Job>' }
