@@ -6,7 +6,7 @@ module XpmRuby
       Applytemplate = Types::Hash.schema(
         ID: Types::Coercible::String,
         TemplateID: Types::Coercible::String,
-        TaskMode: Types::String
+        TaskMode?: Types::String
       ).with_key_transform(&:to_sym)
     end
   end

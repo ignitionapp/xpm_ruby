@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xero.com/practicemanager/3.0/job.api/applytemplate
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Job>
+          <ID>J000032</ID>
+          <TemplateID>1000</TemplateID>
+          <TaskMode>AddNew</TaskMode>
+        </Job>
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg3MzAwNzAsImV4cCI6MTU4ODczMTg3MCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODczMDA2MiwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjA2NjA5YTA2M2IwYjRmY2Q5N2Y1NDhjOWJkZDI2Yzc0IiwianRpIjoiMjlkZGFkOGU4YzYxN2I4MmZkMjY5NDQ3MjI5ZmVjMDUiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.JrwjR8adShEJGeJi0WC5j8ADM-3q8RSdLgEDAsZr2GEedIuHCqUVF9QATqpXoL8rrRVnt14QPLXooGXY-mUiGbzgtJSj77ZYG1gbFrd2NgePavlewjiv1S4G4tAcV_L3z2ckB-3gTEEcTO0iqwAFYX5Q_nKdpAH-uHOoVPE2J19CniK_x88Eg9XSPYnBdy-xeAvqB7K3e8ileJdPd106Zoe5rCr9-OhQ0idgZRMk3j3-X9Lz2ogyO0tPRXuIaPDjjBaFHhOuYOyoeDeSovnPci-EsH5N0o3LoG6OKrxxn7mgJYSrr7NX15gCDuh1RmZMQ3pd1kMD_ZjJRRif9Ie7qA
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9998'
+      x-daylimit-remaining:
+      - '4984'
+      x-minlimit-remaining:
+      - '58'
+      xero-correlation-id:
+      - 162a9757-cd00-4064-bb95-43ea16281313
+      content-length:
+      - '138'
+      expires:
+      - Wed, 06 May 2020 02:05:40 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Wed, 06 May 2020 02:05:40 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="ApplyTemplate"><Status>ERROR</Status><ErrorDescription>Invalid
+        job template identifier</ErrorDescription></Response>
+    http_version: null
+  recorded_at: Wed, 06 May 2020 02:05:40 GMT
+recorded_with: VCR 5.1.0
