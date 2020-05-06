@@ -231,7 +231,6 @@ module XpmRuby
         end
       end
 
-
       context "with an invalid job id" do
         let(:job_xml) { '<Job><ID>none</ID><add id="859230"/> </Job>' }
 
