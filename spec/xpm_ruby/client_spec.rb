@@ -42,7 +42,7 @@ module XpmRuby
 
     describe ".list" do
       let(:xero_tenant_id) { "0791dc22-8611-4c1c-8df7-1c5453d0795b" }
-      let(:access_token) { "" }
+      let(:access_token) { "token" }
 
       context "when not modified since" do
         it "list all clients" do
