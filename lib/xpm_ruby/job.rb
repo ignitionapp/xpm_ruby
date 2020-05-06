@@ -61,5 +61,15 @@ module XpmRuby
 
       response["Status"]
     end
+
+    # The XML structure for job.assign does not fit in a Hash
+    # so we need to pass in the XML directly
+    def assign(access_token:, xero_tenant_id:, job_xml:)
+      response = Connection
+        .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+        .put(endpoint: "job.api/assign", data: job_xml)
+
+      response["Status"]
+    end
   end
 end
