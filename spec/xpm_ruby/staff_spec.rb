@@ -34,15 +34,28 @@ module XpmRuby
       context "when access token accepted" do
         let(:access_token) { "accepted" }
 
-        it "lists staff" do
-          VCR.use_cassette("xpm_ruby/staff/list/access_token_accepted") do
-            staff_list = Staff.list(access_token: access_token, xero_tenant_id: xero_tenant_id)
+        context "when multiple Staff returned" do
+          it "lists staff", :aggregate_failure do
+            VCR.use_cassette("xpm_ruby/staff/list/access_token_accepted") do
+              staff_list = Staff.list(access_token: access_token, xero_tenant_id: xero_tenant_id)
 
-            staff = staff_list.last
+              staff = staff_list.last
 
-            expect(staff["Name"]).to eql("test")
-            expect(staff["Email"]).to eql("adammikulas@gmail.com")
-            # expect(staff.uuid).to eql("1cc99c1e-8cf7-4248-ab84-3e11126facbc")
+              expect(staff["Name"]).to eql("test")
+              expect(staff["Email"]).to eql("adammikulas@gmail.com")
+              # expect(staff.uuid).to eql("1cc99c1e-8cf7-4248-ab84-3e11126facbc")
+            end
+          end
+        end
+
+        context "when a single Staff is returned" do
+          it "returns an Array of Staff", :aggregate_failure do
+            VCR.use_cassette("xpm_ruby/staff/list/access_token_accepted_one_staff") do
+              staff_list = Staff.list(access_token: access_token, xero_tenant_id: xero_tenant_id)
+
+              expect(staff_list).to be_a(Array)
+              expect(staff_list.first["Name"]).to eql("Adam Silver")
+            end
           end
         end
       end
