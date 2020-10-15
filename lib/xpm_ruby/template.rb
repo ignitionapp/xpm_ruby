@@ -11,7 +11,7 @@ module XpmRuby
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
         .get(endpoint: "template.api/list")
 
-      response["Templates"]["Template"]
+      Array.wrap(response["Templates"]["Template"])
     end
   end
 end

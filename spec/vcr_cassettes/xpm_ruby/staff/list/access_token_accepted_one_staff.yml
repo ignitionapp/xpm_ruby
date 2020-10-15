@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xero.com/practicemanager/3.0/staff.api/list
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer XERO_ACCESS_TOKEN
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-daylimit-remaining:
+      - '4994'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - e4487879-7b32-4ecf-b340-4483c145be02
+      content-length:
+      - '1794'
+      expires:
+      - Tue, 28 Apr 2020 23:48:01 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 28 Apr 2020 23:48:01 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><Response api-method="List"><Status>OK</Status><StaffList><Staff><ID>859230</ID><Name>Adam Silver</Name><Email>dev@practiceignition.com</Email><Phone /><Mobile /><Address /><PayrollCode /></Staff></StaffList></Response>
+    http_version: null
+  recorded_at: Tue, 28 Apr 2020 23:48:01 GMT
+recorded_with: VCR 5.1.0
