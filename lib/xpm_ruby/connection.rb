@@ -3,11 +3,12 @@ require "base64"
 
 module XpmRuby
   class Connection
-    attr_accessor :xero_tenant_id, :authorization
+    attr_accessor :xero_tenant_id, :authorization, :url
 
-    def initialize(access_token:, xero_tenant_id:)
+    def initialize(access_token:, xero_tenant_id:, url: nil)
       @xero_tenant_id = xero_tenant_id
       @authorization = "Bearer " + access_token
+      @url = url || xpm_url
     end
 
     def get(endpoint:, params: nil)
@@ -40,7 +41,7 @@ module XpmRuby
       { "Authorization" => @authorization, "xero-tenant-id" => @xero_tenant_id, "content_type" => "application/xml" }
     end
 
-    def url
+    def xpm_url
       "https://api.xero.com/practicemanager/3.0/"
     end
 
