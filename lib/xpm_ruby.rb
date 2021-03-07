@@ -10,6 +10,7 @@ require "active_support"
 require "active_support/core_ext"
 require "builder"
 
+require "xpm_ruby/category"
 require "xpm_ruby/client"
 require "xpm_ruby/contact"
 require "xpm_ruby/connection"
