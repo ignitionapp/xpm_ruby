@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xero.com/practicemanager/3.0/category.api/list
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer access_token
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      content-length:
+      - '258'
+      server:
+      - nginx
+      xero-correlation-id:
+      - c736aae5-0038-4fec-a83d-915bbb5645d9
+      x-appminlimit-remaining:
+      - '9999'
+      x-minlimit-remaining:
+      - '59'
+      x-daylimit-remaining:
+      - '4992'
+      expires:
+      - Sun, 07 Mar 2021 22:41:49 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Sun, 07 Mar 2021 22:41:49 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="List"><Status>OK</Status><Categories /></Response>
+    http_version: null
+  recorded_at: Sun, 07 Mar 2021 22:41:49 GMT
+recorded_with: VCR 5.1.0

@@ -31,7 +31,7 @@ module XpmRuby
             "detailed" => detailed,
             "modifiedsince" => modified_since }.compact)
 
-      response["Clients"]["Client"]
+      Array.wrap(response.dig("Clients", "Client"))
     end
   end
 end
