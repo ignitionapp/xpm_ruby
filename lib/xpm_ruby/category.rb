@@ -9,7 +9,7 @@ module XpmRuby
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
         .get(endpoint: "category.api/list")
 
-      Array.wrap(response["Categories"]["Category"])
+      Array.wrap(response.dig("Categories", "Category"))
     end
   end
 end

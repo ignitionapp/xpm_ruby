@@ -59,10 +59,14 @@ module XpmRuby
 
         it "list clients modified since" do
           VCR.use_cassette("xpm_ruby/client/list/when_modified_since") do
-            client = Client.list(
+            clients_list = Client.list(
               access_token: access_token,
               xero_tenant_id: xero_tenant_id,
               modified_since: modified_since)
+
+            expect(clients_list.size).to eq(1)
+
+            client = clients_list.first
 
             expect(client["ID"]).to eq("25655881")
           end

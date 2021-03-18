@@ -11,7 +11,7 @@ module XpmRuby
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id, url: url)
         .get(endpoint: "staff.api/list")
 
-      Array.wrap(response["StaffList"]["Staff"])
+      Array.wrap(response.dig("StaffList", "Staff"))
     end
   end
 end
