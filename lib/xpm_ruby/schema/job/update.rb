@@ -7,7 +7,6 @@ module XpmRuby
         ID: Types::Coercible::String,
         Name: Types::String,
         Description: Types::String,
-        ClientID: Types::Coercible::String,
         ContactID?: Types::Coercible::String,
         StartDate: Types::Coercible::String,
         DueDate: Types::Coercible::String,
