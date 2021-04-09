@@ -5,7 +5,7 @@ module XpmRuby
     module Job
       Add = Types::Hash.schema(
         Name: Types::String,
-        Description: Types::String,
+        Description?: Types::String,
         ClientID: Types::Coercible::String,
         ContactID?: Types::Coercible::String,
         StartDate: Types::Coercible::String,
