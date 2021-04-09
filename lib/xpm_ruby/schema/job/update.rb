@@ -6,7 +6,7 @@ module XpmRuby
       Update = Types::Hash.schema(
         ID: Types::Coercible::String,
         Name: Types::String,
-        Description: Types::String,
+        Description?: Types::String,
         ClientID: Types::Coercible::String,
         ContactID?: Types::Coercible::String,
         StartDate: Types::Coercible::String,
