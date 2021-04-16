@@ -119,7 +119,7 @@ module XpmRuby
       it "deletes a staff" do
         deleted_staff = Staff.delete(access_token: access_token, xero_tenant_id: xero_tenant_id, id: "859318")
 
-        expect(deleted_staff).to eql(true)
+        expect(deleted_staff).to be(true)
       end
     end
   end
