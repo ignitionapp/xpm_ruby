@@ -60,5 +60,67 @@ module XpmRuby
         end
       end
     end
+
+    describe ".add" do
+      let(:xero_tenant_id) { "xero_tenant_id" }
+      let(:access_token) { "access_token" }
+      let(:staff) { { "Name" => "Joe Bloggs", "Address" => "In your head", "Phone" => "123456789", "Email" => "joebloggs@foo.com", "PayrollCode" => "PC123" } }
+
+      around(:each) do |example|
+        VCR.use_cassette("xpm_ruby/staff/add") do
+          example.run
+        end
+      end
+
+      it "adds a staff" do
+        added_staff = Staff.add(access_token: access_token, xero_tenant_id: xero_tenant_id, staff: staff)
+
+        expect(added_staff["Name"]).to eql(staff["Name"])
+        expect(added_staff["Address"]).to eql(staff["Address"])
+        expect(added_staff["Phone"]).to eql(staff["Phone"])
+        expect(added_staff["Email"]).to eql(staff["Email"])
+        expect(added_staff["PayrollCode"]).to eql(staff["PayrollCode"])
+      end
+    end
+
+    describe ".update" do
+      let(:xero_tenant_id) { "xero_tenant_id" }
+      let(:access_token) { "access_token" }
+      let(:staff) { { "ID" => "1044994", "Name" => "Joe Bloggs", "Address" => "Updated Address", "Phone" => "87654321", "Email" => "bloggsjoe@foo.com", "PayrollCode" => "PC456" } }
+
+      around(:each) do |example|
+        VCR.use_cassette("xpm_ruby/staff/update") do
+          example.run
+        end
+      end
+
+      it "updates a staff" do
+        updated_staff = Staff.update(access_token: access_token, xero_tenant_id: xero_tenant_id, staff: staff)
+
+        expect(updated_staff["ID"]).to eql(staff["ID"])
+        expect(updated_staff["Name"]).to eql(staff["Name"])
+        expect(updated_staff["Address"]).to eql(staff["Address"])
+        expect(updated_staff["Phone"]).to eql(staff["Phone"])
+        expect(updated_staff["Email"]).to eql(staff["Email"])
+        expect(updated_staff["PayrollCode"]).to eql(staff["PayrollCode"])
+      end
+    end
+
+    describe ".delete" do
+      let(:xero_tenant_id) { "xero_tenant_id" }
+      let(:access_token) { "access_token" }
+
+      around(:each) do |example|
+        VCR.use_cassette("xpm_ruby/staff/delete") do
+          example.run
+        end
+      end
+
+      it "deletes a staff" do
+        deleted_staff = Staff.delete(access_token: access_token, xero_tenant_id: xero_tenant_id, id: "859318")
+
+        expect(deleted_staff).to eql(true)
+      end
+    end
   end
 end
