@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xero.com/practicemanager/3.0/staff.api/add
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Staff>
+          <Name>Joe Bloggs</Name>
+          <Address>In your head</Address>
+          <Phone>123456789</Phone>
+          <Email>joebloggs@foo.com</Email>
+          <PayrollCode>PC123</PayrollCode>
+        </Staff>
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer access_token
+      xero-tenant-id:
+      - 'xero_tenant_id'
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      content-length:
+      - '247'
+      server:
+      - nginx
+      xero-correlation-id:
+      - e39c3c94-4f4f-41d3-aa85-7b13924b56d9
+      x-appminlimit-remaining:
+      - '9999'
+      x-minlimit-remaining:
+      - '59'
+      x-daylimit-remaining:
+      - '4942'
+      expires:
+      - Fri, 16 Apr 2021 11:09:13 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Fri, 16 Apr 2021 11:09:13 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="Get"><Status>OK</Status><Staff><ID>1044994</ID><Name>Joe
+        Bloggs</Name><Email>joebloggs@foo.com</Email><Phone>123456789</Phone><Mobile></Mobile><Address>In
+        your head</Address><PayrollCode>PC123</PayrollCode></Staff></Response>
+    http_version: null
+  recorded_at: Fri, 16 Apr 2021 11:09:13 GMT
+recorded_with: VCR 5.1.0
