@@ -1,6 +1,6 @@
 require "faraday"
 require "base64"
-
+require "pry"
 module XpmRuby
   class Connection
     attr_accessor :xero_tenant_id, :authorization, :url
@@ -60,7 +60,14 @@ module XpmRuby
         detail = JSON.parse(response.body)["Detail"]
         raise Forbidden.new(detail)
       when 429 # rate limit exceeded
-        raise RateLimitExceeded
+        details = response.headers.slice(
+          "retry-after",
+          "x-rate-limit-problem",
+          "x-minlimit-remaining",
+          "x-daylimit-remaining",
+          "x-appminlimit-remaining"
+        )
+        raise RateLimitExceeded.new(response.reason_phrase, details: details)
       when 200
         xml = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
 

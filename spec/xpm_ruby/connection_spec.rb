@@ -3,7 +3,7 @@ require "spec_helper"
 module XpmRuby
   RSpec.describe(Connection) do
     let(:xero_tenant_id) { "0791dc22-8611-4c1c-8df7-1c5453d0795b" }
-    let(:access_token) { "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE1ODg2NTA2MjEsImV4cCI6MTU4ODY1MjQyMSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTU4ODY1MDYwOSwieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjJjODE3OTIzZWI3NTQ5Nzk4ODZkNmQyNzNlMDIxOWY4IiwianRpIjoiNGM0NmJmZDA5NjFlYWZhNmFmZjQ1M2M1NjQ0NWEyZGEiLCJzY29wZSI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiLCJwcmFjdGljZW1hbmFnZXIiLCJvZmZsaW5lX2FjY2VzcyJdfQ.Zsak1BIzRocLPjWb62uVgNaWO3U3o1LKtWrzO2Sj3AoSg-y1Rk5bKxp9PzaAEtE2qmyMQTDGlPHV0jzcqnZOqbbWdLAqyLVDQEeW7nh-9ZWVHmuJ9GG7DKzvHv7Sau_R3i_TlRRcdnQmYdhvZlqg-eUeZXGdzJnFWDk121SuV3dMJV0fJsfg3sfdr7DmbBoWCn-hdcSo2CuYA-IdnIFvlaX2lfZ06i391kYF0YGbWcZ_BX6cUWKMYBuoT_dBZL0wN_6q5KLCgRrLFqgXoR8Eao-h6bXEPTHgx0rW14cVeSrVOeobmJjqnsEd2LyDyn5zWaoie2Xezt5KBtNPtPGr7g" }
+    let(:access_token) { "access_token" }
 
     describe "#get" do
       context "with a valid tenant id and access token" do
@@ -32,6 +32,21 @@ module XpmRuby
           VCR.use_cassette("xpm_ruby/connection/get/bad_token") do
             connection = Connection.new(access_token: "bad_token", xero_tenant_id: xero_tenant_id)
             expect { connection.get(endpoint: "staff.api/list") }.to raise_error(XpmRuby::Unauthorized, /AuthenticationUnsuccessful/)
+          end
+        end
+      end
+
+      context "when API rate limit is exceeded" do
+        it "should raise an error with details" do
+          VCR.use_cassette("xpm_ruby/connection/get/rate_limit_exceeded") do
+            connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+            expect { connection.get(endpoint: "staff.api/list") }.to raise_error(an_instance_of(XpmRuby::RateLimitExceeded).and having_attributes(details: {
+              "retry-after" => "22",
+              "x-rate-limit-problem" => "minute",
+              "x-minlimit-remaining" => "0",
+              "x-daylimit-remaining" => "4539",
+              "x-appminlimit-remaining" => "9938" 
+            }))
           end
         end
       end
