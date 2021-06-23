@@ -1,6 +1,6 @@
 require "faraday"
 require "base64"
-require "pry"
+
 module XpmRuby
   class Connection
     attr_accessor :xero_tenant_id, :authorization, :url
