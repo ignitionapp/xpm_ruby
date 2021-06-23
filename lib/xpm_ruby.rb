@@ -3,7 +3,14 @@ module XpmRuby
   class Unauthorized < Error; end
   class AccessTokenExpired < Unauthorized; end
   class Forbidden < Error; end
-  class RateLimitExceeded < Error; end
+  class RateLimitExceeded < Error;
+    attr_reader :details
+
+    def initialize(message, details:)
+      @details = details
+      super(message)
+    end
+  end
 end
 
 require "active_support"
