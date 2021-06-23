@@ -40,13 +40,13 @@ module XpmRuby
         it "should raise an error with details" do
           VCR.use_cassette("xpm_ruby/connection/get/rate_limit_exceeded") do
             connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
-            expect { connection.get(endpoint: "staff.api/list") }.to raise_error(an_instance_of(XpmRuby::RateLimitExceeded).and having_attributes(details: {
+            expect { connection.get(endpoint: "staff.api/list") }.to raise_error(an_instance_of(XpmRuby::RateLimitExceeded).and(having_attributes(details: {
               "retry-after" => "22",
               "x-rate-limit-problem" => "minute",
               "x-minlimit-remaining" => "0",
               "x-daylimit-remaining" => "4539",
-              "x-appminlimit-remaining" => "9938" 
-            }))
+              "x-appminlimit-remaining" => "9938"
+            })))
           end
         end
       end
