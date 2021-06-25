@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xero.com/practicemanager/3.0/staff.api/list
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer access_token
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+  response:
+    status:
+      code: 429
+      message: Too Many Requests
+    headers:
+      server:
+      - nginx
+      retry-after:
+      - '22'
+      xero-correlation-id:
+      - fd990f75-0fe2-4c79-bb4f-7aeaef3ec306
+      x-appminlimit-remaining:
+      - '9938'
+      x-minlimit-remaining:
+      - '0'
+      x-daylimit-remaining:
+      - '4539'
+      x-rate-limit-problem:
+      - minute
+      content-length:
+      - '0'
+      expires:
+      - Wed, 23 Jun 2021 13:00:34 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Wed, 23 Jun 2021 13:00:34 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Wed, 23 Jun 2021 13:00:34 GMT
+recorded_with: VCR 5.1.0
