@@ -36,6 +36,17 @@ module XpmRuby
         end
       end
 
+      context "when connection to API failed" do
+        before(:each) do
+          allow_any_instance_of(Faraday::Connection).to receive(:get).and_raise(Faraday::ConnectionFailed.new("connection failed"))
+        end
+
+        it "should raise an error" do
+          connection = Connection.new(access_token: "bad_token", xero_tenant_id: xero_tenant_id)
+          expect { connection.get(endpoint: "staff.api/list") }.to raise_error(XpmRuby::ConnectionFailed)
+        end
+      end
+
       context "when API rate limit is exceeded" do
         it "should raise an error with details" do
           VCR.use_cassette("xpm_ruby/connection/get/rate_limit_exceeded") do
