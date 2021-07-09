@@ -15,24 +15,32 @@ module XpmRuby
       faraday_connection = Faraday.new(url)
       response = faraday_connection.get(endpoint, params, headers)
       handle_response(response)
+    rescue Faraday::ConnectionFailed => error
+      raise ConnectionFailed.new(error.message)
     end
 
     def post(endpoint:, data:)
       faraday_connection = Faraday.new(url)
       response = faraday_connection.post(endpoint, data, headers)
       handle_response(response)
+    rescue Faraday::ConnectionFailed => error
+      raise ConnectionFailed.new(error.message)
     end
 
     def put(endpoint:, data:)
       faraday_connection = Faraday.new(url)
       response = faraday_connection.put(endpoint, data, headers)
       handle_response(response)
+    rescue Faraday::ConnectionFailed => error
+      raise ConnectionFailed.new(error.message)
     end
 
     def delete(endpoint:, id:)
       faraday_connection = Faraday.new(url)
       response = faraday_connection.delete("#{endpoint}/#{id}", nil, headers)
       handle_response(response)
+    rescue Faraday::ConnectionFailed => error
+      raise ConnectionFailed.new(error.message)
     end
 
     private
