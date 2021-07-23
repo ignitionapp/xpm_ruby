@@ -17,6 +17,8 @@ module XpmRuby
       handle_response(response)
     rescue Faraday::ConnectionFailed => error
       raise ConnectionFailed.new(error.message)
+    rescue Faraday::TimeoutError => error
+      raise ConnectionTimeout.new(error.message)
     end
 
     def post(endpoint:, data:)
@@ -25,6 +27,8 @@ module XpmRuby
       handle_response(response)
     rescue Faraday::ConnectionFailed => error
       raise ConnectionFailed.new(error.message)
+    rescue Faraday::TimeoutError => error
+      raise ConnectionTimeout.new(error.message)
     end
 
     def put(endpoint:, data:)
@@ -33,6 +37,8 @@ module XpmRuby
       handle_response(response)
     rescue Faraday::ConnectionFailed => error
       raise ConnectionFailed.new(error.message)
+    rescue Faraday::TimeoutError => error
+      raise ConnectionTimeout.new(error.message)
     end
 
     def delete(endpoint:, id:)
@@ -41,6 +47,8 @@ module XpmRuby
       handle_response(response)
     rescue Faraday::ConnectionFailed => error
       raise ConnectionFailed.new(error.message)
+    rescue Faraday::TimeoutError => error
+      raise ConnectionTimeout.new(error.message)
     end
 
     private
