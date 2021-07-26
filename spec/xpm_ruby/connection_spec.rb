@@ -58,6 +58,15 @@ module XpmRuby
         end
       end
 
+      context "with XPM API is unavailable" do
+        it "should raise an error" do
+          VCR.use_cassette("xpm_ruby/connection/get/not_available") do
+            connection = Connection.new(access_token: "bad_token", xero_tenant_id: xero_tenant_id)
+            expect { connection.get(endpoint: "staff.api/list") }.to raise_error(XpmRuby::NotAvailable)
+          end
+        end
+      end
+
       context "when API rate limit is exceeded" do
         it "should raise an error with details" do
           VCR.use_cassette("xpm_ruby/connection/get/rate_limit_exceeded") do

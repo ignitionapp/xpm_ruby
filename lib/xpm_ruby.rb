@@ -3,6 +3,7 @@ module XpmRuby
   class Unauthorized < Error; end
   class AccessTokenExpired < Unauthorized; end
   class Forbidden < Error; end
+  class NotAvailable < Error; end
   class ConnectionFailed < Error; end
   class ConnectionTimeout < Error; end
   class RateLimitExceeded < Error

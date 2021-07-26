@@ -75,6 +75,9 @@ module XpmRuby
       when 403 # this can happen with a bad xero_tenant_id
         detail = JSON.parse(response.body)["Detail"]
         raise Forbidden.new(detail)
+      when 503
+        detail = JSON.parse(response.body)["Detail"]
+        raise NotAvailable.new(detail)
       when 429 # rate limit exceeded
         details = response.headers.slice(
           "retry-after",
