@@ -1,4 +1,5 @@
 require "faraday"
+require "faraday/encoding"
 require "base64"
 
 module XpmRuby
@@ -12,8 +13,7 @@ module XpmRuby
     end
 
     def get(endpoint:, params: nil)
-      faraday_connection = Faraday.new(url)
-      response = faraday_connection.get(endpoint, params, headers)
+      response = build_connection(url: url).get(endpoint, params, headers)
       handle_response(response)
     rescue Faraday::ConnectionFailed => error
       raise ConnectionFailed.new(error.message)
@@ -22,8 +22,7 @@ module XpmRuby
     end
 
     def post(endpoint:, data:)
-      faraday_connection = Faraday.new(url)
-      response = faraday_connection.post(endpoint, data, headers)
+      response = build_connection(url: url).post(endpoint, data, headers)
       handle_response(response)
     rescue Faraday::ConnectionFailed => error
       raise ConnectionFailed.new(error.message)
@@ -32,8 +31,7 @@ module XpmRuby
     end
 
     def put(endpoint:, data:)
-      faraday_connection = Faraday.new(url)
-      response = faraday_connection.put(endpoint, data, headers)
+      response = build_connection(url: url).put(endpoint, data, headers)
       handle_response(response)
     rescue Faraday::ConnectionFailed => error
       raise ConnectionFailed.new(error.message)
@@ -42,8 +40,7 @@ module XpmRuby
     end
 
     def delete(endpoint:, id:)
-      faraday_connection = Faraday.new(url)
-      response = faraday_connection.delete("#{endpoint}/#{id}", nil, headers)
+      response = build_connection(url: url).delete("#{endpoint}/#{id}", nil, headers)
       handle_response(response)
     rescue Faraday::ConnectionFailed => error
       raise ConnectionFailed.new(error.message)
@@ -52,6 +49,15 @@ module XpmRuby
     end
 
     private
+
+    def build_connection(url:, adapter: Faraday.default_adapter)
+      Faraday.new(url) do |connection|
+        # use Faraday::Encoding middleware to correct the response encoding.
+        connection.response(:encoding)
+
+        connection.adapter(adapter)
+      end
+    end
 
     def headers
       { "Authorization" => @authorization, "xero-tenant-id" => @xero_tenant_id, "content_type" => "application/xml" }

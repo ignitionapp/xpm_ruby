@@ -34,14 +34,14 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency("byebug", "~> 11")
   spec.add_development_dependency("pry-byebug", "~> 3")
+  spec.add_development_dependency("vcr")
 
   spec.add_runtime_dependency("faraday")
+  spec.add_runtime_dependency("faraday-encoding")
   spec.add_runtime_dependency("ox", "~> 2.13")
-
-  spec.add_development_dependency("vcr")
 
   spec.add_runtime_dependency("activesupport")
   spec.add_runtime_dependency("builder")
 
-  spec.add_runtime_dependency("dry-types")
+  spec.add_runtime_dependency("dry-types", "~> 0.15.0")
 end
