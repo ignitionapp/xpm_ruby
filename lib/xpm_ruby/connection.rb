@@ -1,5 +1,5 @@
 require "faraday"
-require 'faraday/encoding'
+require "faraday/encoding"
 require "base64"
 
 module XpmRuby
