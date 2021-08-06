@@ -13,7 +13,7 @@ module XpmRuby
       context "with an invalid State schema" do
         it "should raise an error" do
           hash = { "ID" => "J230498" }
-          expect { Job::State[hash] }.to raise_error(Dry::Types::ConstraintError, /State is missing in Hash input/)
+          expect { Job::State[hash] }.to raise_error(Dry::Types::MissingKeyError, /State is missing in Hash input/)
         end
       end
     end

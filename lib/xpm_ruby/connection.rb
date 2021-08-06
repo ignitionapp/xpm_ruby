@@ -8,7 +8,7 @@ module XpmRuby
 
     def initialize(access_token:, xero_tenant_id:, url: nil)
       @xero_tenant_id = xero_tenant_id
-      @authorization = "Bearer " + access_token
+      @authorization = "Bearer #{access_token}"
       @url = url || xpm_url
     end
 

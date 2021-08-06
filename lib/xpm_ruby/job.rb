@@ -37,7 +37,7 @@ module XpmRuby
     def get(access_token:, xero_tenant_id:, job_id:)
       response = Connection
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
-        .get(endpoint: "job.api/get/" + job_id)
+        .get(endpoint: "job.api/get/#{job_id}")
 
       response["Job"]
     end
