@@ -13,7 +13,7 @@ module XpmRuby
       context "with an invalid Delete schema" do
         it "should raise an error" do
           hash = {}
-          expect { Job::Delete[hash] }.to raise_error(Dry::Types::ConstraintError, /ID is missing in Hash input/)
+          expect { Job::Delete[hash] }.to raise_error(Dry::Types::MissingKeyError, /ID is missing in Hash input/)
         end
       end
     end
