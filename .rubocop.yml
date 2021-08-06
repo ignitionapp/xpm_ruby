@@ -373,9 +373,6 @@ Style/MethodCallWithArgsParentheses:
     - to
     - not_to
 
-Style/MethodMissingSuper:
-  Enabled: false
-
 Style/MissingRespondToMissing:
   Enabled: false
 

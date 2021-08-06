@@ -13,7 +13,7 @@ module XpmRuby
       context "with an invalid Add schema" do
         it "should raise an error" do
           hash = { "Email" => "staff@foo.com" }
-          expect { Staff::Add[hash] }.to raise_error(Dry::Types::ConstraintError, '{"Email"=>"staff@foo.com"} violates constraints (:Name is missing in Hash input failed)')
+          expect { Staff::Add[hash] }.to raise_error(Dry::Types::MissingKeyError, ":Name is missing in Hash input")
         end
       end
     end

@@ -1,11 +1,18 @@
 module XpmRuby
   class Error < StandardError; end
+
   class Unauthorized < Error; end
+
   class AccessTokenExpired < Unauthorized; end
+
   class Forbidden < Error; end
+
   class NotAvailable < Error; end
+
   class ConnectionFailed < Error; end
+
   class ConnectionTimeout < Error; end
+
   class RateLimitExceeded < Error
     attr_reader :details
 

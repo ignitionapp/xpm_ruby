@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "Ruby gem for accessing the XPM API"
   spec.homepage      = "https://github.com/ignitionapp/xpm_ruby"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
 
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
@@ -43,5 +43,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency("activesupport")
   spec.add_runtime_dependency("builder")
 
-  spec.add_runtime_dependency("dry-types", "~> 0.15.0")
+  spec.add_runtime_dependency("dry-types")
 end

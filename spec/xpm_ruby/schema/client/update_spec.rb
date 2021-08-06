@@ -28,12 +28,12 @@ module XpmRuby
       context "with an invalid Update schema" do
         it "should raise an error" do
           hash = { "Email" => "Joe Bloggs" }
-          expect { Client::Update[hash] }.to raise_error(Dry::Types::ConstraintError, /ID is missing in Hash input/)
+          expect { Client::Update[hash] }.to raise_error(Dry::Types::MissingKeyError, /ID is missing in Hash input/)
         end
 
         it "should raise an error on contacts" do
           hash = { "ID" => 25655881, "Name" => "Joe Bloggs Consulting", "Contacts" => [{ "Contact" => { "Email" => "Joe Bloggs" } }] }
-          expect { Client::Update[hash] }.to raise_error(Dry::Types::ConstraintError, /Name is missing in Hash input/)
+          expect { Client::Update[hash] }.to raise_error(Dry::Types::SchemaError, /Name is missing in Hash input/)
         end
       end
     end
