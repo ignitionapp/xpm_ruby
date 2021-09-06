@@ -26,16 +26,14 @@ module XpmRuby
         AccountManagerID?: Types::String,
         Contacts?: Types::Array.of(
           Types::Hash.schema(
-            Contact: Types::Hash.schema(
-              Name: Types::String,
-              IsPrimary?: Types::String,
-              Salutation?: Types::String,
-              Addressee?: Types::String,
-              Phone?: Types::Coercible::String,
-              Mobile?: Types::Coercible::String,
-              Email?: Types::String,
-              Position?: Types::String
-            ).with_key_transform(&:to_sym)
+            Name: Types::String,
+            IsPrimary?: Types::String,
+            Salutation?: Types::String,
+            Addressee?: Types::String,
+            Phone?: Types::Coercible::String,
+            Mobile?: Types::Coercible::String,
+            Email?: Types::String,
+            Position?: Types::String
           ).with_key_transform(&:to_sym)
         ),
         BillingClientID?: Types::Coercible::String,

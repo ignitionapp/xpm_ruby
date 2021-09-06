@@ -6,7 +6,7 @@ module XpmRuby
       context "with a valid Update schema" do
         context "with contacts" do
           it "should not raise an error" do
-            hash = { "ID" => 25655881, "Name" => "Joe Bloggs Consulting", "Contacts" => [{ "Contact" => { "Name" => "Joe Bloggs" } }] }
+            hash = { "ID" => 25655881, "Name" => "Joe Bloggs Consulting", "Contacts" => [{ "Name" => "Joe Bloggs" }] }
             expect { Client::Update[hash] }.not_to raise_error
           end
         end
@@ -32,7 +32,7 @@ module XpmRuby
         end
 
         it "should raise an error on contacts" do
-          hash = { "ID" => 25655881, "Name" => "Joe Bloggs Consulting", "Contacts" => [{ "Contact" => { "Email" => "Joe Bloggs" } }] }
+          hash = { "ID" => 25655881, "Name" => "Joe Bloggs Consulting", "Contacts" => [{ "Email" => "Joe Bloggs" }] }
           expect { Client::Update[hash] }.to raise_error(Dry::Types::SchemaError, /Name is missing in Hash input/)
         end
       end
