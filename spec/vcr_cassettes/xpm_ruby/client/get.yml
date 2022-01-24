@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xero.com/practicemanager/3.0/client.api/get/32014284
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.6.0
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE2NDI5ODI2OTcsImV4cCI6MTY0Mjk4NDQ5NywiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiNDkyMjZBNjIzMzY0NDVFM0FGQUM5QTQ4MkJGOUUyN0UiLCJzdWIiOiIwY2FmMWU4MWYyZWE1MzdkYWIxYjYzNTY3NTc2ZDk3ZSIsImF1dGhfdGltZSI6MTY0MjM4NjgwNywieGVyb191c2VyaWQiOiJmYzI5MDBjNy0wNjcyLTQzOGItOTNkMS1hOGMyNTBmZDg5MjkiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjY2YmEwYTVlZDFjYjQyNmNhMDNjMzMwMGYwMzgyODFhIiwianRpIjoiOTMzY2VjNGVlY2VkYzBiY2Q3Zjg3YTVmZWYyODA3OTAiLCJhdXRoZW50aWNhdGlvbl9ldmVudF9pZCI6IjRiZDRlMmRhLTA3YWEtNDNlMS1iNWY5LTRmYzc0YWY0MzRlNiIsInNjb3BlIjpbImVtYWlsIiwicHJvZmlsZSIsIm9wZW5pZCIsInByYWN0aWNlbWFuYWdlciIsIm9mZmxpbmVfYWNjZXNzIl19.DaWZy6Iia6p-dhoOYqp3tB9tDaeNIdOWNa-2PJD3uW2Y2-etWIsigjvaKYeC9JJAHN_Mz6m8wWq66igtAJHwHiD2cn1gXs70GakFwkFCr1KaF5Vcak-F6MDgXTP6uCaoOlzHIJGgjHu-KbyOPFie2H-5o7aWpxEGqOyruDxE0jK3h-1TZr7LkvDcGBjk_QRMgFtFNY5N70kpT9NfZejq36Z56h72EntmucdWl_XGNjKklF96LPuhKARywCY13QJGvi-wlGPI_MFvfx4VM1pGkWrr4L_feHj4KlteGlspyb_DbUDPf_4_n9MPKPvyUD50Fiqy0cun62yTpG_bBG0Qiw
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      content-length:
+      - '1281'
+      server:
+      - nginx
+      xero-correlation-id:
+      - e9b9b012-0a30-4141-ae23-a3ec42c0923b
+      x-appminlimit-remaining:
+      - '9999'
+      x-minlimit-remaining:
+      - '59'
+      x-daylimit-remaining:
+      - '4996'
+      expires:
+      - Mon, 24 Jan 2022 00:22:17 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Mon, 24 Jan 2022 00:22:17 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="Get"><Status>OK</Status><Client><ID>32014284</ID><Name>Get
+        Client Test</Name><Email>NEW@EMAIL.COM</Email><Address></Address><City></City><Region></Region><PostCode></PostCode><Country></Country><PostalAddress></PostalAddress><PostalCity></PostalCity><PostalRegion></PostalRegion><PostalPostCode></PostalPostCode><PostalCountry></PostalCountry><Phone></Phone><Fax></Fax><Website></Website><ReferralSource></ReferralSource><ExportCode></ExportCode><IsProspect>No</IsProspect><IsArchived>No</IsArchived><IsDeleted>No</IsDeleted><TaxNumber></TaxNumber><CompanyNumber></CompanyNumber><BusinessNumber></BusinessNumber><BranchNumber>1</BranchNumber><GSTRegistered>No</GSTRegistered><PrepareGST>No</PrepareGST><SignedTaxAuthority>No</SignedTaxAuthority><AgencyStatus>Unlinked</AgencyStatus><PrepareActivityStatement>No</PrepareActivityStatement><PrepareTaxReturn>No</PrepareTaxReturn><ActiveAtoClient>No</ActiveAtoClient><Contacts><Contact><ID>18978524</ID><Name>contact
+        name</Name><Mobile></Mobile><Email>contact@email.com</Email><Phone></Phone><Position>0</Position><Salutation></Salutation><Addressee></Addressee><IsPrimary>No</IsPrimary></Contact></Contacts><Notes
+        /><Groups /><Relationships /><UUID>0183f65c-08c6-47b7-af05-3da072e901ae</UUID></Client></Response>
+  recorded_at: Mon, 24 Jan 2022 00:22:17 GMT
+recorded_with: VCR 6.0.0

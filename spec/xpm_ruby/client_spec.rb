@@ -40,6 +40,25 @@ module XpmRuby
       end
     end
 
+    describe ".get" do
+      let(:xero_tenant_id) { "XERO_TENANT_ID" }
+      let(:access_token) { "access_token" }
+      let(:client_id) { "32014284" }
+
+      it "gets client information" do
+        VCR.use_cassette("xpm_ruby/client/get") do
+          client = Client.get(
+            access_token: access_token,
+            xero_tenant_id: xero_tenant_id,
+            client_id: client_id
+          )
+
+          expect(client["ID"]).not_to be_nil
+          expect(client["Name"]).to eql("Get Client Test")
+        end
+      end
+    end
+
     describe ".list" do
       let(:xero_tenant_id) { "XERO_TENANT_ID" }
       let(:access_token) { "token" }
