@@ -100,10 +100,10 @@ module XpmRuby
         when "OK"
           xml["Response"]
         when "ERROR"
-          raise Error.new(xml["Response"]["ErrorDescription"])
+          raise ApiError.new(xml["Response"]["ErrorDescription"])
         end
       else
-        raise Error.new(response.status)
+        raise UnknownError.new(response.status)
       end
     end
   end
