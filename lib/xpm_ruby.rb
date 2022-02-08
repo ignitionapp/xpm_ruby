@@ -1,6 +1,10 @@
 module XpmRuby
   class Error < StandardError; end
 
+  class ApiError < Error; end
+
+  class UnknownError < Error; end
+
   class Unauthorized < Error; end
 
   class AccessTokenExpired < Unauthorized; end
