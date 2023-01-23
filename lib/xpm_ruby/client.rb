@@ -41,5 +41,17 @@ module XpmRuby
 
       Array.wrap(response.dig("Clients", "Client"))
     end
+
+    def search(access_token:, xero_tenant_id:, detailed: true, query: nil)
+      response = Connection
+        .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+        .get(
+          endpoint: "client.api/search",
+          params: {
+            "detailed" => detailed,
+            "query" => query }.compact)
+
+      Array.wrap(response.dig("Clients", "Client"))
+    end
   end
 end
