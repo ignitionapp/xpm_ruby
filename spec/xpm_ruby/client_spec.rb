@@ -126,5 +126,51 @@ module XpmRuby
         end
       end
     end
+
+    describe ".search" do
+      subject(:search) do
+        Client.search(access_token: access_token, xero_tenant_id: xero_tenant_id, query: query, detailed: detailed)
+      end
+
+      let(:xero_tenant_id) { "XERO_TENANT_ID" }
+      let(:access_token) { "token" }
+      let(:query) { "acme" }
+
+      context "when detailed false" do
+        let(:detailed) { false }
+
+        it "returns client search results without details" do
+          VCR.use_cassette("xpm_ruby/client/search/when_detailed_false") do
+            clients = search
+
+            expect(clients.map { |client| client["Name"] }).to eq(["Acmer Pty Ltd", "Acmer Pty Ltd"])
+
+            clients.each do |client|
+              expect(client).not_to have_key("Notes")
+              expect(client).not_to have_key("Groups")
+              expect(client).not_to have_key("Relationships")
+            end
+          end
+        end
+      end
+
+      context "when detailed true" do
+        let(:detailed) { true }
+
+        it "returns client search results with details" do
+          VCR.use_cassette("xpm_ruby/client/search/when_detailed_true") do
+            clients = search
+
+            expect(clients.map { |client| client["Name"] }).to eq(["Acmer Pty Ltd", "Acmer Pty Ltd"])
+
+            clients.each do |client|
+              expect(client).to have_key("Notes")
+              expect(client).to have_key("Groups")
+              expect(client).to have_key("Relationships")
+            end
+          end
+        end
+      end
+    end
   end
 end
