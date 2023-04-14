@@ -50,6 +50,56 @@ http_interactions:
       encoding: UTF-8
       string: <Response api-method="Contact"><Status>OK</Status><Contact><ID>14574323</ID><Name>some
         guy person</Name><Mobile></Mobile><Email></Email><Phone></Phone><Position></Position><Salutation></Salutation><Addressee></Addressee><IsPrimary>No</IsPrimary></Contact></Response>
-    http_version: null
   recorded_at: Mon, 04 May 2020 05:10:25 GMT
-recorded_with: VCR 5.1.0
+- request:
+    method: delete
+    uri: https://api.xero.com/practicemanager/3.0/client.api/contact/14574323?client_id=25655881
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.4
+      Authorization:
+      - Bearer token
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9999'
+      x-daylimit-remaining:
+      - '4983'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - fc3f4eb9-a9e0-456c-8c02-28e9f5aec8c5
+      content-length:
+      - '266'
+      expires:
+      - Fri, 14 Apr 2023 11:36:53 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Mon, 04 May 2020 05:10:25 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="Contact"><Status>OK</Status><Contact><ID>14574323</ID><Name>some
+        guy person</Name><Mobile></Mobile><Email></Email><Phone></Phone><Position></Position><Salutation></Salutation><Addressee></Addressee><IsPrimary>No</IsPrimary></Contact></Response>
+  recorded_at: Fri, 14 Apr 2023 11:36:53 GMT
+recorded_with: VCR 6.1.0

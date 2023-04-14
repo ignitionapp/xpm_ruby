@@ -39,8 +39,9 @@ module XpmRuby
       raise ConnectionTimeout.new(error.message)
     end
 
-    def delete(endpoint:, id:)
-      response = build_connection(url: url).delete("#{endpoint}/#{id}", nil, headers)
+    def delete(endpoint:, id:, params: {})
+      query_string = CGI.unescape(params.to_query)
+      response = build_connection(url: url).delete("#{endpoint}/#{id}?#{query_string}", nil, headers)
       handle_response(response)
     rescue Faraday::ConnectionFailed => error
       raise ConnectionFailed.new(error.message)

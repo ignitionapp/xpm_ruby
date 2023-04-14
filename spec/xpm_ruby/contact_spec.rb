@@ -80,15 +80,32 @@ module XpmRuby
       let(:access_token) { "token" }
       let(:contact_id) { "14574323" }
 
-      it "deletes the contact" do
-        VCR.use_cassette("xpm_ruby/contact/delete") do
-          deleted_contact = Contact.delete(
-            access_token: access_token,
-            xero_tenant_id: xero_tenant_id,
-            contact_id: contact_id)
+      context "without Client ID" do
+        it "deletes the contact" do
+          VCR.use_cassette("xpm_ruby/contact/delete") do
+            deleted_contact = Contact.delete(
+              access_token: access_token,
+              xero_tenant_id: xero_tenant_id,
+              contact_id: contact_id)
 
-          expect(deleted_contact["ID"]).to eql(contact_id)
-          expect(deleted_contact["Name"]).to eql("some guy person")
+            expect(deleted_contact["ID"]).to eql(contact_id)
+            expect(deleted_contact["Name"]).to eql("some guy person")
+          end
+        end
+      end
+
+      context "with Client ID" do
+        it "deletes the contact" do
+          VCR.use_cassette("xpm_ruby/contact/delete") do
+            deleted_contact = Contact.delete(
+              access_token: access_token,
+              xero_tenant_id: xero_tenant_id,
+              contact_id: contact_id,
+              client_id: 25655881)
+
+            expect(deleted_contact["ID"]).to eql(contact_id)
+            expect(deleted_contact["Name"]).to eql("some guy person")
+          end
         end
       end
     end
