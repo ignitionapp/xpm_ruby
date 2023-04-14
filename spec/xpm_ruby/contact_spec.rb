@@ -30,7 +30,6 @@ module XpmRuby
       let(:xero_tenant_id) { "0791dc22-8611-4c1c-8df7-1c5453d0795b" }
       let(:access_token) { "token" }
 
-      
       context "without Client ID" do
         let(:contact) do
           {
