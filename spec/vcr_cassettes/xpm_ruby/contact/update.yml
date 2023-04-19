@@ -58,4 +58,65 @@ http_interactions:
         Pty Ltd Updated 3</Name><Mobile></Mobile><Email></Email><Phone></Phone><Position></Position><Salutation></Salutation><Addressee></Addressee><IsPrimary>No</IsPrimary></Contact></Response>
     http_version: null
   recorded_at: Tue, 05 May 2020 04:33:24 GMT
+- request:
+    method: put
+    uri: https://api.xero.com/practicemanager/3.0/client.api/contact/15412877
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Contact>
+          <Client>
+            <ID>25655881</ID>
+          </Client>
+          <Name>Acmer Pty Ltd Updated 3</Name>
+        </Contact>
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer token
+      xero-tenant-id:
+      - '0791dc22-8611-4c1c-8df7-1c5453d0795b'
+      content_type:
+      - application/xml
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml; charset=utf-8
+      server:
+      - Kestrel
+      x-appminlimit-remaining:
+      - '9999'
+      x-daylimit-remaining:
+      - '4985'
+      x-minlimit-remaining:
+      - '59'
+      xero-correlation-id:
+      - 1905d74e-32f4-49db-874e-91e08c9938e0
+      content-length:
+      - '274'
+      expires:
+      - Tue, 05 May 2020 04:33:24 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 05 May 2020 04:33:24 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: <Response api-method="Contact"><Status>OK</Status><Contact><ID>15412877</ID><Name>Acmer
+        Pty Ltd Updated 3</Name><Mobile></Mobile><Email></Email><Phone></Phone><Position></Position><Salutation></Salutation><Addressee></Addressee><IsPrimary>No</IsPrimary></Contact></Response>
+    http_version: null
+  recorded_at: Thu, 13 Apr 2023 05:18:03 GMT
 recorded_with: VCR 5.1.0
