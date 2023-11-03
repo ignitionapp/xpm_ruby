@@ -16,7 +16,7 @@ module XpmRuby
   class ConnectionFailed < Error; end
 
   class ConnectionTimeout < Error; end
-  
+
   class InternalServerError < Error; end
 
   class RateLimitExceeded < Error
