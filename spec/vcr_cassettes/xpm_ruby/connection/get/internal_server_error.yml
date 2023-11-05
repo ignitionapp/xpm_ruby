@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xero.com/practicemanager/3.0/staff.api/list
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer bad_token
+      xero-tenant-id:
+      - 'XERO_TENANT_ID'
+      content_type:
+      - application/xml
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      content-type:
+      - application/json
+      server:
+      - Kestrel
+      www-authenticate:
+      - Bearer error=invalid_token
+      xero-correlation-id:
+      - 1f5a84cd-152b-418d-a0b1-e351fa131d05
+      content-length:
+      - '153'
+      expires:
+      - Tue, 05 May 2020 03:52:34 GMT
+      cache-control:
+      - max-age=0, no-cache, no-store
+      pragma:
+      - no-cache
+      date:
+      - Tue, 05 May 2020 03:52:34 GMT
+      connection:
+      - keep-alive
+      x-client-tls-ver:
+      - tls1.3
+    body:
+      encoding: UTF-8
+      string: '{Status":500}'
+    http_version: null
+  recorded_at: Tue, 05 May 2020 03:52:34 GMT
+recorded_with: VCR 5.1.0

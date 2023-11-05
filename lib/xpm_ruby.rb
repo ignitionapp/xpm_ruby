@@ -17,6 +17,8 @@ module XpmRuby
 
   class ConnectionTimeout < Error; end
 
+  class InternalServerError < Error; end
+
   class RateLimitExceeded < Error
     attr_reader :details
 
