@@ -22,7 +22,6 @@ module XpmRuby
         WebSite?: Types::String,
         ReferralSource?: Types::String,
         ExportCode?: Types::String,
-        IsProspect?: Types::String,
         AccountManagerID?: Types::String,
         Contacts?: Types::Array.of(
           Types::Hash.schema(
