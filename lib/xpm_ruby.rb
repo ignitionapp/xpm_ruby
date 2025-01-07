@@ -19,6 +19,8 @@ module XpmRuby
 
   class InternalServerError < Error; end
 
+  class Conflict < Error; end
+
   class RateLimitExceeded < Error
     attr_reader :details
 

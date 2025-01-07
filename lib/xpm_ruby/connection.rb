@@ -82,6 +82,9 @@ module XpmRuby
       when 403 # this can happen with a bad xero_tenant_id
         detail = JSON.parse(response.body)["Detail"]
         raise Forbidden.new(detail)
+      when 409
+        detail = JSON.parse(response.body)["Detail"]
+        raise Conflict.new(detail)
       when 500
         raise InternalServerError.new(response.reason_phrase)
       when 503
