@@ -3,8 +3,7 @@ require "spec_helper"
 module XpmRuby
   RSpec.describe(Job) do
     describe ".current" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
 
       around(:each) do |example|
         VCR.use_cassette("xpm_ruby/job/current") do
@@ -29,8 +28,7 @@ module XpmRuby
     end
 
     describe ".add" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
       let(:job) { { "Name" => "Joe Bloggs", "Description" => "New Job", "ClientID" => "24097642", "StartDate" => "20091023", "DueDate" => "20091023" } }
 
       around(:each) do |example|
@@ -51,8 +49,7 @@ module XpmRuby
     end
 
     describe ".update" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
       let(:job) { { "ID" => "J000031", "Name" => "Joe Bloggs", "Description" => "Update Job", "ClientID" => "24097642", "StartDate" => "20091023", "DueDate" => "20091023" } }
 
       around(:each) do |example|
@@ -74,8 +71,7 @@ module XpmRuby
     end
 
     describe ".get" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
       let(:job_id) { "J000014" }
 
       around(:each) do |example|
@@ -97,8 +93,7 @@ module XpmRuby
     end
 
     describe ".state" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
 
       context "when the job state is successful" do
         let(:job) { { "ID" => "J000031", "State" => "COMPLETED" } }
@@ -123,8 +118,7 @@ module XpmRuby
     end
 
     describe ".delete" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
 
       context "with a valid job id" do
         let(:job) { { "ID" => "J000031" } }
@@ -150,8 +144,7 @@ module XpmRuby
     end
 
     describe ".assign" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
 
       context "add and remove staff" do
         context "with a valid job id and staff id" do
@@ -253,8 +246,7 @@ module XpmRuby
     end
 
     describe ".applytemplate" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
 
       context "with valid job and template" do
         let(:job) { { "ID" => "J000032", "TemplateID" => 1254078, "TaskMode" => "AddNew" } }

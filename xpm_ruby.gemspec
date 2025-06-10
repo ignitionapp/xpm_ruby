@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("byebug", "~> 11")
   spec.add_development_dependency("pry-byebug", "~> 3")
   spec.add_development_dependency("vcr")
+  spec.add_development_dependency("dotenv")
 
   spec.add_runtime_dependency("faraday")
   spec.add_runtime_dependency("faraday-encoding")

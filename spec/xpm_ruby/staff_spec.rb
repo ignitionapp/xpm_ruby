@@ -3,7 +3,7 @@ require "spec_helper"
 module XpmRuby
   RSpec.describe(Staff) do
     describe ".list" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
+      include_context "xero credentials"
 
       context "when access token expired" do
         let(:access_token) { "expired" }
@@ -62,8 +62,7 @@ module XpmRuby
     end
 
     describe ".add" do
-      let(:xero_tenant_id) { "xero_tenant_id" }
-      let(:access_token) { "access_token" }
+      include_context "xero credentials"
       let(:staff) { { "Name" => "Joe Bloggs", "Address" => "In your head", "Phone" => "123456789", "Email" => "joebloggs@foo.com", "PayrollCode" => "PC123" } }
 
       around(:each) do |example|
@@ -84,8 +83,7 @@ module XpmRuby
     end
 
     describe ".update" do
-      let(:xero_tenant_id) { "xero_tenant_id" }
-      let(:access_token) { "access_token" }
+      include_context "xero credentials"
       let(:staff) { { "ID" => "1044994", "Name" => "Joe Bloggs", "Address" => "Updated Address", "Phone" => "87654321", "Email" => "bloggsjoe@foo.com", "PayrollCode" => "PC456" } }
 
       around(:each) do |example|
@@ -107,8 +105,7 @@ module XpmRuby
     end
 
     describe ".delete" do
-      let(:xero_tenant_id) { "xero_tenant_id" }
-      let(:access_token) { "access_token" }
+      include_context "xero credentials"
 
       around(:each) do |example|
         VCR.use_cassette("xpm_ruby/staff/delete") do
