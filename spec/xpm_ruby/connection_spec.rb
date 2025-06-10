@@ -2,8 +2,7 @@ require "spec_helper"
 
 module XpmRuby
   RSpec.describe(Connection) do
-    let(:xero_tenant_id) { "XERO_TENANT_ID" }
-    let(:access_token) { "access_token" }
+    include_context "xero credentials"
 
     describe "#get" do
       context "with a valid tenant id and access token" do

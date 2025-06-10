@@ -5,8 +5,7 @@ module XpmRuby
     subject(:service) { described_class }
 
     describe ".list" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "XERO_ACCESS_TOKEN" }
+      include_context "xero credentials"
 
       around(:each) do |example|
         VCR.use_cassette("xpm_ruby/template/list") do

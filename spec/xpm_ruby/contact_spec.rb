@@ -3,8 +3,7 @@ require "spec_helper"
 module XpmRuby
   RSpec.describe(Contact) do
     describe ".add" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
 
       let(:contact) do
         {
@@ -27,8 +26,7 @@ module XpmRuby
     end
 
     describe ".update" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
 
       context "without Client ID" do
         let(:contact) do
@@ -75,8 +73,7 @@ module XpmRuby
     end
 
     describe ".delete" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
       let(:contact_id) { "14574323" }
 
       context "without Client ID" do

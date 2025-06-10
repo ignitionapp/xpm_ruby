@@ -3,8 +3,7 @@ require "spec_helper"
 module XpmRuby
   RSpec.describe(Client) do
     describe ".add" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
 
       let(:client) { { "Name" => "Acmer Pty Ltd" } }
 
@@ -22,8 +21,7 @@ module XpmRuby
     end
 
     describe ".update" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "access_token" }
+      include_context "xero credentials"
 
       let(:client) { { "ID" => 25655881, "Name" => "Acmer Pty Ltd" } }
 
@@ -41,8 +39,8 @@ module XpmRuby
     end
 
     describe ".get" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "access_token" }
+      include_context "xero credentials"
+
       let(:client_id) { "32014284" }
 
       it "gets client information" do
@@ -60,7 +58,8 @@ module XpmRuby
     end
 
     describe ".list" do
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
+      include_context "xero credentials"
+
       let(:access_token) { "token" }
 
       context "when not modified since" do
@@ -132,8 +131,8 @@ module XpmRuby
         Client.search(access_token: access_token, xero_tenant_id: xero_tenant_id, query: query, detailed: detailed)
       end
 
-      let(:xero_tenant_id) { "XERO_TENANT_ID" }
-      let(:access_token) { "token" }
+      include_context "xero credentials"
+
       let(:query) { "acme" }
 
       context "when detailed false" do

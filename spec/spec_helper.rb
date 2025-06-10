@@ -1,6 +1,7 @@
 require "bundler/setup"
 require "xpm_ruby"
 require "vcr"
+require "dotenv/load"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -11,6 +12,23 @@ RSpec.configure do |config|
 
   config.expect_with(:rspec) do |c|
     c.syntax = :expect
+  end
+
+  # Shared example group for Xero credentials
+  config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  RSpec.shared_context "xero credentials" do
+    let(:xero_tenant_id) do
+      ENV.fetch("XERO_TENANT_ID") do
+        raise "XERO_TENANT_ID environment variable is required. Please add it to your .env file"
+      end
+    end
+
+    let(:access_token) do
+      ENV.fetch("XERO_ACCESS_TOKEN") do
+        raise "XERO_ACCESS_TOKEN environment variable is required. Please add it to your .env file"
+      end
+    end
   end
 end
 

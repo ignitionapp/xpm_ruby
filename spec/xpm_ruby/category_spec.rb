@@ -5,6 +5,8 @@ module XpmRuby
     subject(:service) { described_class }
 
     describe ".list" do
+      include_context "xero credentials"
+
       let(:xero_tenant_id) { "XERO_TENANT_ID" }
       let(:access_token) { "access_token" }
 
