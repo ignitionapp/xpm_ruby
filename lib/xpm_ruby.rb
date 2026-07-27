@@ -11,6 +11,8 @@ module XpmRuby
 
   class Forbidden < Error; end
 
+  class AuthenticationUnsuccessful < Forbidden; end
+
   class NotAvailable < Error; end
 
   class ConnectionFailed < Error; end
