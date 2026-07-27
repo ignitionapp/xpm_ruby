@@ -81,6 +81,8 @@ module XpmRuby
         end
       when 403 # this can happen with a bad xero_tenant_id
         detail = JSON.parse(response.body)["Detail"]
+        raise AuthenticationUnsuccessful.new(detail) if detail == "AuthenticationUnsuccessful"
+
         raise Forbidden.new(detail)
       when 500
         raise InternalServerError.new(response.reason_phrase)
