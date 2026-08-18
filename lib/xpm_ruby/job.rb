@@ -63,13 +63,16 @@ module XpmRuby
     end
 
     # The XML structure for job.assign does not fit in a Hash
-    # so we need to pass in the XML directly
+    # so we need to pass in the XML directly.
+    #
+    # Returns the whole response — both "Status" and the "Job" describing the
+    # assignment XPM confirmed — rather than digging out one of them, because a
+    # caller checking the outcome and a caller reading the assignment both need
+    # it and neither can recover the other half.
     def assign(access_token:, xero_tenant_id:, job_xml:)
-      response = Connection
+      Connection
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
         .put(endpoint: "job.api/assign", data: job_xml)
-
-      response["Job"]
     end
 
     def applytemplate(access_token:, xero_tenant_id:, job:)
