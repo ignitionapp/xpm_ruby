@@ -71,7 +71,7 @@ module XpmRuby
     def handle_response(response)
       case response.status
       when 401
-        detail = JSON.parse(response.body)["Detail"]
+        detail = error_detail(response)
 
         case detail
         when /TokenExpired: token expired/
@@ -80,15 +80,14 @@ module XpmRuby
           raise Unauthorized.new(detail)
         end
       when 403 # this can happen with a bad xero_tenant_id
-        detail = JSON.parse(response.body)["Detail"]
+        detail = error_detail(response)
         raise AuthenticationUnsuccessful.new(detail) if detail == "AuthenticationUnsuccessful"
 
         raise Forbidden.new(detail)
       when 500
         raise InternalServerError.new(response.reason_phrase)
       when 503
-        detail = JSON.parse(response.body)["Detail"]
-        raise NotAvailable.new(detail)
+        raise NotAvailable.new(error_detail(response))
       when 429 # rate limit exceeded
         details = response.headers.slice(
           "retry-after",
@@ -110,6 +109,10 @@ module XpmRuby
       else
         raise UnknownError.new(response.status)
       end
+    end
+
+    def error_detail(response)
+      JSON.parse(response.body)["Detail"]
     end
   end
 end

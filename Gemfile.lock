@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xpm_ruby (0.4.0)
+    xpm_ruby (0.4.1)
       activesupport
       builder
       dry-types
@@ -125,6 +125,3 @@ DEPENDENCIES
   rubocop-rspec
   vcr
   xpm_ruby!
-
-BUNDLED WITH
-   2.1.4
