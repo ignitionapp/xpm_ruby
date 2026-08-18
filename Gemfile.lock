@@ -125,6 +125,3 @@ DEPENDENCIES
   rubocop-rspec
   vcr
   xpm_ruby!
-
-BUNDLED WITH
-   2.1.4
