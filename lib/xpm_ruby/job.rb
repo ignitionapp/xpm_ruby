@@ -69,7 +69,7 @@ module XpmRuby
         .new(access_token: access_token, xero_tenant_id: xero_tenant_id)
         .put(endpoint: "job.api/assign", data: job_xml)
 
-      response["Status"]
+      response["Job"]
     end
 
     def applytemplate(access_token:, xero_tenant_id:, job:)
