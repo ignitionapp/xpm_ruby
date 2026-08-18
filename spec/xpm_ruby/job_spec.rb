@@ -161,7 +161,9 @@ module XpmRuby
             VCR.use_cassette("xpm_ruby/job/assign") do
               response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
 
-              expect(response).to eq("OK")
+              expect(response["Status"]).to eq("OK")
+              expect(response.dig("Job", "ID")).to eq("J000032")
+              expect(response.dig("Job", "Assigned", "Staff", "ID")).to eq("859230")
             end
           end
         end
@@ -173,7 +175,9 @@ module XpmRuby
             VCR.use_cassette("xpm_ruby/job/assign/remove") do
               response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
 
-              expect(response).to eq("OK")
+              expect(response["Status"]).to eq("OK")
+              expect(response.dig("Job", "ID")).to eq("J000032")
+              expect(response.dig("Job", "Assigned")).to be_nil
             end
           end
         end
@@ -187,7 +191,9 @@ module XpmRuby
             VCR.use_cassette("xpm_ruby/job/assign/manager") do
               response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
 
-              expect(response).to eq("OK")
+              expect(response["Status"]).to eq("OK")
+              expect(response.dig("Job", "ID")).to eq("J000032")
+              expect(response.dig("Job", "Manager", "ID")).to eq("859230")
             end
           end
         end
@@ -199,7 +205,9 @@ module XpmRuby
             VCR.use_cassette("xpm_ruby/job/assign/removemanager") do
               response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
 
-              expect(response).to eq("OK")
+              expect(response["Status"]).to eq("OK")
+              expect(response.dig("Job", "ID")).to eq("J000032")
+              expect(response.dig("Job", "Manager")).to be_nil
             end
           end
         end
@@ -213,7 +221,9 @@ module XpmRuby
             VCR.use_cassette("xpm_ruby/job/assign/partner") do
               response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
 
-              expect(response).to eq("OK")
+              expect(response["Status"]).to eq("OK")
+              expect(response.dig("Job", "ID")).to eq("J000032")
+              expect(response.dig("Job", "Partner", "ID")).to eq("859230")
             end
           end
         end
@@ -225,7 +235,9 @@ module XpmRuby
             VCR.use_cassette("xpm_ruby/job/assign/removepartner") do
               response = Job.assign(access_token: access_token, xero_tenant_id: xero_tenant_id, job_xml: job_xml)
 
-              expect(response).to eq("OK")
+              expect(response["Status"]).to eq("OK")
+              expect(response.dig("Job", "ID")).to eq("J000032")
+              expect(response.dig("Job", "Partner")).to be_nil
             end
           end
         end
