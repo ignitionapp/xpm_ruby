@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xpm_ruby (0.4.1)
+    xpm_ruby (0.5.0)
       activesupport
       builder
       dry-types
