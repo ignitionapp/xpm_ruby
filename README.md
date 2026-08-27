@@ -42,8 +42,8 @@ As much as possible, we have tried to keep to the same names as documented here:
 
 ## Rate limits
 
-Xero returns its rate-limit headers on every XPM response, not only on the `429` that refuses one.
-Set `XpmRuby.on_rate_limits` to be told about each reading:
+Xero reports the remaining rate-limit budget on **every** XPM response, not only on the `429` that
+refuses one. Set `XpmRuby.on_rate_limits` to be told about each reading:
 
 ```ruby
 XpmRuby.on_rate_limits = ->(limits) do
@@ -56,14 +56,23 @@ XpmRuby.on_rate_limits = ->(limits) do
 end
 ```
 
-The callback is handed an `XpmRuby::RateLimits` carrying `status`, `xero_tenant_id`, `problem`,
-`retry_after` and the three remaining-budget counts. Counts are integers, and `nil` when the
-response did not report one — a missing header is *not* read as zero, because zero means the budget
-is exhausted and is the reading a caller most needs to act on. Responses that name no limit at all
-do not invoke the callback.
+The callback is handed an `XpmRuby::RateLimits`. Which of its fields are populated depends on the
+response:
 
-Read from a `429` alone these headers can only say the budget is already gone. Read from every
-response they let a caller stop short of the limit instead of discovering it.
+| field | on a success | on a `429` |
+| -- | -- | -- |
+| `minlimit_remaining`, `daylimit_remaining`, `appminlimit_remaining` | yes | yes |
+| `problem`, `retry_after` | no | yes |
+
+Xero names a delay and a cause only when it actually refuses a request, so treat `problem` and
+`retry_after` as absent on a successful call rather than as "no problem".
+
+Counts are integers, and `nil` when the response did not report one — a missing header is *not* read
+as zero, because zero means the budget is exhausted and is the reading a caller most needs to act
+on. Responses that report nothing at all do not invoke the callback.
+
+Read from a `429` alone the remaining counts can only say the budget is already gone. Read from
+every response they let a caller stop short of the limit instead of discovering it.
 
 Set the callback once, at boot. Every entry point in this gem builds its own `Connection` and never
 hands it back, so the callback is what reaches them all. It must not raise: if it does, the error is

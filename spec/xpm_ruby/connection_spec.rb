@@ -119,12 +119,15 @@ module XpmRuby
 
       let(:xml_body) { "<Response><Status>OK</Status></Response>" }
 
+      # What a 200 actually carries, per the recorded traffic in
+      # spec/vcr_cassettes/xpm_ruby/connection/delete.yml: the three remaining counts and nothing
+      # else. `retry-after` and `x-rate-limit-problem` arrive only on a 429 — Xero names a delay
+      # and a cause only when it refuses.
       let(:rate_limit_headers) do
         {
-          "x-rate-limit-problem" => "day",
-          "x-minlimit-remaining" => "54",
-          "x-daylimit-remaining" => "1200",
-          "x-appminlimit-remaining" => "9938"
+          "x-minlimit-remaining" => "59",
+          "x-daylimit-remaining" => "4984",
+          "x-appminlimit-remaining" => "9999"
         }
       end
 
@@ -152,11 +155,11 @@ module XpmRuby
           expect(reported.first.to_h).to eq(
             status: 200,
             xero_tenant_id: xero_tenant_id,
-            problem: "day",
+            problem: nil,
             retry_after: nil,
-            minlimit_remaining: 54,
-            daylimit_remaining: 1200,
-            appminlimit_remaining: 9938
+            minlimit_remaining: 59,
+            daylimit_remaining: 4984,
+            appminlimit_remaining: 9999
           )
         end
 
