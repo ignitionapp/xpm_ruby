@@ -12,6 +12,12 @@ RSpec.configure do |config|
   config.expect_with(:rspec) do |c|
     c.syntax = :expect
   end
+
+  # `XpmRuby.on_rate_limits` is module-level state, so one left set would leak into every example
+  # that ran after it.
+  config.after(:each) do
+    XpmRuby.on_rate_limits = nil
+  end
 end
 
 VCR.configure do |config|
