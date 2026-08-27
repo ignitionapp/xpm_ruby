@@ -69,6 +69,13 @@ module XpmRuby
     end
 
     def handle_response(response)
+      limits = RateLimits.from_response(response, xero_tenant_id: xero_tenant_id)
+
+      # Reported ahead of the case, so a budget is read off the responses that raise as well as the
+      # ones that return. Skipped when the response names no limit at all: that is not the same as
+      # a budget of zero, and a caller should not have to tell the two apart from an object of nils.
+      XpmRuby.notify_rate_limits(limits) unless limits.empty?
+
       case response.status
       when 401
         detail = error_detail(response)
@@ -89,14 +96,7 @@ module XpmRuby
       when 503
         raise NotAvailable.new(error_detail(response))
       when 429 # rate limit exceeded
-        details = response.headers.slice(
-          "retry-after",
-          "x-rate-limit-problem",
-          "x-minlimit-remaining",
-          "x-daylimit-remaining",
-          "x-appminlimit-remaining"
-        )
-        raise RateLimitExceeded.new(response.reason_phrase, details: details)
+        raise RateLimitExceeded.new(response.reason_phrase, details: limits.headers)
       when 200
         xml = Ox.load(response.body, mode: :hash_no_attrs, symbolize_keys: false)
 

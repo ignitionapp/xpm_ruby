@@ -33,7 +33,8 @@ module XpmRuby
           response = instance_double(
             Faraday::Response,
             status: 403,
-            body: { Detail: "InsufficientPermissions" }.to_json
+            body: { Detail: "InsufficientPermissions" }.to_json,
+            headers: {}
           )
           allow_any_instance_of(Faraday::Connection).to receive(:get).and_return(response)
         end
@@ -109,6 +110,123 @@ module XpmRuby
               "x-appminlimit-remaining" => "9938"
             })))
           end
+        end
+      end
+    end
+
+    describe "rate limit reporting" do
+      let(:reported) { [] }
+
+      let(:xml_body) { "<Response><Status>OK</Status></Response>" }
+
+      let(:rate_limit_headers) do
+        {
+          "x-rate-limit-problem" => "day",
+          "x-minlimit-remaining" => "54",
+          "x-daylimit-remaining" => "1200",
+          "x-appminlimit-remaining" => "9938"
+        }
+      end
+
+      before(:each) do
+        XpmRuby.on_rate_limits = ->(limits) { reported << limits }
+      end
+
+      def stub_response(status:, body:, headers:)
+        response = instance_double(Faraday::Response, status: status, body: body, headers: headers)
+        allow_any_instance_of(Faraday::Connection).to receive(:get).and_return(response)
+      end
+
+      # The reason this gem change exists. A 429 can only ever say the budget is already gone; a
+      # caller pacing itself under the limit needs the count while its requests still work.
+      context "on a successful response" do
+        before(:each) do
+          stub_response(status: 200, body: xml_body, headers: rate_limit_headers)
+        end
+
+        it "reports the budget Xero returned" do
+          connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+          connection.get(endpoint: "staff.api/list")
+
+          expect(reported.size).to eq(1)
+          expect(reported.first.to_h).to eq(
+            status: 200,
+            xero_tenant_id: xero_tenant_id,
+            problem: "day",
+            retry_after: nil,
+            minlimit_remaining: 54,
+            daylimit_remaining: 1200,
+            appminlimit_remaining: 9938
+          )
+        end
+
+        it "still returns the parsed response to the caller" do
+          connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+
+          expect(connection.get(endpoint: "staff.api/list")["Status"]).to eq("OK")
+        end
+      end
+
+      context "when the response names no limit" do
+        before(:each) do
+          stub_response(status: 200, body: xml_body, headers: { "content-type" => "text/xml" })
+        end
+
+        # Reporting an object of nils would make every caller guard against a reading that says
+        # nothing, and would look identical to a budget that had run out.
+        it "reports nothing" do
+          connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+          connection.get(endpoint: "staff.api/list")
+
+          expect(reported).to be_empty
+        end
+      end
+
+      context "on a refused response" do
+        it "reports the refusal and still raises with the details it always carried" do
+          VCR.use_cassette("xpm_ruby/connection/get/rate_limit_exceeded") do
+            connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+
+            expect { connection.get(endpoint: "staff.api/list") }.to raise_error(XpmRuby::RateLimitExceeded)
+          end
+
+          expect(reported.size).to eq(1)
+          expect(reported.first).to have_attributes(
+            status: 429,
+            problem: "minute",
+            retry_after: 22,
+            daylimit_remaining: 4539
+          )
+        end
+      end
+
+      context "when the callback raises" do
+        before(:each) do
+          stub_response(status: 200, body: xml_body, headers: rate_limit_headers)
+          XpmRuby.on_rate_limits = ->(_limits) { raise("redis is down") }
+        end
+
+        # A hook that only measures a budget must not be able to fail the request it measured.
+        it "does not fail the request" do
+          connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+
+          expect { connection.get(endpoint: "staff.api/list") }
+            .to output(/XpmRuby.on_rate_limits raised RuntimeError: redis is down/).to_stderr
+
+          expect(connection.get(endpoint: "staff.api/list")["Status"]).to eq("OK")
+        end
+      end
+
+      context "with no callback set" do
+        before(:each) do
+          stub_response(status: 200, body: xml_body, headers: rate_limit_headers)
+          XpmRuby.on_rate_limits = nil
+        end
+
+        it "returns the response as before" do
+          connection = Connection.new(access_token: access_token, xero_tenant_id: xero_tenant_id)
+
+          expect(connection.get(endpoint: "staff.api/list")["Status"]).to eq("OK")
         end
       end
     end

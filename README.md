@@ -40,6 +40,39 @@ For example, a call to `XPMRuby::Staff.list(access_token: access_token, xero_ten
 
 As much as possible, we have tried to keep to the same names as documented here: https://developer.xero.com/documentation/practice-manager/overview-practice-manager-api however we have not as yet added the full API (only the endpoints we are currently using in ignitionapp).
 
+## Rate limits
+
+Xero returns its rate-limit headers on every XPM response, not only on the `429` that refuses one.
+Set `XpmRuby.on_rate_limits` to be told about each reading:
+
+```ruby
+XpmRuby.on_rate_limits = ->(limits) do
+  MyApp.record(
+    tenant:      limits.xero_tenant_id,
+    day_left:    limits.daylimit_remaining,
+    minute_left: limits.minlimit_remaining,
+    problem:     limits.problem
+  )
+end
+```
+
+The callback is handed an `XpmRuby::RateLimits` carrying `status`, `xero_tenant_id`, `problem`,
+`retry_after` and the three remaining-budget counts. Counts are integers, and `nil` when the
+response did not report one — a missing header is *not* read as zero, because zero means the budget
+is exhausted and is the reading a caller most needs to act on. Responses that name no limit at all
+do not invoke the callback.
+
+Read from a `429` alone these headers can only say the budget is already gone. Read from every
+response they let a caller stop short of the limit instead of discovering it.
+
+Set the callback once, at boot. Every entry point in this gem builds its own `Connection` and never
+hands it back, so the callback is what reaches them all. It must not raise: if it does, the error is
+warned and the request it was measuring still succeeds.
+
+`XpmRuby::RateLimitExceeded#details` still carries the raw wire-named header hash from the `429`
+that raised it, unchanged for the lowercase headers Xero sends. It is now read case-insensitively,
+so a change of casing at Xero's end can no longer empty it.
+
 ## Development
 
 TODO set up this gem to release automatically when merged into master...
